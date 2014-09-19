@@ -22,7 +22,7 @@
               termination:      |    <      |    =    |     >     |
                                  0           low   top         n-1
 
-                                |		<         |       >       |
+                                |    <            |       >       |
                                  0         top low             n-1
 
            2. 1-branch binary search.
