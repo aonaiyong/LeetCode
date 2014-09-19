@@ -16,7 +16,7 @@
  [1,3,5,6], 0 → 0
 
  Solution: Binary search
- 	 	   1. 2 branches,
+           1. 2 branches,
  */
 
 #ifndef SEARCHINSERTPOSITION_H_
