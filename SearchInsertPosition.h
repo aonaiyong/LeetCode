@@ -15,7 +15,8 @@
  [1,3,5,6], 7 → 4
  [1,3,5,6], 0 → 0
 
- Solution: Binary search.
+ Solution: Binary search
+ 	 	   1. 2 branches,
  */
 
 #ifndef SEARCHINSERTPOSITION_H_
@@ -24,11 +25,11 @@
 class Solution {
 public:
     int searchInsert(int A[], int n, int target) {
-        return searchInsert3B(A, n, target);
+        return searchInsert1B(A, n, target);
     }
 
-    // 3 branches & iterative
-    int searchInsert3B(int A[], int n, int target) {
+    // 2 branches & iterative
+    int searchInsert2B(int A[], int n, int target) {
         int low = 0, top = n - 1;
         while (low <= top) {
             int mid = low + (top - low) / 2;
@@ -46,8 +47,8 @@ public:
         return low;
     }
 
-    // 2 branches & iterative
-    int searchInsert2B(int A[], int n, int target) {
+    // 1 branch & iterative
+    int searchInsert1B(int A[], int n, int target) {
         if (A[n-1] < target) return n;
 
         int low = 0, top = n - 1;
