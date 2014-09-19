@@ -24,7 +24,7 @@
 
                                 |         <      |        >       |
                                  0            top low          n-1
-                  note that (top,low) could be (-1,0) or (n-1,n)
+                  note that [top,low] could be [-1,0] or [n-1,n]
 
            2. 1-branch binary search.
               loop invariant:   |    <    |      =?      |   >=   |
@@ -33,7 +33,7 @@
               termination:      |       <       |=?|      >=      |
                                  0              low            n-1
                                                (top)
-                  note that low
+                  note that low is in range [0,n-1]
  */
 
 #ifndef SEARCHINSERTPOSITION_H_
