@@ -16,11 +16,11 @@
  [1,3,5,6], 0 → 0
 
  Solution: 1. 2-branch binary search.
- 	 	 	  loop invariant:   |    <    |      =?      |    >    |
- 	 	 	                     0         low        top       n-1
+              loop invariant:   |    <    |      =?      |    >    |
+                                 0         low        top       n-1
  	 	   2. 1-branch binary search.
- 	 	      loop invariant:   |    <    |      =?      |    >=   |
- 	 	       	   	   	   	     0         low        top       n-1
+              loop invariant:   |    <    |      =?      |    >=   |
+                                 0         low        top       n-1
  */
 
 #ifndef SEARCHINSERTPOSITION_H_
