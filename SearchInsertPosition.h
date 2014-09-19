@@ -15,8 +15,8 @@
  [1,3,5,6], 7 → 4
  [1,3,5,6], 0 → 0
 
- Solution: Binary search
-           1. 2 branches,
+ Solution: 1. 2-branch binary search
+
  */
 
 #ifndef SEARCHINSERTPOSITION_H_
