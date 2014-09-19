@@ -16,24 +16,29 @@
  [1,3,5,6], 0 -> 0
 
  Solution:    1. 1-branch BS.
-              loop invariant:   |    <    |      =?      |   >=   |
-                                 0         low        top      n-1
+                 Works even if there're duplicates, in which case the first occurrence is guaranteed to be found.
 
-              termination:      |       <       |=?|      >=      |
-                                 0              low            n-1
-                                               (top)
-                  note that low is in range [0,n-1]
+                 loop invariant:   |    <    |      =?      |   >=   |
+                                    0         low        top      n-1
+
+                 termination:      |       <       |=?|      >=      |
+                                    0              low            n-1
+                                                  (top)
+                 note that low is in range [0,n-1].
+
 
               2. 2-branch BS.
-              loop invariant:   |    <    |      =?      |    >   |
-                                 0         low        top      n-1
+                 Works only when there're no duplicates.
 
-              termination:      |    <    |      =       |    >   |
-                                 0         low        top      n-1
+                 loop invariant:   |    <    |      =?      |    >   |
+                                    0         low        top      n-1
 
-                                |         <      |        >       |
-                                 0            top low          n-1
-                  note that [top,low] could be [-1,0] or [n-1,n]
+                 termination:      |    <    |      =       |    >   |
+                                    0         low        top      n-1
+
+                                   |         <      |        >       |
+                                    0            top low          n-1
+                 note that [top,low] could be [-1,0] or [n-1,n].
  */
 
 #ifndef SEARCHINSERTPOSITION_H_
