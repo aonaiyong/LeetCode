@@ -24,11 +24,16 @@
 
                                 |         <      |        >       |
                                  0            top low          n-1
+                  note that (top,low) could be (-1,0) or (n-1,n)
 
            2. 1-branch binary search.
               loop invariant:   |    <    |      =?      |   >=   |
                                  0         low        top      n-1
-              termination:
+
+              termination:      |       <       |=?|      >=      |
+                                 0              low            n-1
+                                               (top)
+                  note that low
  */
 
 #ifndef SEARCHINSERTPOSITION_H_
@@ -61,8 +66,6 @@ public:
 
     // 1 branch & iterative
     int searchInsert1B(int A[], int n, int target) {
-        if (A[n-1] < target) return n;
-
         int low = 0, top = n - 1;
         while (low < top) {
             int mid = low + (top - low) / 2;
@@ -74,6 +77,7 @@ public:
             }
         }
 
+        if (A[low] < target) return low + 1;
         return low;
     }
 };
