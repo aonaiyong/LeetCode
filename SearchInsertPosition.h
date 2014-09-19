@@ -1,11 +1,21 @@
 /*
- * Author:     naiyong, aonaiyong@gmail.com
- * Date:       Sep 19, 2014
- * Problem:    SearchInsertPosition.h
- * Difficulty: TODO
- * Source:     TODO
- * Notes:	   TODO
- * Solution:   TODO
+ Author:     naiyong, aonaiyong@gmail.com
+ Date:       Sep 19, 2014
+ Problem:    Search Insert Position
+ Difficulty: 2
+ Source:     https://oj.leetcode.com/problems/search-insert-position/
+ Notes:
+ Given a sorted array and a target value, return the index if the target is found. If not, return the index where it would be if it were inserted in order.
+
+ You may assume no duplicates in the array.
+
+ Here are few examples.
+ [1,3,5,6], 5 → 2
+ [1,3,5,6], 2 → 1
+ [1,3,5,6], 7 → 4
+ [1,3,5,6], 0 → 0
+
+ Solution: Binary search.
  */
 
 #ifndef SEARCHINSERTPOSITION_H_
@@ -54,7 +64,6 @@ public:
         return low;
     }
 };
-
 
 
 #endif /* SEARCHINSERTPOSITION_H_ */
