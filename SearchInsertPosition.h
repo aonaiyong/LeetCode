@@ -19,15 +19,16 @@
               loop invariant:   |    <    |      =?      |    >   |
                                  0         low        top      n-1
 
-			  termination:      |     <     |    =    |     >     |
-                                 0           low   top         n-1
+              termination:      |    <     |    =    |     >     |
+			                     0           low   top         n-1
 
 			                    |		<	  	 |		 >		  |
 			                     0			  top low		   n-1
 
            2. 1-branch binary search.
-              loop invariant:   |    <    |      =?      |    >=   |
-                                 0         low        top       n-1
+              loop invariant:   |    <    |      =?      |   >=   |
+                                 0         low        top      n-1
+              termination:
  */
 
 #ifndef SEARCHINSERTPOSITION_H_
