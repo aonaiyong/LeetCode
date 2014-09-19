@@ -65,5 +65,4 @@ public:
     }
 };
 
-
 #endif /* SEARCHINSERTPOSITION_H_ */
