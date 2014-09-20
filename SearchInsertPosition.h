@@ -16,7 +16,7 @@
  [1,3,5,6], 0 -> 0
 
  Solution:    Binary Search http://en.wikipedia.org/wiki/Binary_search_algorithm#cite_note-6
-              1. One-branch.
+              1. One-branch (two index limits).
                  Works even if there're duplicates, in which case the first occurrence is guaranteed to be found.
 
                  Loop invariant:   |    <    |      =?      |   >=   |
@@ -27,7 +27,7 @@
                  Note that low is in range [0,n-1].
 
 
-              2. Two-Branch.
+              2. Two-Branch (two index limits).
                  Works only when there're no duplicates.
 
                  Loop invariant:   |    <    |      =?      |    >   |
@@ -39,6 +39,9 @@
                                    |         <      |        >       |
                                     0            top low          n-1
                  Note that [top,low] could be [-1,0] or [n-1,n].
+
+              3. One-branch (current position and width).
+                 See SearchForARange.h for more details.
  */
 
 #ifndef SEARCHINSERTPOSITION_H_
@@ -70,16 +73,16 @@ public:
     // two-branch (two index limits)
     int searchInsert2B(int A[], int n, int target) {
         int low = 0, top = n - 1;
-        while (low <= top) {
-            int mid = low + (top - low) / 2;
+        while (low <= top) {     // search range [low, top], where low <= top
+            int mid = low + (top - low) / 2;  // mid is in range [low, top]
             if (A[mid] == target) {
                 return mid;
             }
             else if(A[mid] < target) {
-                low = mid + 1;
+                low = mid + 1;    // reduced range [mid + 1, top]
             }
             else {
-                top = mid - 1;
+                top = mid - 1;    // reduced range [low, mid - 1]
             }
         }
 
