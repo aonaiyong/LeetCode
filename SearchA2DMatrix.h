@@ -28,8 +28,6 @@
 
              2. Two-pass.
                 Binary search the first column to locate a row that might contain target.
-                Note that for this step two-branch binary search is essential.
-
                 Binary search the located row for target.
  */
 
@@ -42,7 +40,7 @@ using std::vector;
 class Solution {
 public:
     bool searchMatrix(vector<vector<int> > &matrix, int target) {
-        return searchMatrix2P2B(matrix, target);
+        return searchMatrix2P1B(matrix, target);
     }
 
     // one-pass & one-branch
@@ -89,13 +87,44 @@ public:
         return false;
     }
 
+    // two-pass & one-branch
+    bool searchMatrix2P1B(vector<vector<int> > &A, int target) {
+        if (A.empty() || A[0].empty()) return false;
+        int m = A.size(), n = A[0].size();
+
+        int low = 0, top = m - 1;
+        while (low < top) {
+            int mid = low + (top - low) / 2;
+            if (A[mid][0] < target) {
+                low = mid + 1;
+            }
+            else {
+                top = mid;
+            }
+        }
+        int i = target < A[low][0]? low - 1: low;
+        if (i == -1) return false;
+
+        low = 0;
+        top = n - 1;
+        while (low < top) {
+            int mid = low + (top - low) / 2;
+            if (A[i][mid] < target) {
+                low = mid + 1;
+            }
+            else {
+                top = mid;
+            }
+        }
+
+        return A[i][low] == target;
+    }
+
     // two-pass & two-branch
     bool searchMatrix2P2B(vector<vector<int> > &A, int target) {
         if (A.empty() || A[0].empty()) return false;
         int m = A.size(), n = A[0].size();
 
-        // binary search the first column
-        // two-branch version is necessary here.
         int low = 0, top = m - 1;
         while (low <= top) {
             int mid = low + (top - low) / 2;
@@ -111,7 +140,6 @@ public:
         }
         if (top == -1) return false;
 
-        // at this point, we have A[top][0] < target < A[low][0] (assume A[m][0] is infinity)
         int i = top;    // i-th row to be searched
         low = 1;        // starting from 1 (A[i][0] is already ruled out)
         top = n - 1;
