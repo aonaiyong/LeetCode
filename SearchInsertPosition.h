@@ -19,26 +19,26 @@
               1. One-branch.
                  Works even if there're duplicates, in which case the first occurrence is guaranteed to be found.
 
-                 loop invariant:   |    <    |      =?      |   >=   |
+                 Loop invariant:   |    <    |      =?      |   >=   |
                                     0         low        top      n-1
 
-                 termination:      |       <       |=?|      >=      |
+                 Termination:      |       <       |=?|      >=      |
                                     0              low (top)      n-1
-                 note that low is in range [0,n-1].
+                 Note that low is in range [0,n-1].
 
 
               2. Two-Branch.
                  Works only when there're no duplicates.
 
-                 loop invariant:   |    <    |      =?      |    >   |
+                 Loop invariant:   |    <    |      =?      |    >   |
                                     0         low        top      n-1
 
-                 termination:      |    <    |      =       |    >   |
+                 Termination:      |    <    |      =       |    >   |
                                     0         low        top      n-1
 
                                    |         <      |        >       |
                                     0            top low          n-1
-                 note that [top,low] could be [-1,0] or [n-1,n].
+                 Note that [top,low] could be [-1,0] or [n-1,n].
  */
 
 #ifndef SEARCHINSERTPOSITION_H_
