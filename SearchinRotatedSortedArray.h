@@ -1,7 +1,7 @@
 /*
  Author:     naiyong, aonaiyong@gmail.com
  Date:       Sep 20, 2014
- Problem:    SearchinRotatedSortedArray.h
+ Problem:    Search in Rotated SortedArray
  Difficulty: 4
  Source:     https://oj.leetcode.com/problems/search-in-rotated-sorted-array/
  Notes:
