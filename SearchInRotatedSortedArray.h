@@ -14,9 +14,9 @@
 
  You may assume no duplicate exists in the array.
 
- Solution:    Observation: at least one half of the array is sorted
-              Binary Search http://en.wikipedia.org/wiki/Binary_search_algorithm#cite_note-6
+ Solution:    Binary Search http://en.wikipedia.org/wiki/Binary_search_algorithm#cite_note-6
 
+              Observation: at least one half of the array is sorted.
  */
 
 #ifndef SEARCHINROTATEDSORTEDARRAY_H_
