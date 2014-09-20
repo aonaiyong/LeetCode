@@ -89,7 +89,6 @@ public:
         return low;
     }
 
-
     // one-branch (current position and width)
     int searchInsertWidth(int A[], int n, int target) {
         int *B = A;
