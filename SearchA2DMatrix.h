@@ -111,7 +111,7 @@ public:
         }
         if (top == -1) return false;
 
-        // search the
+        // at this point, we have A[top][0] < target < A[low][0] (assume A[m][0] is infinity)
         int i = top;    // i-th row to be searched
         low = 1;        // starting from 1 (A[i][0] is already ruled out)
         top = n - 1;
