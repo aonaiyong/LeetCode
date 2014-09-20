@@ -28,7 +28,7 @@
 
              2. Two-pass.
                 Binary search the first column to locate a row that might contain target.
-                Note that for this step only two-branch BS works.
+                Note that for this step two-branch binary search is essential.
 
                 Binary search the located row for target.
  */
