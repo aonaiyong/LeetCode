@@ -15,19 +15,19 @@
  [1,3,5,6], 7 -> 4
  [1,3,5,6], 0 -> 0
 
- Solution:    1. 1-branch BS.
+ Solution:    Binary Search http://en.wikipedia.org/wiki/Binary_search_algorithm#cite_note-6
+              1. 1-Branch.
                  Works even if there're duplicates, in which case the first occurrence is guaranteed to be found.
 
                  loop invariant:   |    <    |      =?      |   >=   |
                                     0         low        top      n-1
 
                  termination:      |       <       |=?|      >=      |
-                                    0              low            n-1
-                                                  (top)
+                                    0              low (top)      n-1
                  note that low is in range [0,n-1].
 
 
-              2. 2-branch BS.
+              2. 2-Branch.
                  Works only when there're no duplicates.
 
                  loop invariant:   |    <    |      =?      |    >   |
