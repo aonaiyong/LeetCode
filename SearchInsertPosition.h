@@ -47,19 +47,19 @@
 class Solution {
 public:
     int searchInsert(int A[], int n, int target) {
-        return searchInsert1B(A, n, target);
+        return searchInsertWidth(A, n, target);
     }
 
-    // 1 branch & iterative
+    // 1 branch (two index limits)
     int searchInsert1B(int A[], int n, int target) {
         int low = 0, top = n - 1;
-        while (low < top) {
-            int mid = low + (top - low) / 2;
+        while (low < top) {       // search range [low, top], where low < top
+            int mid = low + (top - low) / 2;  // mid is in range [low, top)
             if (A[mid] < target) {
-                low = mid + 1;
+                low = mid + 1;    // reduced range [mid + 1, top]
             }
             else {
-                top = mid;
+                top = mid;        // reduced range [low, mid]
             }
         }
 
@@ -67,7 +67,7 @@ public:
         return low;
     }
 
-    // 2 branches & iterative
+    // 2 branches (two index limits)
     int searchInsert2B(int A[], int n, int target) {
         int low = 0, top = n - 1;
         while (low <= top) {
@@ -84,6 +84,24 @@ public:
         }
 
         return low;
+    }
+
+
+    // 1 branch (current position and width)
+    int searchInsertWidth(int A[], int n, int target) {
+        int *B = A;
+        while (n > 0) {         // size n
+            int step = n / 2;   // step >= 0 and step < n
+            if (B[step] < target) {
+                B += step + 1;
+                n -= step + 1;  // reduced size n - (step + 1)
+            }
+            else {
+                n = step;       // reduced size step
+            }
+        }
+
+        return B - A;          // note that B might be an off-the-end pointer
     }
 
 };
