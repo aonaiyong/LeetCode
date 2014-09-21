@@ -25,6 +25,40 @@
 class Solution {
 public:
     int search(int A[], int n, int target) {
+        return search2B(A, n, target);
+    }
+
+    // Two-branch Binary Search
+    int search2B(int A[], int n, int target) {
+        int low = 0, top = n - 1;
+        while (low <= top) {
+            int mid = low + (top - low) / 2;
+            if (A[mid] == target) return mid;
+
+            // at this point A[mid] is ruled out
+            if (A[low] <= A[mid]) {  // first half is sorted
+                if (A[low] <= target && target < A[mid]) {
+                    top = mid - 1;
+                }
+                else {
+                    low = mid + 1;
+                }
+            }
+            else { // second half is sorted
+                if (A[mid] < target && target <= A[top]) {
+                    low = mid + 1;
+                }
+                else {
+                    top = mid - 1;
+                }
+            }
+        }
+
+        return -1;
+    }
+
+    // One-branch Binary Search
+    int search1B(int A[], int n, int target) {
         int low = 0, top = n - 1;
         while (low < top) {
             int mid = low + (top - low) / 2;
