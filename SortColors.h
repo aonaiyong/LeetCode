@@ -89,5 +89,4 @@ public:
 
 };
 
-
 #endif /* SORTCOLORS_H_ */

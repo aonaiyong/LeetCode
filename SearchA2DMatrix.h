@@ -39,7 +39,7 @@ using std::vector;
 class Solution {
 public:
     bool searchMatrix(vector<vector<int> > &matrix, int target) {
-        return searchMatrix2P1B(matrix, target);
+        return searchMatrix1P1B(matrix, target);
     }
 
     // one-pass & one-branch
@@ -158,6 +158,5 @@ public:
         return false;
     }
 };
-
 
 #endif /* SEARCHA2DMATRIX_H_ */

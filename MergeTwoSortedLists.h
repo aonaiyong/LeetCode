@@ -13,7 +13,6 @@
 #ifndef MERGETWOSORTEDLISTS_H_
 #define MERGETWOSORTEDLISTS_H_
 
-
  // Definition for singly-linked list.
  struct ListNode {
       int val;

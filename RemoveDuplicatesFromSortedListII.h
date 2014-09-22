@@ -53,5 +53,4 @@ public:
     }
 };
 
-
 #endif /* REMOVEDUPLICATESFROMSORTEDLISTII_H_ */

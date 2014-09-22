@@ -49,5 +49,4 @@ public:
 	}
 };
 
-
 #endif /* ROTATEANARRAYINPLACE_H_ */
