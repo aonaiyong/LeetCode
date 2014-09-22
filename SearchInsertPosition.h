@@ -73,16 +73,16 @@ public:
     // two-branch (two index limits)
     int searchInsert2B(int A[], int n, int target) {
         int low = 0, top = n - 1;
-        while (low <= top) {     // search range [low, top], where low <= top
+        while (low <= top) {      // search range [low, top], where low <= top
             int mid = low + (top - low) / 2;  // mid is in range [low, top]
             if (A[mid] == target) {
                 return mid;
             }
             else if(A[mid] < target) {
-                low = mid + 1;    // reduced range [mid + 1, top]
+                low = mid + 1;     // reduced range [mid + 1, top]
             }
             else {
-                top = mid - 1;    // reduced range [low, mid - 1]
+                top = mid - 1;     // reduced range [low, mid - 1]
             }
         }
 
