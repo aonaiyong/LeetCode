@@ -10,7 +10,7 @@
  For instance, with n=7 and k=3, the array {a, b, c, d, e, f, g} is rotated to {e, f, g, a, b, c, d}.
 
  Solution:  Three reverse operations.
-            O(n) time & O(1) space.
+            O(n) time, O(1) space.
  */
 
 #ifndef ROTATEANARRAYINPLACE_H_
