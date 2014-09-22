@@ -31,52 +31,39 @@ struct ListNode {
 
 class Solution {
 public:
-    void reorderList(ListNode *head) {
-        if (!head || !head->next) return;
-
-        // find the middle node
-        ListNode *mid = findMidNode(head);
-        // reverse the second half
-        mid->next = reverse(mid->next);
-
-        // insert the second half into the first half
-        ListNode *curr = head;
-        while (curr != mid) {
-            ListNode *temp = mid->next;
-            mid->next = temp->next;
-            temp->next = curr->next;
-            curr->next = temp;
-
-            curr = temp->next;
-        }
-    }
-
-    // reverse the list
-    ListNode *reverse(ListNode *head) {
-        if (!head) return nullptr;
-
+    ListNode *removeNthFromEnd(ListNode *head, int n) {
         ListNode dummy(0);
         dummy.next = head;
-        while (head->next) {
-            ListNode *temp = head->next;
-            head->next = temp->next;
-            temp->next = dummy.next;
-            dummy.next = temp;
-        }
+
+        // find the (n+1)st node from the end of list
+        ListNode *node = findNthFromEnd(&dummy, n + 1);
+        if (!node) return head;
+        ListNode *temp = node->next;
+        node->next = temp->next;
+        delete temp;
+
         return dummy.next;
     }
 
-    // find the middle node
-    ListNode *findMidNode(ListNode *head) {
-        if (!head) return nullptr;
+    // find the n-th node from the end of list
+    // the last node is the first node from the end
+    ListNode *findNthFromEnd(ListNode *head, int n) {
+        if (n <= 0) return nullptr;
 
-        // Note that we have to skip the nullptr node at the end of list
-        ListNode *slow = head, *fast = head->next;
-        while (fast && fast->next) {
-            slow = slow->next;
-            fast = fast->next->next;
+        ListNode *curr = head;
+        while (n && curr) {
+            --n;
+            curr = curr->next;
         }
-        return slow;
+        if (n) return nullptr;
+
+        ListNode *prev = head;
+        while (curr) {
+            prev = prev->next;
+            curr = curr->next;
+        }
+
+        return prev;
     }
 };
 

@@ -31,15 +31,9 @@ public:
     void reorderList(ListNode *head) {
         if (!head || !head->next) return;
 
-        // find the middle node of the list
-        ListNode *slow = head, *fast = head->next;
-        while (fast && fast->next) {
-            slow = slow->next;
-            fast = fast->next->next;
-        }
-
+        // find the middle node
+        ListNode *mid = findMidNode(head);
         // reverse the second half
-        ListNode *mid = slow;
         mid->next = reverse(mid->next);
 
         // insert the second half into the first half
@@ -66,8 +60,20 @@ public:
             temp->next = dummy.next;
             dummy.next = temp;
         }
-
         return dummy.next;
+    }
+
+    // find the middle node
+    ListNode *findMidNode(ListNode *head) {
+        if (!head) return nullptr;
+
+        // Note that we have to skip the nullptr node at the end of list
+        ListNode *slow = head, *fast = head->next;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+        return slow;
     }
 };
 
