@@ -30,14 +30,14 @@ public:
     ListNode *deleteDuplicates(ListNode *head) {
         if (!head || !head->next) return head;
 
-        ListNode *curr = head;
-        while (curr->next) {
-            ListNode *temp = curr->next;
-            if (curr->val != temp->val) {
-                curr = temp;
+        ListNode *tail = head;
+        while (tail->next) {
+            ListNode *temp = tail->next;
+            if (tail->val != temp->val) {
+                tail = temp;
             }
             else {
-                curr->next = temp->next;
+                tail->next = temp->next;
                 delete temp;
             }
         }
