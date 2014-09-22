@@ -16,17 +16,12 @@
 #ifndef LINKEDLISTCYCLE_H_
 #define LINKEDLISTCYCLE_H_
 
-// Definition for singly-linked list.
- struct ListNode {
-	 int val;
-     ListNode *next;
-     ListNode(int x) : val(x), next(nullptr) {}
-};
+#include "ListNode.h"
 
- class Solution {
- public:
-     bool hasCycle(ListNode *head) {
-         if (!head || !head->next) return false;
+class Solution {
+public:
+	bool hasCycle(ListNode *head) {
+		if (!head || !head->next) return false;
 
          ListNode *slow = head, *fast = head;
          while (fast && fast->next) {

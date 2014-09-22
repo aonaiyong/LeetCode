@@ -13,12 +13,7 @@
 #ifndef MERGETWOSORTEDLISTS_H_
 #define MERGETWOSORTEDLISTS_H_
 
- // Definition for singly-linked list.
- struct ListNode {
-      int val;
-      ListNode *next;
-      ListNode(int x) : val(x), next(nullptr) {}
- };
+#include "ListNode.h"
 
 class Solution {
 public:
