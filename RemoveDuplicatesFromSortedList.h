@@ -5,7 +5,6 @@
  Difficulty: 1
  Source:     https://oj.leetcode.com/problems/remove-duplicates-from-sorted-list/
  Notes:
-
  Given a sorted linked list, delete all duplicates such that each element appear only once.
 
  For example,

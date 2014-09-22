@@ -5,7 +5,6 @@
  Difficulty: 2
  Source:     https://oj.leetcode.com/problems/insertion-sort-list/
  Notes:
-
  Sort a linked list using insertion sort.
 
  Solution:   Insertion Sort. http://en.wikipedia.org/wiki/Insertion_sort

@@ -5,7 +5,6 @@
  Difficulty: 2
  Source:     https://oj.leetcode.com/problems/remove-duplicates-from-sorted-array-ii/
  Notes:
-
  Follow up for "Remove Duplicates":
  What if duplicates are allowed at most twice?
 

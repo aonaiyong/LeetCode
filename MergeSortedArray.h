@@ -5,7 +5,6 @@
  Difficulty: 2
  Source:     https://oj.leetcode.com/problems/merge-sorted-array/
  Notes:
-
  Given two sorted integer arrays A and B, merge B into A as one sorted array.
 
  Note:
