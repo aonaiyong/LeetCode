@@ -1,7 +1,7 @@
 /*
  Author:     naiyong, aonaiyong@gmail.com
  Date:       Sep 22, 2014
- Problem:    ListNode.h
+ Problem:    List Node Class
  Difficulty:
  Source:
  Notes:
