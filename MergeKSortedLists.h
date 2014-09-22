@@ -41,7 +41,7 @@ public:
 class Solution {
 public:
     ListNode *mergeKLists(vector<ListNode *> &lists) {
-        return mergeKListsDQ(lists);
+        return mergeKListsMDQ(lists);
     }
 
     // Min Priority Queue: O(n*k*log(k)) time, O(log(k)) space
