@@ -20,9 +20,10 @@ class Solution {
 public:
     int sqrt(int x) {
         return sqrtNewtonsMethod(x);
-        // return sqrtBinarySearch(x);
     }
 
+    // Rate of convergence is quadratic, which means the
+    // number of correct bits roughly doubles in every step
     int sqrtNewtonsMethod(int x) {
         if (x == 0) return 0;
 
@@ -35,6 +36,7 @@ public:
         return static_cast<int>(curr);
     }
 
+    // only works for integer square root
     int sqrtBinarySearch(int x) {
         long long low = 0;
         long long top = x;
