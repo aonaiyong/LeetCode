@@ -30,9 +30,12 @@ public:
     vector<vector<int> > threeSum(vector<int> &num) {
         vector<vector<int>> ret;
 
-        int n = num.size();
         sort(num.begin(), num.end());
+        int n = num.size();
         for (int i = 0; i < n - 2 && num[i] <= 0; ++i) {
+            // skip duplicates
+            if (i > 0 && num[i] == num[i - 1]) continue;
+
             int j = i + 1, k = n - 1;
             while (j < k) {
                 int sum = num[i] + num[j] + num[k];
@@ -55,9 +58,6 @@ public:
                     --k;
                 }
             }
-
-            // skip duplicates
-            while (i < n - 2 && num[i + 1] == num[i]) ++i;
         }
 
         return ret;
