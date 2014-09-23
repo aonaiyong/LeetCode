@@ -35,7 +35,6 @@ public:
     // n^2/4 4-element swaps
     void rotateOnePass(vector<vector<int>> &A) {
         int n = A.size();
-
         for (int i = 0; i < n/2; ++i) {
             int last = n-1-i;
             for (int j = i; j < last; ++j) {
