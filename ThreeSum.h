@@ -37,22 +37,18 @@ public:
         int n = num.size();
         for (int i = 0; i < n - 2 && num[i] <= 0; ++i) {
             // skip duplicates
-            if (i > 0 && num[i] == num[i - 1]) continue;
+            if (i > 0 && num[i] == num[i-1]) continue;
 
             int j = i + 1, k = n - 1;
             while (j < k) {
                 int sum = num[i] + num[j] + num[k];
                 if (sum == 0) {
-                   vector<int> triplet(3);
-                   triplet[0] = num[i];
-                   triplet[1] = num[j];
-                   triplet[2] = num[k];
-                   ret.push_back(triplet);
+                   ret.push_back(vector<int> {num[i], num[j], num[k]});
 
                    ++j; --k;
                    // skip duplicates
-                   while (j < k && num[j] == num[j - 1]) ++j;
-                   while (j < k && num[k] == num[k + 1]) --k;
+                   while (j < k && num[j] == num[j-1]) ++j;
+                   while (j < k && num[k] == num[k+1]) --k;
                 }
                 else if (sum < 0) ++j;
                 else --k;

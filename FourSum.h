@@ -48,8 +48,7 @@ public:
                while (k < l) {
                    int sum = num[i] + num[j] + num[k] + num[l];
                    if (sum == target) {
-                       vector<int> quadruplet {num[i], num[j], num[k], num[l]};
-                       ret.push_back(quadruplet);
+                       ret.push_back(vector<int> {num[i], num[j], num[k], num[l]});
 
                        ++k; --l;
                        // skip duplicates
