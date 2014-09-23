@@ -1,7 +1,7 @@
 /*
  Author:     naiyong, aonaiyong@gmail.com
  Date:       Sep 22, 2014
- Problem:    3SumClosest.h
+ Problem:    3Sum Closest
  Difficulty: 3
  Source:     https://oj.leetcode.com/problems/3sum-closest/
  Notes:
@@ -11,14 +11,17 @@
 
     The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 
- Solution:   3SUM. http://en.wikipedia.org/wiki/3SUM
+ Solution:  3SUM. http://en.wikipedia.org/wiki/3SUM
  */
 
-#ifndef 3SUMCLOSEST_H_
-#define 3SUMCLOSEST_H_
+#ifndef THREESUMCLOSEST_H_
+#define THREESUMCLOSEST_H_
 
 #include <vector>
 using std::vector;
+
+#include <algorithm>
+using std::sort;
 
 #include <cstdlib>
 
@@ -49,4 +52,4 @@ public:
     }
 };
 
-#endif /* 3SUMCLOSEST_H_ */
+#endif /* THREESUMCLOSEST_H_ */

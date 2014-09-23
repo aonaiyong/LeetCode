@@ -1,7 +1,7 @@
 /*
  Author:     naiyong, aonaiyong@gmail.com
  Date:       Sep 22, 2014
- Problem:    3 Sum
+ Problem:    3Sum
  Difficulty: 3
  Source:     https://oj.leetcode.com/problems/3sum/
  Notes:
@@ -16,14 +16,17 @@
     (-1, 0, 1)
     (-1, -1, 2)
 
- Solution:   3SUM. http://en.wikipedia.org/wiki/3SUM
+ Solution:  3SUM. http://en.wikipedia.org/wiki/3SUM
  */
 
-#ifndef 3SUM_H_
-#define 3SUM_H_
+#ifndef THREESUM_H_
+#define THREESUM_H_
 
 #include <vector>
 using std::vector;
+
+#include <algorithm>
+using std::sort;
 
 class Solution {
 public:
@@ -51,12 +54,8 @@ public:
                    while (j < k && num[j] == num[j - 1]) ++j;
                    while (j < k && num[k] == num[k + 1]) --k;
                 }
-                else if (sum < 0) {
-                    ++j;
-                }
-                else {
-                    --k;
-                }
+                else if (sum < 0) ++j;
+                else --k;
             }
         }
 
@@ -65,4 +64,4 @@ public:
 };
 
 
-#endif /* 3SUM_H_ */
+#endif /* THREESUM_H_ */
