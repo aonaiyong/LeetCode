@@ -1,10 +1,18 @@
 /*
  Author:     naiyong, aonaiyong@gmail.com
  Date:       Sep 22, 2014
- Problem:    TwoSum.h
- Difficulty:
- Source:
+ Problem:    Two Sum
+ Difficulty: 2
+ Source:     https://oj.leetcode.com/problems/two-sum/
  Notes:
+ Given an array of integers, find two numbers such that they add up to a specific target number.
+
+ The function twoSum should return indices of the two numbers such that they add up to the target, where index1 must be less than index2. Please note that your returned answers (both index1 and index2) are not zero-based.
+
+ You may assume that each input would have exactly one solution.
+
+ Input: numbers={2, 7, 11, 15}, target=9
+ Output: index1=1, index2=2
 
  Solution:
  */
@@ -24,7 +32,7 @@ using std::min; using std::max;
 class Solution {
 public:
     vector<int> twoSum(vector<int> &numbers, int target) {
-        return twoSumHashOnePass(numbers, target);
+        return twoSumHashTwoPass(numbers, target);
     }
 
     // O(nlog(n)) time, O(n) space
@@ -45,10 +53,10 @@ public:
                 return {min(i, j) + 1, max(i, j) + 1};
             }
 
-            if (sum < target) { // skip nums[i]
+            if (sum < target) { // exclude num[i]
                 ++low;
             }
-            else {              // skip nums[j]
+            else {              // exclude num[j]
                 --top;
             }
         }
