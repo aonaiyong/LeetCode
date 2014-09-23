@@ -37,12 +37,8 @@ public:
             while (j < k) {
                 int sum = num[i] + num[j] + num[k];
                 if (sum == target) return sum;
-                if (sum < target) {
-                    ++j;
-                }
-                else {
-                    --k;
-                }
+                if (sum < target) ++j;
+                else --k;
 
                 if (ret == target || abs(sum - target) < abs(ret - target)) ret = sum;
             }

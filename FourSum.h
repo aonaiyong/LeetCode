@@ -44,16 +44,11 @@ public:
                // skip duplicates
                if (j > i + 1 && num[j] == num[j-1]) continue;
 
-               int twoSum = num[i] + num[j];
                int k = j + 1, l = n - 1;
                while (k < l) {
-                   int sum = twoSum + num[k] + num[l];
+                   int sum = num[i] + num[j] + num[k] + num[l];
                    if (sum == target) {
-                       vector<int> quadruplet(4);
-                       quadruplet[0] = num[i];
-                       quadruplet[1] = num[j];
-                       quadruplet[2] = num[k];
-                       quadruplet[3] = num[l];
+                       vector<int> quadruplet {num[i], num[j], num[k], num[l]};
                        ret.push_back(quadruplet);
 
                        ++k; --l;
@@ -70,4 +65,5 @@ public:
        return ret;
     }
 };
+
 #endif /* FOURSUM_H_ */
