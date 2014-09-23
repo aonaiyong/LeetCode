@@ -36,8 +36,6 @@ public:
 
     // 3 * n steps, O(1) space
     RandomListNode *copyRandomListThreePass(RandomListNode *head) {
-        if (!head) return nullptr;
-
         // 1st pass: for each node in the list, create a copy right after it
         RandomListNode *curr = head;
         while (curr) {
@@ -57,8 +55,8 @@ public:
         }
 
         // 3rd pass: decouple all the copies
-        curr = head;
         RandomListNode dummy(0), *tail = &dummy;
+        curr = head;
         while (curr) {
             tail->next = curr->next;
             tail = tail->next;
@@ -72,8 +70,6 @@ public:
 
     // n steps, O(n) space
     RandomListNode *copyRandomListHash(RandomListNode *head) {
-        if (!head) return nullptr;
-
         unordered_map<RandomListNode *, RandomListNode *> umap;
         RandomListNode dummy(0), *tail = &dummy;
         RandomListNode *curr = head;
