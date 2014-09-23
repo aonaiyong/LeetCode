@@ -75,7 +75,6 @@ public:
         if (!head) return nullptr;
 
         unordered_map<RandomListNode *, RandomListNode *> umap;
-        umap[nullptr] = nullptr;
         RandomListNode dummy(0), *tail = &dummy;
         RandomListNode *curr = head;
         while (curr) {
@@ -89,7 +88,7 @@ public:
 
             tail->next = umap[curr];
             tail = tail->next;
-            tail->random = umap[curr->random];
+            tail->random = umap[curr->random]; // umap[nullptr] will be value-initialized to nullptr
             curr = curr->next;
         }
 
