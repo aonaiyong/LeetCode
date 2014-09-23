@@ -7,7 +7,7 @@
  Notes:
  Merge two sorted linked lists and return it as a new list. The new list should be made by splicing together the nodes of the first two lists.
 
- Solution:   Use sentinel node (dummy).
+ Solution:   Use dummy node.
  */
 
 #ifndef MERGETWOSORTEDLISTS_H_
@@ -18,14 +18,15 @@
 class Solution {
 public:
     ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
-        ListNode dummy(0), *curr = &dummy;
+        ListNode dummy(0), *tail = &dummy;
         while (l1 && l2) {
             ListNode *&min = l1->val <= l2->val ? l1 : l2;
-            curr->next = min;
+            tail->next = min;
+            tail = tail->next;
+
             min = min->next;
-            curr = curr->next;
         }
-        curr->next = l1 ? l1 : l2;
+        tail->next = l1 ? l1 : l2;
 
         return dummy.next;
     }
