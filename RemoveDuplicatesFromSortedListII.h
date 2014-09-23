@@ -11,7 +11,7 @@
  Given 1->2->3->3->4->4->5, return 1->2->5.
  Given 1->1->1->2->3, return 2->3.
 
- Solution:   Inspect consecutive nodes (a window). If they have differing values, advance the window;
+ Solution:   check consecutive nodes (a window). If they have differing values, advance the window;
              Otherwise, delete all nodes have that value. Note that in the end, there might be only
              one node in the window.
  */
