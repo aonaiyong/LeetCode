@@ -43,7 +43,7 @@ public:
             while (j < k) {
                 int sum = num[i] + num[j] + num[k];
                 if (sum == 0) {
-                   ret.push_back(vector<int> {num[i], num[j], num[k]});
+                   ret.push_back({num[i], num[j], num[k]});
 
                    ++j; --k;
                    // skip duplicates
