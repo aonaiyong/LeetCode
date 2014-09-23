@@ -59,5 +59,4 @@ public:
     }
 };
 
-
 #endif /* THREESUM_H_ */
