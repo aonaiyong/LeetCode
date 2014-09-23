@@ -20,6 +20,8 @@
 #include <vector>
 using std::vector;
 
+#include <cstdlib>
+
 class Solution {
 public:
     int threeSumClosest(vector<int> &num, int target) {
