@@ -10,6 +10,8 @@
  Compute and return the square root of x.
 
  Solution:   1. Newton's method. http://en.wikipedia.org/wiki/Newton%27s_method
+                y = f(t) = t^2 - x;
+
              2. Binary search in range [0, x].
  */
 
