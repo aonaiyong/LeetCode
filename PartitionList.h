@@ -14,7 +14,7 @@
  return 1->2->2->4->3->5.
 
  Solution:   1. First decouple nodes into two lists, and then splice the lists.
-             2. Partition in list.
+             2. Partition in place.
  */
 
 #ifndef PARTITIONLIST_H_
