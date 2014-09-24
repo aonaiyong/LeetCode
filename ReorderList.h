@@ -27,24 +27,28 @@ public:
         if (!head || !head->next) return;
 
         // find the middle node
-        ListNode *mid = findMidNode(head);
+        ListNode *mid = findMiddle(head);
         // reverse the second half
-        mid->next = reverseList(mid->next);
+        ListNode *tail = reverse(mid->next);
+        mid->next = nullptr;
+        head = interleave(head, tail);
+    }
 
-        // insert the second half into the first half
-        ListNode *curr = head;
-        while (curr != mid) {
-            ListNode *temp = mid->next;
-            mid->next = temp->next;
-            temp->next = curr->next;
-            curr->next = temp;
+    // find the middle node
+    ListNode *findMiddle(ListNode *head) {
+        if (!head) return nullptr;
 
-            curr = temp->next;
+        // Note that we have to skip the nullptr node at the end of list
+        ListNode *slow = head, *fast = head->next;
+        while (fast && fast->next) {
+            slow = slow->next;
+            fast = fast->next->next;
         }
+        return slow;
     }
 
     // reverse the list
-    ListNode *reverseList(ListNode *head) {
+    ListNode *reverse(ListNode *head) {
         if (!head) return nullptr;
 
         ListNode dummy(0);
@@ -58,17 +62,18 @@ public:
         return dummy.next;
     }
 
-    // find the middle node
-    ListNode *findMidNode(ListNode *head) {
-        if (!head) return nullptr;
-
-        // Note that we have to skip the nullptr node at the end of list
-        ListNode *slow = head, *fast = head->next;
-        while (fast && fast->next) {
-            slow = slow->next;
-            fast = fast->next->next;
+    // interleave nodes in the lists
+    ListNode *interleave(ListNode *head1, ListNode *head2) {
+        int i = 1;
+        ListNode dummy(0), *tail = &dummy;
+        while (head1 && head2) {
+            ListNode *&head = i % 2 ? head1 : head2;
+            tail = tail->next = head;
+            head = head->next;
+            ++i;
         }
-        return slow;
+        tail->next = head1 ? head1 : head2;
+        return dummy.next;
     }
 };
 
