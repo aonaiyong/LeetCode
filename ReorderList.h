@@ -29,7 +29,7 @@ public:
         // find the middle node
         ListNode *mid = findMidNode(head);
         // reverse the second half
-        mid->next = reverse(mid->next);
+        mid->next = reverseList(mid->next);
 
         // insert the second half into the first half
         ListNode *curr = head;
@@ -44,7 +44,7 @@ public:
     }
 
     // reverse the list
-    ListNode *reverse(ListNode *head) {
+    ListNode *reverseList(ListNode *head) {
         if (!head) return nullptr;
 
         ListNode dummy(0);
