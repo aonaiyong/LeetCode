@@ -61,8 +61,8 @@ public:
     }
 
     void iterativeInorder(TreeNode *root, vector<int> &vals) {
-        stack<TreeNode *> stk;
         TreeNode *node = root;
+        stack<TreeNode *> stk;
         while (node || !stk.empty()) {
             if (node) {
                 stk.push(node);
