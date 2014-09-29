@@ -39,7 +39,7 @@ public:
 
         TreeNode *root = new TreeNode(val);
         root->left = recursiveBuildTree(ibeg, pbeg, mid);
-        root->right = recursiveBuildTree(ibeg+mid+1, pbeg+mid, n-mid-1);
+        root->right = recursiveBuildTree(ibeg + mid + 1, pbeg + mid, n - mid - 1);
         return root;
     }
 };
