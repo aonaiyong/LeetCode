@@ -9,7 +9,8 @@
 
  The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 
- Solution:   DFS.
+ Solution:   Recursion.
+             Time: O(n), Space: O(n).
  */
 
 #ifndef MAXIMUMDEPTHOFBINARYTREE_H_
