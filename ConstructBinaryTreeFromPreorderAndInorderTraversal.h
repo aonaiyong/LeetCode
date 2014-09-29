@@ -10,7 +10,10 @@
  Note:
  You may assume that duplicates do not exist in the tree.
 
- Solution:   DFS + Recursion.
+ Solution:   Recursion.
+             Time: O(n^2), Space: O(n) (when the tree is skewed to the left)
+             We can achieve O(n) time by using a hash table, which maps an element's value to its
+             corresponding index in the in-order sequence.
  */
 
 #ifndef CONSTRUCTBINARYTREEFROMPREORDERANDINORDERTRAVERSAL_H_
