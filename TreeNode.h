@@ -20,4 +20,11 @@ struct TreeNode {
     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
 };
 
+// Definition for binary tree with next pointer.
+struct TreeLinkNode {
+	int val;
+	TreeLinkNode *left, *right, *next;
+	TreeLinkNode(int x) : val(x), left(nullptr), right(nullptr), next(nullptr) {}
+};
+
 #endif /* TREENODE_H_ */
