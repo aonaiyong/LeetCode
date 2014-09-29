@@ -23,11 +23,17 @@
  Note:
  Bonus points if you could solve it both recursively and iteratively.
 
- Solution:
+ Solution:   1. Recursive.
+                Time: O(n), Space: O(n).
+             2. Iterative with Queue.
+                Time: O(n), Space: O(n).
  */
 
 #ifndef SYMMETRICTREE_H_
 #define SYMMETRICTREE_H_
+
+#include <queue>
+using std::queue;
 
 #include "TreeNode.h"
 
@@ -35,16 +41,34 @@ class Solution {
 public:
     bool isSymmetric(TreeNode *root) {
         if (!root) return true;
-        return isSymmetricRecur(root->left, root->right);
+        return iterativeIsSymmetric(root->left, root->right);
     }
 
-    bool isSymmetricRecur(TreeNode *root1, TreeNode *root2) {
-        if (!root1 && !root2) return true;
-        if (!root1 || !root2) return false;
-        if (root1->val != root2->val) return false;
+    bool recursiveIsSymmetric(TreeNode *p, TreeNode *q) {
+        if (!p && !q) return true;
+        if (!p || !q) return false;
+        if (p->val != q->val) return false;
 
-        return isSymmetricRecur(root1->left, root2->right) &&
-               isSymmetricRecur(root1->right, root2->left);
+        return recursiveIsSymmetric(p->left, q->right) &&
+               recursiveIsSymmetric(p->right, q->left);
+    }
+
+    bool iterativeIsSymmetric(TreeNode *p, TreeNode *q) {
+        queue<TreeNode *> frontier;
+        frontier.push(p);
+        frontier.push(q);
+        while (!frontier.empty()) {
+            p = frontier.front(); frontier.pop();
+            q = frontier.front(); frontier.pop();
+            if (!p && !q) continue;
+            if (!p || !q) return false;
+            if (p->val != q->val) return false;
+
+            frontier.push(p->left); frontier.push(q->right);
+            frontier.push(p->right); frontier.push(q->left);
+        }
+
+        return true;
     }
 };
 
