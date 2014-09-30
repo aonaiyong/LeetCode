@@ -34,7 +34,7 @@ using std::queue;
 class Solution {
 public:
     int maxDepth(TreeNode *root) {
-        return iterativeQueueMaxDepth(root);
+        return iterativeStackMaxDepth(root);
     }
 
     int recursiveMaxDepth(TreeNode *root) {
@@ -56,8 +56,8 @@ public:
             else {
                 TreeNode *peakNode = stk.top();
                 if (!peakNode->right || peakNode->right == lastNodeVisited) {
-                    if (!peakNode->right && !peakNode->left) {
-                        if (maxDepth < stk.size()) maxDepth = stk.size();
+                    if (!peakNode->right && !peakNode->left && maxDepth < stk.size()) {
+                        maxDepth = stk.size();
                     }
 
                     lastNodeVisited = peakNode;
