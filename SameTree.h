@@ -9,22 +9,52 @@
 
  Two binary trees are considered equal if they are structurally identical and the nodes have the same value.
 
- Solution:   DFS & Early Termination.
+ Solution:   1. Recursive Pre-order Traversal.
+                Time: O(n), Space: O(n).
+
+             2. Iterative with Queue.
+                Time: O(n), Space: O(n).
  */
 
 #ifndef SAMETREE_H_
 #define SAMETREE_H_
+
+#include <queue>
+using std::queue;
 
 #include "TreeNode.h"
 
 class Solution {
 public:
     bool isSameTree(TreeNode *p, TreeNode *q) {
+        return iterativeIsSameTree(p, q);
+    }
+
+    bool recursiveIsSameTree(TreeNode *p, TreeNode *q) {
         if (!p && !q) return true;
         if (!p || !q) return false;
         if (p->val != q->val) return false;
-        return isSameTree(p->left, q->left) &&
-               isSameTree(p->right, q->right);
+
+        return recursiveIsSameTree(p->left, q->left) &&
+               recursiveIsSameTree(p->right, q->right);
+    }
+
+    bool iterativeIsSameTree(TreeNode *p, TreeNode *q) {
+        queue<TreeNode *> frontier;
+        frontier.push(p);
+        frontier.push(q);
+        while (!frontier.empty()) {
+            p = frontier.front(); frontier.pop();
+            q = frontier.front(); frontier.pop();
+            if (!p && !q) continue;
+            if (!p || !q) return false;
+            if (p->val != q->val) return false;
+
+            frontier.push(p->left); frontier.push(q->left);
+            frontier.push(p->right); frontier.push(q->right);
+        }
+
+        return true;
     }
 };
 
