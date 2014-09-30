@@ -23,7 +23,7 @@
  Note:
  Bonus points if you could solve it both recursively and iteratively.
 
- Solution:   1. Recursive.
+ Solution:   1. Recursive Solution.
                 Time: O(n), Space: O(n).
 
              2. Iterative with Queue.
