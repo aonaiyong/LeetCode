@@ -13,7 +13,19 @@
  The right subtree of a node contains only nodes with keys greater than the node's key.
  Both the left and right subtrees must also be binary search trees.
 
- Solution:
+ Solution:   1. Recursive Pre-order Traversal (lower & upper bounds).
+                Time: O(n), Space: O(n).
+
+             2. Recursive In-order Traversal (predecessor).
+                Time: O(n), Space: O(n).
+
+             3. Iterative In-order Traversal (predecessor).
+                Time: O(n), Space: O(n).
+
+             4. Morris In-order Traversal (predecessor).
+                Time: O(n), Space: O(1)
+                Note that we have to fully traverse the tree whenever morris tree traversal
+                is employed.
  */
 
 #ifndef VALIDATEBINARYSEARCHTREE_H_
