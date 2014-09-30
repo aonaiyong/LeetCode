@@ -9,7 +9,7 @@
 
  Two binary trees are considered equal if they are structurally identical and the nodes have the same value.
 
- Solution:   1. Recursive Pre-order Traversal.
+ Solution:   1. Recursive Solution.
                 Time: O(n), Space: O(n).
 
              2. Iterative with Queue.
