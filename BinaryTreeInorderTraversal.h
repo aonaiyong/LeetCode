@@ -27,6 +27,7 @@
 
              3. Morris In-order Traversal.
                 Time: O(n), Space: O(1)
+                Note that we have to fully traverse the tree to recover it.
 
                 For 1&2, each edge is traversed exactly once.
                 For 3, each edge is traversed at most 3 times.
