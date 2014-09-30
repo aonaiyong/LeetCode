@@ -58,9 +58,7 @@ public:
             else {
                 TreeNode *peakNode = stk.top();
                 if (!peakNode->right || peakNode->right == lastNodeVisited) {
-                    if (!peakNode->right && !peakNode->left) {
-                        if (!sum) return true;
-                    }
+                    if (!peakNode->right && !peakNode->left && !sum) return true;
 
                     sum += peakNode->val;
                     lastNodeVisited = peakNode;
