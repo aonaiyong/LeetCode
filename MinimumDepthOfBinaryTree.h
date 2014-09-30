@@ -11,10 +11,13 @@
 
  Solution:   1. Recursive Post-order Traversal.
                 Time: O(n), Space: O(n).
+
              2. Iterative Post-order Traversal.
                 Time: O(n), Space: O(n).
+
              3. Iterative Level-order Traversal.
                 Time: O(n), Space: O(n).
+                This solution is the most efficient one.
  */
 
 #ifndef MINIMUMDEPTHOFBINARYTREE_H_
@@ -37,7 +40,7 @@ using std::queue;
 class Solution {
 public:
     int minDepth(TreeNode *root) {
-        return iterativeQueueMinDepth(root);
+        return iterativeStackMinDepth(root);
     }
 
     int recursiveMinDepth(TreeNode *root) {
@@ -63,8 +66,8 @@ public:
             else {
                 TreeNode *peakNode = stk.top();
                 if (!peakNode->right || peakNode->right == lastNodeVisited) {
-                    if (!peakNode->right && !peakNode->left) {
-                        if (minDepth > stk.size()) minDepth = stk.size();
+                    if (!peakNode->right && !peakNode->left && minDepth > stk.size()) {
+                        minDepth = stk.size();
                     }
 
                     lastNodeVisited = peakNode;
