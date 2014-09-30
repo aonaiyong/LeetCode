@@ -20,6 +20,7 @@
 
  Solution:   1. Recursive solution.
                 Time: O(n), Space: O(n).
+
              2. Iterative post-order traversal.
                 Time: O(n), Space: O(n).
  */
