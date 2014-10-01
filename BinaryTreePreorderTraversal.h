@@ -66,6 +66,7 @@ public:
         while (node || !stk.empty()) {
             if (node) {
                 vals.push_back(node->val);
+
                 stk.push(node);
                 node = node->left;
             }
@@ -92,8 +93,9 @@ public:
     void morrisPreorder(TreeNode *root, vector<int> &vals) {
         TreeNode *node = root;
         while (node) {
-            if (!node->left) {             // left subtree is empty
+            if (!node->left) { // left subtree is empty
                 vals.push_back(node->val); // process node
+
                 node = node->right;        // advance to right subtree
             }
             else {
@@ -103,8 +105,9 @@ public:
                     rightMost = rightMost->right;
                 }
 
-                if (!rightMost->right) {       // left subtree is to be processed
+                if (!rightMost->right) {  // left subtree is to be processed
                     vals.push_back(node->val); // process node
+
                     rightMost->right = node;   // make node rightMost's right child
                     node = node->left;         // advance to left subtree
                 }
