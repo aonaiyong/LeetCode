@@ -35,15 +35,15 @@ class Solution {
 public:
     int maxPathSum(TreeNode *root) {
         int globalMax = numeric_limits<int>::min();
-        maxPathSumHelper(root, globalMax);
+        maxPathSum(root, globalMax);
         return globalMax;
     }
 
-    int maxPathSumHelper(TreeNode *root, int &globalMax) {
+    int maxPathSum(TreeNode *root, int &globalMax) {
         if (!root) return 0;
 
-        int leftMax = maxPathSumHelper(root->left, globalMax);
-        int rightMax = maxPathSumHelper(root->right, globalMax);
+        int leftMax = maxPathSum(root->left, globalMax);
+        int rightMax = maxPathSum(root->right, globalMax);
 
         int rootMax = max(root->val, root->val + max(leftMax, rightMax));
         globalMax = max(globalMax, rootMax);
