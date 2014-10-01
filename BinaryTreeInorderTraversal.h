@@ -53,12 +53,12 @@ public:
         return vals;
     }
 
-    void recursiveInorder(TreeNode *root, vector<int> &vals) {
+    void inorder(TreeNode *root, vector<int> &vals) {
         if (!root) return;
 
-        recursiveInorder(root->left, vals);
+        inorder(root->left, vals);
         vals.push_back(root->val);
-        recursiveInorder(root->right, vals);
+        inorder(root->right, vals);
     }
 
     void iterativeInorder(TreeNode *root, vector<int> &vals) {
