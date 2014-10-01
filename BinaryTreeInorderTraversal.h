@@ -70,9 +70,8 @@ public:
                 node = node->left;
             }
             else {
-                node = stk.top();
-                vals.push_back(node->val);
-                node = node->right;
+                vals.push_back(stk.top()->val);
+                node = stk.top()->right;
 
                 stk.pop();
             }
