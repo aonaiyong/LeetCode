@@ -55,7 +55,7 @@ public:
         frontier.push(start);
         bool isFound = false;
         while (!frontier.empty()) {
-            unordered_set<string> level;
+            unordered_set<string> visited;
 
             // iterate through all words in current frontier
             int n = frontier.size();
@@ -70,7 +70,7 @@ public:
                     for (c = 'a'; c <= 'z'; ++c) {
                         if (dict.count(trans)) {
                             traces[trans].push_back(word);
-                            level.insert(trans);
+                            visited.insert(trans);
                         }
                     }
                     c = d;
@@ -78,13 +78,13 @@ public:
             } // word loop
 
 
-            if (level.count(end)) {
+            if (visited.count(end)) {
                 isFound = true;
                 break;
             }
 
             // build new frontier and update dict
-            for (const auto &word : level) {
+            for (const auto &word : visited) {
                 frontier.push(word);
                 dict.erase(word);
             }
