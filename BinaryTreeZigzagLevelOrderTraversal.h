@@ -39,10 +39,6 @@ using std::queue;
 class Solution {
 public:
     vector<vector<int> > zigzagLevelOrder(TreeNode *root) {
-        return iterativeZigzagLevelOrder(root);
-    }
-
-    vector<vector<int>> iterativeZigzagLevelOrder(TreeNode *root) {
         vector<vector<int>> vals;
         bool leftToRight = true;
         queue<TreeNode *> frontier;
