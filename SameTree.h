@@ -27,19 +27,21 @@ using std::queue;
 class Solution {
 public:
     bool isSameTree(TreeNode *p, TreeNode *q) {
-        return iterativeIsSameTree(p, q);
+        return iterIsSameTree(p, q);
     }
 
-    bool recursiveIsSameTree(TreeNode *p, TreeNode *q) {
+    // Recursive Pre-order Traversal
+    bool recurIsSameTree(TreeNode *p, TreeNode *q) {
         if (!p && !q) return true;
         if (!p || !q) return false;
         if (p->val != q->val) return false;
 
-        return recursiveIsSameTree(p->left, q->left) &&
-               recursiveIsSameTree(p->right, q->right);
+        return recurIsSameTree(p->left, q->left) &&
+               recurIsSameTree(p->right, q->right);
     }
 
-    bool iterativeIsSameTree(TreeNode *p, TreeNode *q) {
+    // Iterative Level-Order Traversal
+    bool iterIsSameTree(TreeNode *p, TreeNode *q) {
         queue<TreeNode *> frontier;
         frontier.push(p);
         frontier.push(q);
