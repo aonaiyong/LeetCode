@@ -23,7 +23,7 @@
  All words have the same length.
  All words contain only lower-case alphabetic characters.
 
- Solution:
+ Solution:  BFS.
  */
 
 #ifndef WORDLADDER_H_
