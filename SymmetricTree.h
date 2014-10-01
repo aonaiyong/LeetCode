@@ -42,19 +42,19 @@ class Solution {
 public:
     bool isSymmetric(TreeNode *root) {
         if (!root) return true;
-        return iterativeIsSymmetric(root->left, root->right);
+        return iterIsSymmetric(root->left, root->right);
     }
 
-    bool recursiveIsSymmetric(TreeNode *p, TreeNode *q) {
+    bool isSymmetric(TreeNode *p, TreeNode *q) {
         if (!p && !q) return true;
         if (!p || !q) return false;
         if (p->val != q->val) return false;
 
-        return recursiveIsSymmetric(p->left, q->right) &&
-               recursiveIsSymmetric(p->right, q->left);
+        return isSymmetric(p->left, q->right) &&
+               isSymmetric(p->right, q->left);
     }
 
-    bool iterativeIsSymmetric(TreeNode *p, TreeNode *q) {
+    bool iterIsSymmetric(TreeNode *p, TreeNode *q) {
         queue<TreeNode *> frontier;
         frontier.push(p);
         frontier.push(q);
