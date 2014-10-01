@@ -62,8 +62,8 @@ public:
     }
 
     void iterativeInorder(TreeNode *root, vector<int> &vals) {
-        TreeNode *node = root;
         stack<TreeNode *> stk;
+        TreeNode *node = root;
         while (node || !stk.empty()) {
             if (node) {
                 stk.push(node);
@@ -84,6 +84,7 @@ public:
         while (node) {
             if (!node->left) {             // left subtree is empty
                 vals.push_back(node->val); // process node
+
                 node = node->right;        // advance to right subtree
             }
             else {
@@ -98,8 +99,9 @@ public:
                     node = node->left;       // advance to left subtree
                 }
                 else {                          // left subtree is finished
-                    rightMost->right = nullptr; // restore rightMost's right child to nullptr
                     vals.push_back(node->val);  // process node
+
+                    rightMost->right = nullptr; // restore rightMost's right child to nullptr
                     node = node->right;         // advance to right subtree
                 }
             }
