@@ -28,15 +28,15 @@ class Solution {
 public:
     bool isBalanced(TreeNode *root) {
         int height = 0;
-        return recursiveIsBalanced(root, height);
+        return isBalanced(root, height);
     }
 
-    bool recursiveIsBalanced(TreeNode *root, int &height) {
+    bool isBalanced(TreeNode *root, int &height) {
         if (!root) return true;
 
         int leftHeight = 0, rightHeight = 0;
-        if (!recursiveIsBalanced(root->left, leftHeight)) return false;
-        if (!recursiveIsBalanced(root->right, rightHeight)) return false;
+        if (!isBalanced(root->left, leftHeight)) return false;
+        if (!isBalanced(root->right, rightHeight)) return false;
         if (abs(leftHeight - rightHeight) > 1) return false;
 
         height = 1 + max(leftHeight, rightHeight);
