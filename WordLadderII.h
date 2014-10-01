@@ -77,7 +77,6 @@ public:
                 } // position loop
             } // word loop
 
-
             if (visited.count(end)) {
                 isFound = true;
                 break;
