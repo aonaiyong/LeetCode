@@ -38,12 +38,9 @@ using std::unordered_set;
 #include <queue>
 using std::queue;
 
-
 class Solution {
 public:
     int ladderLength(string start, string end, unordered_set<string> &dict) {
-        dict.erase(start);
-
         int len = 1;
         queue<string> frontier;
         frontier.push(start);
@@ -51,27 +48,26 @@ public:
             ++len;
 
             // iterate through all words in current level
-            int m = frontier.size();
-            for (int i = 0; i < m; ++i) {
+            int n = frontier.size();
+            for (int i = 0; i < n; ++i) {
                 string word = frontier.front();
                 frontier.pop();
 
-                int n = word.size();
-                for (int j = 0; j < n; ++j) {
-                    char temp = word[j];
-                    for (char c = 'a'; c <= 'z'; ++c) {
-                        word[j] = c;
+                // iterate through all positions in current word
+                for (auto &c : word) {
+                    char d = c;
+                    for (c = 'a'; c <= 'z'; ++c) {
                         if (word == end) return len;
 
                         if (dict.count(word)) {
                             dict.erase(word);
                             frontier.push(word);
                         }
-                    } // character loop
-                    word[j] = temp;
+                    }
+                    c = d;
                 } // position loop
             } // word loop
-        } // frontier loop
+        }
 
         return 0;
     }
