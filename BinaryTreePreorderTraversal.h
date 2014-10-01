@@ -52,6 +52,7 @@ public:
         return vals;
     }
 
+    // Recursive Pre-order Traversal
     void preorder(TreeNode *root, vector<int> &vals) {
         if (!root) return;
 
@@ -60,7 +61,8 @@ public:
         preorder(root->right, vals);
     }
 
-    void iterPreorder(TreeNode *root, vector<int> &vals) {
+    // Iterative Pre-order Traversal
+    void iterativePreorder(TreeNode *root, vector<int> &vals) {
         TreeNode *node = root;
         stack<TreeNode *> stk;
         while (node || !stk.empty()) {
@@ -77,6 +79,7 @@ public:
         }
     }
 
+    // Iterative Pre-order Traversal Method 2
     void iterPreorder2(TreeNode *root, vector<int> &vals) {
         TreeNode *node = root;
         stack<TreeNode *> stk;
@@ -90,6 +93,7 @@ public:
         }
     }
 
+    // Morris Pre-order Traversal
     void morrisPreorder(TreeNode *root, vector<int> &vals) {
         TreeNode *node = root;
         while (node) {
@@ -119,5 +123,4 @@ public:
         }
     }
 };
-
 #endif /* BINARYTREEPREORDERTRAVERSAL_H_ */
