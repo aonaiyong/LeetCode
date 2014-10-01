@@ -25,8 +25,8 @@
  All words contain only lower-case alphabetic characters.
 
  Solution:   Two steps:
-             1. Compute a breadth-first tree (BFS).
-             2. Build all shortest-paths (DFS).
+             1. Compute a breadth-first tree from start to end (BFS).
+             2. Build all shortest-paths frome start to end (DFS).
  */
 
 #ifndef WORDLADDERII_H_
@@ -57,7 +57,7 @@ public:
         while (!frontier.empty()) {
             unordered_set<string> visited;
 
-            // iterate through all words in current frontier
+            // iterate through all words in current frontier (level)
             int n = frontier.size();
             for (int i= 0; i < n; ++i) {
                 string word = frontier.front();

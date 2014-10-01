@@ -47,7 +47,7 @@ public:
         while (!frontier.empty()) {
             ++len;
 
-            // iterate through all words in current level
+            // iterate through all words in current frontier (level)
             int n = frontier.size();
             for (int i = 0; i < n; ++i) {
                 string word = frontier.front();
