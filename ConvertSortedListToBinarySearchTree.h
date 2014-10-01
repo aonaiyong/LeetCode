@@ -7,7 +7,8 @@
  Notes:
  Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
 
- Solution:   Bottom-up recursion.
+ Solution:   Bottom-up Recursion.
+             Time: O(n), Space: O(log(n))
  */
 
 #ifndef CONVERTSORTEDLISTTOBINARYSEARCHTREE_H_
@@ -18,19 +19,18 @@
 class Solution {
 public:
     TreeNode *sortedListToBST(ListNode *head) {
-        int len = getLength(head);
-        return sortedListToBSTRecur(head, len);
+        int n = getLength(head);
+        return sortedListToBST(head, n);
     }
 
-    TreeNode *sortedListToBSTRecur(ListNode *&head, int len) {
-        if (len <= 0) return nullptr;
+    TreeNode *sortedListToBST(ListNode *&head, int n) {
+        if (n <= 0) return nullptr;
 
-        int half = len / 2;
-        TreeNode *left = sortedListToBSTRecur(head, half);
+        TreeNode *left = sortedListToBST(head, n/2);
         TreeNode *root = new TreeNode(head->val);
-        root->left = left;
         head = head->next;
-        root->right = sortedListToBSTRecur(head, len - half - 1);
+        root->left = left;
+        root->right = sortedListToBST(head, n-n/2-1);
 
         return root;
     }
@@ -41,6 +41,7 @@ public:
             ++len;
             head = head->next;
         }
+
         return len;
     }
 };
