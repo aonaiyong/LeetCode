@@ -7,7 +7,7 @@
  Notes:
  Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
 
- Solution:   Bottom-up Recursion.
+ Solution:   Bottom-up Recursion (A combination of In-order&Post-order Traversal).
              Time: O(n), Space: O(log(n))
  */
 
