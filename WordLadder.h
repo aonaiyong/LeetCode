@@ -42,6 +42,8 @@ using std::queue;
 class Solution {
 public:
     int ladderLength(string start, string end, unordered_set<string> &dict) {
+        dict.erase(start);
+
         int len = 1;
         queue<string> frontier;
         frontier.push(start);
