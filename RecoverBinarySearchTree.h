@@ -48,23 +48,25 @@ public:
         TreeNode *first = nullptr, *second = nullptr;
         TreeNode dummy(numeric_limits<int>::min()), *prev = &dummy;
 
-        recurInorder(root, prev, first, second);
+        recoverTree(root, prev, first, second);
         if (first && second) swap(first->val, second->val);
     }
 
-    void recurInorder(TreeNode *root, TreeNode *&prev, TreeNode *&first, TreeNode *&second) {
+    // Recursive In-order Traversal
+    void recoverTree(TreeNode *root, TreeNode *&prev, TreeNode *&first, TreeNode *&second) {
         if (!root) return;
 
-        recurInorder(root->left, prev, first, second);
+        recoverTree(root->left, prev, first, second);
         if (prev->val > root->val) {
             if (!second) first = prev;
             second = root;
         }
         prev = root;
-        recurInorder(root->right, prev, first, second);
+        recoverTree(root->right, prev, first, second);
     }
 
-    void iterInorder(TreeNode *root, TreeNode *&prev, TreeNode *&first, TreeNode *&second) {
+    // Iterative In-order Traversal
+    void iterRecoverTree(TreeNode *root, TreeNode *&prev, TreeNode *&first, TreeNode *&second) {
         stack<TreeNode *> stk;
         while (root || !stk.empty()) {
             if (root) {
@@ -85,7 +87,8 @@ public:
         }
     }
 
-    void morrisInorder(TreeNode *root, TreeNode *&prev, TreeNode *&first, TreeNode *&second) {
+    // Morris In-order Traversal
+    void morrisRecoverTree(TreeNode *root, TreeNode *&prev, TreeNode *&first, TreeNode *&second) {
         while (root) {
             if (!root->left) {      // left subtree is empty
                 // process root
