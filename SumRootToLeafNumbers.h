@@ -43,22 +43,22 @@ class Solution {
 public:
     int sumNumbers(TreeNode *root) {
         int sum = 0;
-        iterativeSumNums(root, 0, sum);
+        SumNumbers(root, 0, sum);
         return sum;
     }
 
-    void recursiveSumNums(TreeNode *root, int num, int &sum) {
+    void SumNumbers(TreeNode *root, int num, int &sum) {
         if (!root) return;
         num = num * 10 + root->val;
         if (!root->left && !root->right) {
             sum += num;
             return;
         }
-        recursiveSumNums(root->left, num, sum);
-        recursiveSumNums(root->right, num, sum);
+        SumNumbers(root->left, num, sum);
+        SumNumbers(root->right, num, sum);
     }
 
-    void iterativeSumNums(TreeNode *root, int num, int &sum) {
+    void iterSumNumbers(TreeNode *root, int num, int &sum) {
         queue<pair<TreeNode *, int>> frontier;
         if (root) frontier.push(make_pair(root, 0));
         while (!frontier.empty()) {
