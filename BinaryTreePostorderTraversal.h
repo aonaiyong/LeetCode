@@ -52,14 +52,16 @@ public:
         return vals;
     }
 
-    void recursivePostorder(TreeNode *root, vector<int> &vals) {
+    // Recursive Post-order Traversal
+    void postorder(TreeNode *root, vector<int> &vals) {
         if (!root) return;
 
-        recursivePostorder(root->left, vals);
-        recursivePostorder(root->right, vals);
+        postorder(root->left, vals);
+        postorder(root->right, vals);
         vals.push_back(root->val);
     }
 
+    // Iterative Post-order Traversal
     void iterativePostorder(TreeNode *root, vector<int> &vals) {
         TreeNode *node = root;
         stack<TreeNode *> stk;
@@ -84,6 +86,7 @@ public:
         }
     }
 
+    // Morris Post-order Traversal
     void morrisPostorder(TreeNode *root, vector<int> &vals) {
         // dummy is new root
         TreeNode dummy(0), *node = &dummy;
