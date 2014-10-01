@@ -44,27 +44,30 @@ public:
     bool isValidBST(TreeNode *root) {
         int lower = numeric_limits<int>::min();
         int upper = numeric_limits<int>::max();
-        // return morrisInorder(root, lower);
-        return recurPreorder(root, lower, upper);
+        return isValidBST(root, lower);
+        // return isValidBST(root, lower, upper);
     }
 
-    bool recurPreorder(TreeNode *root, int lower, int upper) {
+    // Recursive Pre-order Traversal
+    bool isValidBST(TreeNode *root, int lower, int upper) {
         if (!root) return true;
         int value = root->val;
         if (value <= lower || value >= upper) return false;
-        return recurPreorder(root->left, lower, value) &&
-               recurPreorder(root->right, value, upper);
+        return isValidBST(root->left, lower, value) &&
+               isValidBST(root->right, value, upper);
     }
 
-    bool recurInorder(TreeNode *root, int &pred) {
+    // Recursive In-order Traversal
+    bool isValidBST(TreeNode *root, int &pred) {
         if (!root) return true;
-        if (!recurInorder(root->left, pred)) return false;
+        if (!isValidBST(root->left, pred)) return false;
         if (root->val <= pred) return false;
         pred = root->val;
-        return recurInorder(root->right, pred);
+        return isValidBST(root->right, pred);
     }
 
-    bool iterInorder(TreeNode *root, int pred) {
+    // Iterative In-order Traversal
+    bool iterIsValidBST(TreeNode *root, int pred) {
         stack<TreeNode *> stk;
         while (root || !stk.empty()) {
             if (root) {
@@ -84,7 +87,8 @@ public:
         return true;
     }
 
-    bool morrisInorder(TreeNode *root, int pred) {
+    // Morris In-order Traversal
+    bool morrisIsValidBST(TreeNode *root, int pred) {
         bool isValidBST = true;
         while (root) {
             if (!root->left) {
