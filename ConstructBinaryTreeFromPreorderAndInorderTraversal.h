@@ -30,10 +30,10 @@ using std::iterator;
 class Solution {
 public:
     TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
-        return recursiveBuildTree(preorder.cbegin(), inorder.cbegin(), preorder.size());
+        return buildTree(preorder.cbegin(), inorder.cbegin(), preorder.size());
     }
 
-    TreeNode *recursiveBuildTree(vector<int>::const_iterator pbeg, vector<int>::const_iterator ibeg, int n) {
+    TreeNode *buildTree(vector<int>::const_iterator pbeg, vector<int>::const_iterator ibeg, int n) {
         if (n <= 0) return nullptr;
 
         int val = *pbeg;
@@ -41,8 +41,8 @@ public:
         while (ibeg[mid] != val) ++mid;
 
         TreeNode *root = new TreeNode(val);
-        root->left = recursiveBuildTree(pbeg + 1, ibeg, mid);
-        root->right = recursiveBuildTree(pbeg + mid + 1, ibeg + mid + 1, n - mid - 1);
+        root->left = buildTree(pbeg + 1, ibeg, mid);
+        root->right = buildTree(pbeg + mid + 1, ibeg + mid + 1, n - mid - 1);
         return root;
     }
 };
