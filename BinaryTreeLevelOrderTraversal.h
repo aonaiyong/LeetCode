@@ -43,12 +43,13 @@ class Solution {
 public:
     vector<vector<int> > levelOrder(TreeNode *root) {
         vector<vector<int>> vals;
-        // iterativeLevelOrder(root, vals);
-        recursiveLevelOrder(root, 0, vals);
+        levelOrder(root, vals);
+        // levelOrder(root, 0, vals);
         return vals;
     }
 
-    void iterativeLevelOrder(TreeNode *root, vector<vector<int>> &vals) {
+    // Iterative Solution
+    void levelOrder(TreeNode *root, vector<vector<int>> &vals) {
         queue<TreeNode *> frontier;
         if (root) frontier.push(root);
         while (!frontier.empty()) {
@@ -69,13 +70,14 @@ public:
         }
     }
 
-    void recursiveLevelOrder(TreeNode *root, int depth, vector<vector<int>> &vals) {
+    // Recursive Solution
+    void levelOrder(TreeNode *root, int depth, vector<vector<int>> &vals) {
         if (!root) return;
         if (vals.size() <= depth) vals.resize(depth + 1);
 
         vals[depth].push_back(root->val);
-        recursiveLevelOrder(root->left, depth+1, vals);
-        recursiveLevelOrder(root->right, depth+1, vals);
+        levelOrder(root->left, depth+1, vals);
+        levelOrder(root->right, depth+1, vals);
     }
 };
 
