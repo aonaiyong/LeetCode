@@ -44,12 +44,12 @@ class Solution {
 public:
     vector<vector<int> > levelOrderBottom(TreeNode *root) {
         vector<vector<int>> vals;
-        iterativeLevelOrderBottom(root, vals);
+        levelOrderBottom(root, vals);
 
         return vals;
     }
 
-    void iterativeLevelOrderBottom(TreeNode *root, vector<vector<int>> &vals) {
+    void levelOrderBottom(TreeNode *root, vector<vector<int>> &vals) {
         queue<TreeNode *> frontier;
         if (root) frontier.push(root);
         while (!frontier.empty()) {
