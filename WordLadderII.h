@@ -57,7 +57,7 @@ public:
         while (!frontier.empty()) {
             unordered_set<string> level;
 
-            // iterate through all words in current level
+            // iterate through all words in current frontier
             int n = frontier.size();
             for (int i= 0; i < n; ++i) {
                 string word = frontier.front();
