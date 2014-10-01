@@ -52,15 +52,15 @@ public:
         return vals;
     }
 
-    void recursivePreorder(TreeNode *root, vector<int> &vals) {
+    void preorder(TreeNode *root, vector<int> &vals) {
         if (!root) return;
 
         vals.push_back(root->val);
-        recursivePreorder(root->left, vals);
-        recursivePreorder(root->right, vals);
+        preorder(root->left, vals);
+        preorder(root->right, vals);
     }
 
-    void iterativePreorder(TreeNode *root, vector<int> &vals) {
+    void iterPreorder(TreeNode *root, vector<int> &vals) {
         TreeNode *node = root;
         stack<TreeNode *> stk;
         while (node || !stk.empty()) {
@@ -77,7 +77,7 @@ public:
         }
     }
 
-    void iterativePreorder2(TreeNode *root, vector<int> &vals) {
+    void iterPreorder2(TreeNode *root, vector<int> &vals) {
         TreeNode *node = root;
         stack<TreeNode *> stk;
         stk.push(nullptr);
