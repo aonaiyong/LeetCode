@@ -7,7 +7,7 @@
  Notes:
  Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
 
- Solution:   Recursive Pre-order Traversal.
+ Solution:   Recursive Pre-order Traversal (top -> down).
              Time: O(n), Space: O(log(n)).
  */
 
