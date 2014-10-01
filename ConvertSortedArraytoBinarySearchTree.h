@@ -7,7 +7,8 @@
  Notes:
  Given an array where elements are sorted in ascending order, convert it to a height balanced BST.
 
- Solution:   DFS.
+ Solution:   Recursive Pre-order Traversal.
+             Time: O(n), Space: O(log(n)).
  */
 
 #ifndef CONVERTSORTEDARRAYTOBINARYSEARCHTREE_H_
@@ -21,16 +22,16 @@ using std::vector;
 class Solution {
 public:
     TreeNode *sortedArrayToBST(vector<int> &num) {
-        return sortedArrayToBSTRecur(num, 0, num.size() - 1);
+        return sortedArrayToBST(num, 0, num.size() - 1);
     }
 
-    TreeNode *sortedArrayToBSTRecur(vector<int> &num, int low, int top) {
+    TreeNode *sortedArrayToBST(vector<int> &num, int low, int top) {
         if (top < low) return nullptr;
-
         int mid = low + (top - low) / 2;
         TreeNode *root = new TreeNode(num[mid]);
-        root->left = sortedArrayToBSTRecur(num, low, mid - 1);
-        root->right = sortedArrayToBSTRecur(num, mid + 1, top);
+        root->left = sortedArrayToBST(num, low, mid - 1);
+        root->right = sortedArrayToBST(num, mid + 1, top);
+
         return root;
     }
 };
