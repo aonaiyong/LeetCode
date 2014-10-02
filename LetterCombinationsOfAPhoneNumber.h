@@ -29,7 +29,7 @@ using std::string;
 class Solution {
 public:
     vector<string> letterCombinations(string digits) {
-        vector<string> mapping = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
+        const vector<string> mapping = {"abc", "def", "ghi", "jkl", "mno", "pqrs", "tuv", "wxyz"};
         string letters;
         vector<string> combinations;
         letterCombinations(mapping, digits, letters, combinations);
