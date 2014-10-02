@@ -45,7 +45,7 @@ public:
         }
 
         int d = digits[depth] - '2';
-        for (const auto &c : mapping.at(d)) {
+        for (auto c : mapping.at(d)) {
             letters.push_back(c);
             letterCombinations(mapping, digits, letters, combinations);
             letters.pop_back();
