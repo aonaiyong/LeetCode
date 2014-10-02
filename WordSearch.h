@@ -64,6 +64,7 @@ public:
         if (exist(board, color, i+1, j, depth+1, word)) return true;
         if (exist(board, color, i, j-1, depth+1, word)) return true;
         if (exist(board, color, i, j+1, depth+1, word)) return true;
+
         color[i][j] = 'w';
         return false;
     }
