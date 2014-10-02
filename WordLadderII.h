@@ -25,8 +25,8 @@
  All words contain only lower-case alphabetic characters.
 
  Solution:   Two steps:
-             1. Compute a breadth-first tree from start to end (BFS).
-             2. Build all shortest-paths frome start to end (DFS).
+             1. Compute all shortest-paths from start to end (BFS).
+             2. Build all shortest-paths from start to end (DFS).
  */
 
 #ifndef WORDLADDERII_H_
