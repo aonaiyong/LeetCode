@@ -31,7 +31,7 @@ public:
 
                 int mask = 1 << (board[i][j] - '1');
                 int k = i/3 * 3 + j/3;
-                if (row & mask || col[j] & mask || box[k] & mask) return false;
+                if ((row & mask) || (col[j] & mask) || (box[k] & mask)) return false;
                 row |= mask;
                 col[j] |= mask;
                 box[k] |= mask;
