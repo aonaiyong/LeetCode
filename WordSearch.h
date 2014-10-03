@@ -39,11 +39,11 @@ public:
     bool exist(vector<vector<char> > &board, string word) {
         if (board.empty() || board[0].empty()) return false;
 
-        int m = board.size(), n = board[0].size();
-        vector<vector<char>> color(m, vector<char>(n, 'w')); // 'w': white (undiscovered), 'g': gray (discovered)
+        int M = board.size(), N = board[0].size();
+        vector<vector<char>> color(M, vector<char>(N, 'w')); // 'w': white (undiscovered), 'g': gray (discovered)
                                                              // 'b': black (finished)
-        for (int i = 0; i < m; ++i) {
-            for (int j = 0; j < n; ++j) {
+        for (int i = 0; i < M; ++i) {
+            for (int j = 0; j < N; ++j) {
                 if (exist(board, color, i, j, 0, word)) return true;
             }
         }
@@ -52,9 +52,9 @@ public:
 
     bool exist(const vector<vector<char>> &board, vector<vector<char>> &color,
                int i, int j, int depth, const string &word) {
-        int m = board.size(), n = board[0].size();
+        int M = board.size(), N = board[0].size();
         if (depth == word.size()) return true;
-        if (i < 0 || i > m-1 || j < 0 || j > n-1) return false;
+        if (i < 0 || i > M-1 || j < 0 || j > N-1) return false;
 
         if (color[i][j] != 'w') return false;
         if (board[i][j] != word[depth]) return false;
