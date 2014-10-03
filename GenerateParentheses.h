@@ -11,7 +11,7 @@
 
  "((()))", "(()())", "(())()", "()(())", "()()()"
 
- Solution:   Depth-first Search.
+ Solution:   Binary Tree Depth-first traversal.
              Rule: We can place '(' when '(' is available.
                    We can place ')' only when there're more ')' available than '('.
  */
