@@ -2,7 +2,7 @@
  Author:     naiyong, aonaiyong@gmail.com
  Date:       Oct 3, 2014
  Problem:    Sub sets
- Difficulty:
+ Difficulty: 3
  Source:     https://oj.leetcode.com/problems/subsets/
  Notes:
  Given a set of distinct integers, S, return all possible subsets.
