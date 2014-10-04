@@ -77,7 +77,7 @@ public:
         }
     }
 
-    // iterative solution: expand current power-set with each of S's elements
+    // iterative solution: expand current power-set with each of S's elements, respectively
     void subsets(const vector<int> &S, vector<vector<int>> &power) {
         power.resize(1); // initially empty
         for (int i = 0; i < S.size(); ++i) {
