@@ -2,8 +2,8 @@
  Author:     naiyong, aonaiyong@gmail.com
  Date:       Oct 4, 2014
  Problem:    Gray Code
- Difficulty:
- Source:
+ Difficulty: 4
+ Source:     https://oj.leetcode.com/problems/gray-code/
  Notes:
  The gray code is a binary numeral system where two successive values differ in only one bit.
 
