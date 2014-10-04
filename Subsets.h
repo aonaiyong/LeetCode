@@ -53,7 +53,7 @@ public:
         return power;
     }
 
-    // recursive solution 1: for subsets of size k
+    // recursive solution 1: compute subsets of size k
     void subsets(const vector<int> &S, int k, int pos, vector<int> &sub, vector<vector<int>> &power) {
         if (k == 0) {
             power.push_back(sub);
@@ -67,7 +67,7 @@ public:
         }
     }
 
-    // recursive solution 2: for all subsets
+    // recursive solution 2: compute all subsets
     void subsets(const vector<int> &S, int pos, vector<int> &sub, vector<vector<int>> &power) {
         power.push_back(sub);
         for (int i = pos; i < S.size(); ++i) {
