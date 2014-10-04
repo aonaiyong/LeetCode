@@ -40,6 +40,7 @@ public:
         vector<vector<int>> power;
         vector<int> sub;
 
+
         // for (int k = 0; k <= S.size(); ++k) { // recursive solution 1
         //     subsets(S, k, 0, sub, power);
         // }
@@ -47,6 +48,7 @@ public:
         // subsets(S, 0, sub, power); // recursive solution 2
 
         subsets(S, power);  // iterative solution
+
 
         return power;
     }
@@ -75,7 +77,7 @@ public:
         }
     }
 
-    // iterative solution: merge each element of S into power respectively
+    // iterative solution: expand current power-set with each of S's elements
     void subsets(const vector<int> &S, vector<vector<int>> &power) {
         power.resize(1); // initially empty
         for (int i = 0; i < S.size(); ++i) {
