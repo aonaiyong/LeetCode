@@ -50,7 +50,7 @@
 class Solution {
 public:
     int searchInsert(int A[], int n, int target) {
-        return searchInsertWidth(A, n, target);
+        return lowerBound(A, n, target);
     }
 
     // one-branch (two index limits)
@@ -90,7 +90,7 @@ public:
     }
 
     // one-branch (current position and width)
-    int searchInsertWidth(int A[], int n, int target) {
+    int lowerBound(int A[], int n, int target) {
         int *B = A;
         while (n > 0) {         // size n
             int step = n / 2;   // step >= 0 and step < n
