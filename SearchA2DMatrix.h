@@ -72,10 +72,8 @@ public:
         while (low <= top) {
             int mid = low + (top - low) / 2;
             int i = mid / n, j = mid % n;
-            if (A[i][j] == target) {
-                return true;
-            }
-            else if (A[i][j] < target) {
+            if (A[i][j] == target) return true;
+            if (A[i][j] < target) {
                 low = mid + 1;
             }
             else {
