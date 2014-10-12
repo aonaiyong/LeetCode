@@ -21,7 +21,7 @@ Solution:    One-branch Binary Search (current position and width)
              1. Lower Bound.
                 Index of the first element that's no less than target.
 
-                                               <-----step------>
+                                               <-------n------->
                 Loop invariant:   |     <     |        ?       |     >=      |
                                    A           B
 
@@ -31,7 +31,7 @@ Solution:    One-branch Binary Search (current position and width)
              2. Upper Bound.
                 Index of the first element that's greater than target.
 
-                                               <-----step------>
+                                               <-------n-------->
                 Loop invariant:   |     <=    |        ?        |     >      |
                                    A           B
 
