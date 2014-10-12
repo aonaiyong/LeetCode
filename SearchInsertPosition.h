@@ -66,8 +66,7 @@ public:
             }
         }
 
-        if (A[low] < target) return low + 1;
-        return low;
+        return A[low] < target ? low + 1 : low;
     }
 
     // two-branch (two index limits)
@@ -75,10 +74,8 @@ public:
         int low = 0, top = n - 1;
         while (low <= top) {      // search range [low, top], where low <= top
             int mid = low + (top - low) / 2;  // mid is in range [low, top]
-            if (A[mid] == target) {
-                return mid;
-            }
-            else if(A[mid] < target) {
+            if (A[mid] == target) return mid;
+            if(A[mid] < target) {
                 low = mid + 1;     // reduced range [mid + 1, top]
             }
             else {
