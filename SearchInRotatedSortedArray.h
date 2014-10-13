@@ -56,39 +56,39 @@ public:
         while (low < top) {
             int mid = low + (top - low) / 2;
             if (A[low] <= A[mid]) {
-                if (A[low] <= target && target <= A[mid]) {
+                if (A[low] <= target && target <= A[mid])
                     return binarySearch(A, low, mid, target);
-                }
-                else {
+                else
                     low = mid + 1;
-                }
             }
             else {  // we have A[low] > A[mid] here, which indicates
                     // A[mid] <= A[top]
-                if (A[mid] <= target && target <= A[top]) {
+                if (A[mid] <= target && target <= A[top])
                     return binarySearch(A, mid, top, target);
-                }
-                else {
+                else
                     top = mid - 1;
-                }
             }
         }
 
-        return A[low] == target ? low : -1;
+        if (low == top && A[low] == target)
+        	return low;
+        else
+        	return -1;
     }
 
     int binarySearch(int A[], int low, int top, int target) {
         while (low < top) {
             int mid = low + (top - low) / 2;
-            if (A[mid] < target) {
+            if (A[mid] < target)
                 low = mid + 1;
-            }
-            else {
+            else
                 top = mid;
-            }
         }
 
-        return A[low] == target ? low : -1;
+        if (low == top && A[low] == target)
+        	return low;
+        else
+        	return -1;
     }
 };
 
