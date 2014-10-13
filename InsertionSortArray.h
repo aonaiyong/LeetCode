@@ -17,6 +17,11 @@
 
               Termination:       |              <            |
                                   0                       n-1  i
+
+              Worst-case time:    O(n^2) comparisons/swaps
+              Best-case time:     O(n) comparisons, O(1) swaps
+              Average-case time:  O(n^2) comparisons/swaps
+              Worst-case space:   O(1)
  */
 
 #ifndef INSERTIONSORTARRAY_H_
