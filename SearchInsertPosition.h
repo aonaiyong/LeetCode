@@ -65,8 +65,16 @@ public:
                 top = mid;        // reduced range [low, mid]
             }
         }
+        // At exit of while:
+        //    if A[] is empty, then top < low
+        //    otherwise top == low
 
-        return A[low] < target ? low + 1 : low;
+        // deferred test for equality
+        if (low == top && A[low] < target) {
+            return low + 1;
+        }
+        else
+            return low;
     }
 
     // two-branch (two index limits)
