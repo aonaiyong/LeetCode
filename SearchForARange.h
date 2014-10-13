@@ -59,8 +59,10 @@ public:
         // int lower = lowerBound(A, n, target);
         // int upper = upperBound(A, n, target);
 
-        if (lower == upper) return {-1, -1};
-        return {lower, upper - 1};
+        if (lower == upper)
+        	return {-1, -1};
+        else
+        	return {lower, upper - 1};
     }
 
     template <typename Compare>
@@ -72,9 +74,8 @@ public:
                 B += step + 1; // skip B[0], B[1], ..., B[step]
                 n -= step + 1; // reduced size n - step - 1
             }
-            else {
+            else
                 n = step;      // reduced size step
-            }
         }
 
         return B - A;
@@ -88,9 +89,8 @@ public:
                 B += step + 1;
                 n -= step + 1;
             }
-            else {
+            else
                 n = step;
-            }
         }
 
         return B - A;
@@ -104,9 +104,8 @@ public:
                 B += step + 1;
                 n -= step + 1;
             }
-            else {
+            else
                 n = step;
-            }
         }
 
         return B - A;
