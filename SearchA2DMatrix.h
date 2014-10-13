@@ -39,13 +39,14 @@ using std::vector;
 class Solution {
 public:
     bool searchMatrix(vector<vector<int> > &matrix, int target) {
-        return searchMatrix1P1B(matrix, target);
+    	if (matrix.empty() || matrix[0].empty())
+    		return false;
+    	else
+    		return searchMatrix1P1B(matrix, target);
     }
 
     // one-pass & one-branch
     bool searchMatrix1P1B(vector<vector<int> > &A, int target) {
-        if (A.empty() || A[0].empty()) return false;
-
         int m = A.size(), n = A[0].size();
         int low = 0, top = m * n - 1;
         while (low < top) {
@@ -54,9 +55,8 @@ public:
             if (A[i][j] < target) {
                 low = mid + 1;
             }
-            else {
+            else
                 top = mid;
-            }
         }
 
         int i = low / n, j = low % n;
@@ -65,20 +65,17 @@ public:
 
     // one-pass & two-branch
     bool searchMatrix1P2B(vector<vector<int> > &A, int target) {
-        if (A.empty() || A[0].empty()) return false;
-
         int m = A.size(), n = A[0].size();
         int low = 0, top = m * n - 1;
         while (low <= top) {
             int mid = low + (top - low) / 2;
             int i = mid / n, j = mid % n;
-            if (A[i][j] == target) return true;
-            if (A[i][j] < target) {
+            if (A[i][j] == target)
+            	return true;
+            else if (A[i][j] < target)
                 low = mid + 1;
-            }
-            else {
+            else
                 top = mid - 1;
-            }
         }
 
         return false;
@@ -86,7 +83,6 @@ public:
 
     // two-pass & one-branch
     bool searchMatrix2P1B(vector<vector<int> > &A, int target) {
-        if (A.empty() || A[0].empty()) return false;
         int m = A.size(), n = A[0].size();
 
         int low = 0, top = m - 1;
@@ -95,23 +91,21 @@ public:
             if (A[mid][0] < target) {
                 low = mid + 1;
             }
-            else {
+            else
                 top = mid;
-            }
         }
         int i = target < A[low][0]? low - 1: low;
-        if (i == -1) return false;
+        if (i == -1)
+        	return false;
 
         low = 0;
         top = n - 1;
         while (low < top) {
             int mid = low + (top - low) / 2;
-            if (A[i][mid] < target) {
+            if (A[i][mid] < target)
                 low = mid + 1;
-            }
-            else {
+            else
                 top = mid;
-            }
         }
 
         return A[i][low] == target;
@@ -119,38 +113,32 @@ public:
 
     // two-pass & two-branch
     bool searchMatrix2P2B(vector<vector<int> > &A, int target) {
-        if (A.empty() || A[0].empty()) return false;
         int m = A.size(), n = A[0].size();
 
         int low = 0, top = m - 1;
         while (low <= top) {
             int mid = low + (top - low) / 2;
-            if (A[mid][0] == target) {
+            if (A[mid][0] == target)
                 return true;
-            }
-            else if (A[mid][0] < target) {
+            else if (A[mid][0] < target)
                 low = mid + 1;
-            }
-            else {
+            else
                 top = mid - 1;
-            }
         }
-        if (top == -1) return false;
+        if (top == -1)
+        	return false;
 
         int i = top;    // i-th row to be searched
         low = 1;        // starting from 1 (A[i][0] is already ruled out)
         top = n - 1;
         while (low <= top) {
             int mid = low + (top - low) / 2;
-            if (A[i][mid] == target) {
+            if (A[i][mid] == target)
                 return true;
-            }
-            else if (A[i][mid] < target) {
+            else if (A[i][mid] < target)
                 low = mid + 1;
-            }
-            else {
+            else
                 top = mid - 1;
-            }
         }
 
         return false;
