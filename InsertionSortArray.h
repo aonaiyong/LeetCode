@@ -22,6 +22,12 @@
               Best-case time:     O(n) comparisons, O(1) swaps
               Average-case time:  O(n^2) comparisons/swaps
               Worst-case space:   O(1)
+
+              Advantages: Simple Implementation
+                          Efficient for quite small datasets (between 8 and 20).
+                          More efficient than other quadratic sorting algorithms.
+                          Adaptive. If each element is at most k positions away from its final, sorted position, then O(k*n) time.
+                          Stable & In-place & Online.
  */
 
 #ifndef INSERTIONSORTARRAY_H_
