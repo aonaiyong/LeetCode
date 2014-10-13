@@ -23,11 +23,14 @@
               Average-case time:  O(n^2) comparisons/swaps
               Worst-case space:   O(1)
 
-              Advantages: Simple Implementation
+              Property:   Simple Implementation.
                           Efficient for quite small datasets (between 8 and 20).
                           More efficient than other quadratic sorting algorithms.
                           Adaptive. If each element is at most k positions away from its final, sorted position, then O(k*n) time.
-                          Stable & In-place & Online.
+                          Stable & In-place & Online & very low overhead.
+
+              Insertion sort is often used as the recursive base case (when the problem size is small) for higher overhead
+              divide-and-conquer sorting algorithms, such as mergesort and quicksort.
  */
 
 #ifndef INSERTIONSORTARRAY_H_
