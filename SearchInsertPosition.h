@@ -58,21 +58,18 @@ public:
         int low = 0, top = n - 1;
         while (low < top) {       // search range [low, top], where low < top
             int mid = low + (top - low) / 2;  // mid is in range [low, top)
-            if (A[mid] < target) {
+            if (A[mid] < target)
                 low = mid + 1;    // reduced range [mid + 1, top]
-            }
-            else {
+            else
                 top = mid;        // reduced range [low, mid]
-            }
         }
         // At exit of while:
         //    if A[] is empty, then top < low
         //    otherwise top == low
 
         // deferred test for equality
-        if (low == top && A[low] < target) {
+        if (low == top && A[low] < target)
             return low + 1;
-        }
         else
             return low;
     }
@@ -83,12 +80,10 @@ public:
         while (low <= top) {      // search range [low, top], where low <= top
             int mid = low + (top - low) / 2;  // mid is in range [low, top]
             if (A[mid] == target) return mid;
-            if(A[mid] < target) {
+            if(A[mid] < target)
                 low = mid + 1;     // reduced range [mid + 1, top]
-            }
-            else {
+            else
                 top = mid - 1;     // reduced range [low, mid - 1]
-            }
         }
 
         return low;
