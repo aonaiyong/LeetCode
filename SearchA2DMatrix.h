@@ -52,9 +52,8 @@ public:
         while (low < top) {
             int mid = low + (top - low) / 2;
             int i = mid / n, j = mid % n;
-            if (A[i][j] < target) {
+            if (A[i][j] < target)
                 low = mid + 1;
-            }
             else
                 top = mid;
         }
@@ -84,7 +83,6 @@ public:
     // two-pass & one-branch
     bool searchMatrix2P1B(vector<vector<int> > &A, int target) {
         int m = A.size(), n = A[0].size();
-
         int low = 0, top = m - 1;
         while (low < top) {
             int mid = low + (top - low) / 2;
@@ -107,14 +105,12 @@ public:
             else
                 top = mid;
         }
-
         return A[i][low] == target;
     }
 
     // two-pass & two-branch
     bool searchMatrix2P2B(vector<vector<int> > &A, int target) {
         int m = A.size(), n = A[0].size();
-
         int low = 0, top = m - 1;
         while (low <= top) {
             int mid = low + (top - low) / 2;
@@ -140,7 +136,6 @@ public:
             else
                 top = mid - 1;
         }
-
         return false;
     }
 };
