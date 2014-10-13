@@ -8,6 +8,25 @@
  Sort an array using selection sort.
 
  Solution:   http://en.wikipedia.org/wiki/Selection_sort
+
+             Loop Invariant:     |    <     |                |
+                                  0          i     iMin   n-1
+                A[0], ..., A[i-1] are in their final, sorted positions
+
+             Initialization:     |                           |
+                                  i                       n-1
+
+             Termination:        |                           |
+                                  0                         i
+
+
+             Worst-case time:    O(n^2) comparisons, O(n) swaps
+             Best-case time:     O(n^2) comparisons, O(1) swaps
+             Average-case time:  O(n^2) comparisons, O(n) swaps
+
+             Property:    Not stable.
+                          Not adaptive.
+                          In-place.
  */
 
 #ifndef SELECTIONSORTARRAY_H_
