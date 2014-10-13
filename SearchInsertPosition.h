@@ -99,9 +99,8 @@ public:
                 B += step + 1;
                 n -= step + 1;  // reduced size n - (step + 1)
             }
-            else {
+            else
                 n = step;       // reduced size step
-            }
         }
 
         return B - A;          // note that B might be an off-the-end pointer
