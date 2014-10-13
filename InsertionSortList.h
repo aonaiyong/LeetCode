@@ -23,22 +23,31 @@ public:
         ListNode dummy(0), *tail = head;
         dummy.next = head;
         while (tail->next) {
-            ListNode *temp = tail->next;
-            if (tail->val <= temp->val) {
-                tail = temp;
-            }
+            ListNode *curr = tail->next;
+            if (tail->val <= curr->val)
+                tail = tail->next;
             else {
-                ListNode *curr = &dummy;
-                while (curr->next->val <= temp->val) {
-                    curr = curr->next;
-                }
-
-                tail->next = temp->next;
-                temp->next = curr->next;
-                curr->next = temp;
+                ListNode *node = &dummy;
+                while (node->next->val <= curr->val)
+                    node = node->next;
+                tail->next = curr->next;
+                curr->next = node->next;
+                node->next = curr;
             }
-        }
 
+            // ListNode *curr = tail->next;
+            // ListNode *node = &dummy;
+            // while (node != tail && node->next->val <= curr->val)
+            //     node = node->next;
+
+            // if (node == tail)
+            //     tail = tail->next;
+            // else {
+            //     tail->next = curr->next;
+            //     curr->next = node->next;
+            //     node->next = curr;
+            // }
+        }
         return dummy.next;
     }
 };
