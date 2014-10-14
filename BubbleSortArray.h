@@ -16,7 +16,7 @@
                                  |         |           <             |
                                   0         n                       N
                   A[n], ..., A[N] are in their final, sorted positions (N = A.size - 1).
-                  the last swap of current pass happened at index i.
+                  The last swap of current pass happened at index i.
 
               Termination:       |                  <                |
                                   n                                 N
