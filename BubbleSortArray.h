@@ -26,8 +26,7 @@
               Average-case time:    O(n^2) comparisons/swaps.
               Worst-case time:      O(1).
 
-              In computer graphics, it is popular for its capability to detect a very small error
-              (like swap of just two elements) in almost-sorted arrays, and fix it with just linear complexity (2n).
+              Property:    Stable & In-place & Adaptive.
  */
 
 #ifndef BUBBLESORTARRAY_H_
