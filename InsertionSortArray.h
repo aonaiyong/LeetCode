@@ -8,6 +8,7 @@
  Sort an array using insertion sort.
 
  Solution:    http://en.wikipedia.org/wiki/Insertion_sort
+              http://www.sorting-algorithms.com/insertion-sort
 
               Loop invariant:    |     <      |      ?       |
                                   0        i-1 i          n-1

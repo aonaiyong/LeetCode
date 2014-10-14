@@ -8,6 +8,7 @@
  Sort an array using selection sort.
 
  Solution:   http://en.wikipedia.org/wiki/Selection_sort
+             http://www.sorting-algorithms.com/selection-sort
 
              Loop Invariant:     |    <     |                |
                                   0          i     iMin   n-1

@@ -9,6 +9,7 @@
  Sort an array using bubble sort.
 
  Solution:    http://en.wikipedia.org/wiki/Bubble_sort
+              http://www.sorting-algorithms.com/bubble-sort
 
               Loop Invariant:    |         |    <    |       <       |
                                   0     i-1 i         n             N

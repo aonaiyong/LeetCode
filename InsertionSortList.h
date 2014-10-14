@@ -7,7 +7,9 @@
  Notes:
  Sort a linked list using insertion sort.
 
- Solution:   Insertion Sort. http://en.wikipedia.org/wiki/Insertion_sort
+ Solution:   Insertion Sort.
+             http://en.wikipedia.org/wiki/Insertion_sort
+             http://www.sorting-algorithms.com/insertion-sort
  */
 
 #ifndef INSERTIONSORTLIST_H_

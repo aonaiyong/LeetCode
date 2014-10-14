@@ -9,6 +9,8 @@
  Sort an array using merge sort.
 
  Solution:    http://en.wikipedia.org/wiki/Merge_sort
+              http://www.sorting-algorithms.com/merge-sort
+
               1. Tow-down recursive implementation.
 
                  Divide:   A  |              |              |
@@ -49,7 +51,7 @@ public:
 	}
 
 	void bottomUpMergeSort(int A[], int n, int B[]) {
-		// width is size of subset
+		// width denotes subset size
 		for (int width = 1; width < n; width <<= 1) {
 			// Merge consecutive subsets
 			for (int i = 0; i < n; i += 2 * width)
