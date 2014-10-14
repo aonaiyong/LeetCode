@@ -37,7 +37,7 @@
 using std::swap;
 
 void bubbleSortArray(int A[], int n) {
-	while (n) {
+	while (n > 0) {
 		int newn = 0;
 		for (int i = 1; i < n; ++i) {
 			if (A[i-1] > A[i]) {
