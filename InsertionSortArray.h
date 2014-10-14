@@ -36,16 +36,19 @@
 #ifndef INSERTIONSORTARRAY_H_
 #define INSERTIONSORTARRAY_H_
 
-void insertionSortArray(int A[], int n) {
-	for (int i = 1; i < n; ++i) {
-		int key = A[i];
-		int j = i - 1;
-		while (j >= 0 && A[j] > key) {
-			A[j+1] = A[j];
-			--j;
+class Solution {
+public:
+	void insertionSortArray(int A[], int n) {
+		for (int i = 1; i < n; ++i) {
+			int key = A[i];
+			int j = i - 1;
+			while (j >= 0 && A[j] > key) {
+				A[j+1] = A[j];
+				--j;
+			}
+			A[j+1] = key;
 		}
-		A[j+1] = key;
 	}
-}
+};
 
 #endif /* INSERTIONSORTARRAY_H_ */
