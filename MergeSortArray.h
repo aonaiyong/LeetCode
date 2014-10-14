@@ -64,6 +64,7 @@ public:
 	}
 
 	// Merge two sorted array A[p...q] and A[q+1...r]
+	// Note that A[q+1...r] might be empty (r <= q)
 	void merge(int A[], int p, int q, int r, int B[]) {
 		int m = r-q-1;           // m is inclusive
 		// Copy A[q+1...r] into B[0...m]
