@@ -18,35 +18,32 @@
 class Solution {
 public:
     ListNode *sortList(ListNode *head) {
-        if (!head || !head->next) return head;
-        int len = getLength(head);
-        return mergeSortList(head, len);
+        int n = getLength(head);
+        return mergeSortList(head, n);
     }
 
-    ListNode *mergeSortList(ListNode *&head, int len) {
-        if (len == 0) return nullptr;
-        if (len == 1) {
-            ListNode *temp = head;
+    ListNode *mergeSortList(ListNode *&head, int n) {
+        if (n <= 0) return nullptr;
+        if (n == 1) {
+            ListNode *single = head;
             head = head->next;
-            temp->next = nullptr; // create single node list
-            return temp;
+            single->next = nullptr;
+            return single;
         }
 
-        int half = len / 2;
-        ListNode *head1 = mergeSortList(head, half);
-        ListNode *head2 = mergeSortList(head, len - half);
-
+        ListNode *head1 = mergeSortList(head, n/2);
+        ListNode *head2 = mergeSortList(head, n - n/2);
         return mergeTwoLists(head1, head2);
     }
 
-
     int getLength(ListNode *head) {
-        int len = 0;
+        int n = 0;
         while (head) {
-            ++len;
+            ++n;
             head = head->next;
         }
-        return len;
+
+        return n;
     }
 
     ListNode *mergeTwoLists(ListNode *l1, ListNode *l2) {
