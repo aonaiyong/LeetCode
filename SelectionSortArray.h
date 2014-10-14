@@ -27,6 +27,11 @@
              Property:    Not stable.
                           Not adaptive.
                           In-place.
+
+             Selection sort has the property of minimizing the number of swaps.
+             In application where the cost of swapping items is high, selection sort
+             very well may be the algorithm of choice.
+
  */
 
 #ifndef SELECTIONSORTARRAY_H_
