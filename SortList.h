@@ -8,6 +8,16 @@
  Sort a linked list in O(n log n) time using constant space complexity.
 
  Solution:   MergeSort.
+             http://en.wikipedia.org/wiki/Merge_sort
+             http://www.sorting-algorithms.com/merge-sort
+
+             1. Top-down recursion with size parameter.
+                The recursion tree is right-leaning.
+
+             2. Top-down recursion with two index limits parameters.
+                The recursion tree is left-leaning.
+
+             Time: O(nlogn), Space: O(logn) for recursion
  */
 
 #ifndef SORTLIST_H_
@@ -20,6 +30,7 @@ public:
     ListNode *sortList(ListNode *head) {
         int n = getLength(head);
         return mergeSortList(head, n);
+//        return mergeSortList(head, 0, n-1);
     }
 
     ListNode *mergeSortList(ListNode *&head, int n) {
@@ -31,8 +42,25 @@ public:
             return single;
         }
 
-        ListNode *head1 = mergeSortList(head, n/2);
-        ListNode *head2 = mergeSortList(head, n - n/2);
+        int m = n/2;
+        ListNode *head1 = mergeSortList(head, m);
+        ListNode *head2 = mergeSortList(head, n - m);
+        return mergeTwoLists(head1, head2);
+    }
+
+    // Both p and r are inclusive
+    ListNode *mergeSortList(ListNode *&head, int p, int r) {
+        if (p > r) return nullptr;
+        if (p == r) {
+            ListNode *single = head;
+            head = head->next;
+            single->next = nullptr;
+            return single;
+        }
+
+        int q = p + (r - p) / 2;
+        ListNode *head1 = mergeSortList(head, p, q);
+        ListNode *head2 = mergeSortList(head, q+1, r);
         return mergeTwoLists(head1, head2);
     }
 
