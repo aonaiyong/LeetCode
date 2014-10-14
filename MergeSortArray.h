@@ -6,7 +6,7 @@
  Difficulty:  3
  Source:      http://en.wikipedia.org/wiki/Merge_sort
  Notes:
- Sort an array using merge sort
+ Sort an array using merge sort.
 
  Solution:    http://en.wikipedia.org/wiki/Merge_sort
               Time: O(nlogn), Space: n/2
