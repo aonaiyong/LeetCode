@@ -26,8 +26,10 @@
 
               2. Bottom-up iterative implementation.
 
-
               Time: O(nlogn), Space: n/2
+
+              For tow-down implementation, the recursion tree is guaranteed to be balanced.
+              For bottom-up implementation, the tree might be unbalanced.
  */
 
 #ifndef MERGESORTARRAY_H_
@@ -47,7 +49,9 @@ public:
 	}
 
 	void bottomUpMergeSort(int A[], int n, int B[]) {
+		// width is size of subset
 		for (int width = 1; width < n; width <<= 1) {
+			// Merge consecutive subsets
 			for (int i = 0; i < n; i += 2 * width)
 				merge(A, i, min(i+width, n) - 1, min(i+2*width, n) - 1, B);
 		}
