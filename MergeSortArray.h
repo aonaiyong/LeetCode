@@ -28,10 +28,21 @@
 
               2. Bottom-up iterative implementation.
 
-              Time: O(nlogn), Space: n/2
+              For 1, the recursion tree is guaranteed to be balanced.
+              For 2, the tree might be unbalanced.
 
-              For tow-down implementation, the recursion tree is guaranteed to be balanced.
-              For bottom-up implementation, the tree might be unbalanced.
+              Time:   O(nlogn)
+              Space:  O(n) for arrays (to be exact, n/2)
+                      O(logn) for linked list (for recursion)
+
+              Property:  Stable.
+                         Not adaptive.
+                         Does not require random access to data.
+
+              Merge sort is the algorithm of choice for a variety of situations:
+                  - Stability is required.
+                  - Sort linked lists.
+                  - Random access is much more expensive than sequential access.
  */
 
 #ifndef MERGESORTARRAY_H_
