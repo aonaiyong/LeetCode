@@ -90,25 +90,25 @@ class Solution {
     }
 
     int pivot(int A[], int p, int r) {
-	    return median(A, p, r);
+        return median(A, p, r);
     }
 
     // median of the first, middle and last element (2-3 comparisons)
     int median(int A[], int p, int r) {
-	    int q = p + (r - p) / 2;
-	    if (A[p] < A[q]) {
-		    if (A[p] > A[r])       // (A[r], A[p], A[q])
-			    return p;
-		    else if (A[q] < A[r])  // (A[p], A[q], A[r])
-			    return q;
-	    }
-	    else {
-		    if (A[q] > A[r])       // (A[r], A[q], A[p])
-			    return q;
-		    else if (A[p] < A[r])  // (A[q], A[p], A[r])
-			    return p;
-	    }
-	    return r;                 // (A[p], A[r], A[q]) or (A[q], A[r], A[p])
+        int q = p + (r - p) / 2;
+        if (A[p] < A[q]) {
+            if (A[p] > A[r])       // (A[r], A[p], A[q])
+                return p;
+            else if (A[q] < A[r])  // (A[p], A[q], A[r])
+                return q;
+        }
+        else {
+            if (A[q] > A[r])       // (A[r], A[q], A[p])
+                return q;
+            else if (A[p] < A[r])  // (A[q], A[p], A[r]
+                return p;
+        }
+        return r;                 // (A[p], A[r], A[q]) or (A[q], A[r], A[p])
     }
 };
 
