@@ -44,8 +44,12 @@
 #ifndef QUICKSORT_H_
 #define QUICKSORT_H_
 
+#include <stack>
+using std::stack;
+
 #include <utility>
 using std::swap;
+using std::pair; using std::make_pair;
 
 class Solution {
 public:
@@ -55,6 +59,23 @@ public:
 			int q = partition(A, p, r); // p <= q and q <= r
 			quickSort(A, p, q - 1);     // reduced range A[p...q-1]
 			quickSort(A, q + 1, r);     // reduced range A[q+1...r]
+		}
+	}
+
+	void quickSortIterative(int A[], int p, int r) {
+		stack<pair<int, int>> stk;
+		if (p < r)
+		    stk.push(make_pair(p, r));
+		while (!stk.empty()) {
+			p = stk.top().first;
+			r = stk.top().second;
+			stk.pop();
+
+			int q = partition(A, p, r);
+			if (q+1 < r)
+				stk.push(make_pair(q+1, r));
+			if (p < q-1)
+			    stk.push(make_pair(p, q-1));
 		}
 	}
 
