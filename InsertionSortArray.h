@@ -47,7 +47,7 @@ public:
                 A[j+1] = A[j];
                 --j;
             }
-        	A[j+1] = key;
+            A[j+1] = key;
         }
     }
 };
