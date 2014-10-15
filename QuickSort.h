@@ -71,9 +71,9 @@ public:
 	        r = stk.top().second;
 	        stk.pop();
 
-		    int q = partition(A, p, r);
-		    if (q+1 < r)
-		        stk.push(make_pair(q+1, r));
+	        int q = partition(A, p, r);
+	        if (q+1 < r)
+	            stk.push(make_pair(q+1, r));
 		    if (p < q-1)
 		        stk.push(make_pair(p, q-1));
 	    }
