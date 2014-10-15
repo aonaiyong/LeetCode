@@ -20,6 +20,9 @@
 
               Termination:      A  |       <=x       |        >x        |x|
                                     p               i                    j
+
+                                A  |       <=x       |x|      >x          |
+                                    p               i                    j
  */
 
 #ifndef QUICKSORTARRAY_H_
@@ -30,6 +33,7 @@ using std::swap;
 
 class Solution {
 public:
+	// Both p and r are inclusive
 	void quickSort(int A[], int p, int r) {
 		if (p < r) {
 			int q = partition(A, p, r);
