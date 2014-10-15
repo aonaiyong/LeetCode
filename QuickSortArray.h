@@ -5,7 +5,7 @@
  Difficulty:  3
  Source:      http://en.wikipedia.org/wiki/Quicksort
  Notes:
- Sort an array using quick sort.
+ Sort an array using Quicksort.
 
  Solution:    http://en.wikipedia.org/wiki/Quicksort
               http://www.sorting-algorithms.com/quick-sort
