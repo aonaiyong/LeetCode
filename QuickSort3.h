@@ -62,6 +62,7 @@ class Solution {
 		return median(A, p, r);
 	}
 
+	// median of the first, middle and last element (2-3 comparisons)
 	int median(int A[], int p, int r) {
 		int q = p + (r - p) / 2;
 		if (A[p] < A[q]) {
