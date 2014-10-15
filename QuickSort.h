@@ -1,7 +1,7 @@
 /*
  Author:      naiyong, aonaiyong@gmail.com
  Date:        Oct 14, 2014
- Problem:     Quicksort
+ Problem:     QuickSort
  Difficulty:  3
  Source:      http://en.wikipedia.org/wiki/Quicksort
  Notes:
@@ -10,7 +10,7 @@
  Solution:    http://en.wikipedia.org/wiki/Quicksort
               http://www.sorting-algorithms.com/quick-sort
 
-              2-way partition
+              1. 2-way partition.
 
               Loop Invariant:   A  |    <=x     |    >x     |     ?     |x|
                                     p          i             j           r
@@ -26,6 +26,10 @@
                                 A  |       <=x       |x|      >x          |
                                     p               i q                  r
                                                                          j
+               2. Choose pivot.
+                                A  |                                      |
+                                    p                  q                 r
+                  choose median of A[p], A[q], and A[r] as pivot.
  */
 
 #ifndef QUICKSORT_H_
