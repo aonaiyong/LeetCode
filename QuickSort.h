@@ -53,14 +53,14 @@ using std::pair; using std::make_pair;
 
 class Solution {
 public:
-	// Both p and r are inclusive
-	void quickSort(int A[], int p, int r) {
+    // Both p and r are inclusive
+    void quickSort(int A[], int p, int r) {
 		if (p < r) {                    // initial range A[p...r]
 		    int q = partition(A, p, r); // p <= q and q <= r
 		    quickSort(A, p, q - 1);     // reduced range A[p...q-1]
 		    quickSort(A, q + 1, r);     // reduced range A[q+1...r]
 		}
-	}
+    }
 
 	void quickSortIterative(int A[], int p, int r) {
 		stack<pair<int, int>> stk;
