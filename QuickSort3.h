@@ -50,17 +50,17 @@ using std::pair; using std::make_pair;
 class Solution {
     void quickSort3(int A[], int p, int r) {
         if (p < r) {
-		    int x = A[pivot(A, p, r)];
-		    pair<int, int> q = partition3(A, p, r, x, x);
-		    quickSort3(A, p, q.first);
-		    quickSort3(A, q.second, r);
-		}
-	}
+            int x = A[pivot(A, p, r)];
+            pair<int, int> q = partition3(A, p, r, x, x);
+            quickSort3(A, p, q.first);
+            quickSort3(A, q.second, r);
+        }
+    }
 
     void quickSort3Iterative(int A[], int p, int r) {
-	    stack<pair<int, int>> stk;
-	    if (p < r)
-	        stk.push(make_pair(p, r));
+        stack<pair<int, int>> stk;
+        if (p < r)
+            stk.push(make_pair(p, r));
 	    while (!stk.empty()) {
 		    p = stk.top().first;
 		    r = stk.top().second;
