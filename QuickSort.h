@@ -88,10 +88,10 @@ public:
 
 		int i = p - 1;
 		for (int j = p; j < r; ++j) {
-			if (A[j] <= x) {
-				++i;
-				swap(A[i], A[j]);
-			}
+		    if (A[j] <= x) {
+			    ++i;
+			    swap(A[i], A[j]);
+		    }
 		}
 		swap(A[i+1], A[r]);
 
@@ -106,15 +106,15 @@ public:
 	int median(int A[], int p, int r) {
 		int q = p + (r - p) / 2;
 		if (A[p] < A[q]) {
-			if (A[p] > A[r])       // (A[r], A[p], A[q])
+		    if (A[p] > A[r])       // (A[r], A[p], A[q])
 			    return p;
 			else if (A[q] < A[r])  // (A[p], A[q], A[r])
 			    return q;
 		}
 		else {
-			if (A[q] > A[r])       // (A[r], A[q], A[p])
+		    if (A[q] > A[r])       // (A[r], A[q], A[p])
 			    return q;
-			else if (A[p] < A[r])  // (A[q], A[p], A[r])
+		    else if (A[p] < A[r])  // (A[q], A[p], A[r])
 			    return p;
 		}
 		return r;                 // (A[p], A[r], A[q]) or (A[q], A[r], A[p])
