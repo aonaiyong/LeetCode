@@ -1,11 +1,14 @@
 /*
  Author:      naiyong, aonaiyong@gmail.com
  Date:        Oct 15, 2014
- Problem:     HeapSort.h   
- Difficulty:  
- Source:      
+ Problem:     Heap Sort
+ Difficulty:  3
+ Source:      http://en.wikipedia.org/wiki/Heapsort
  Notes:
- Solution:
+ Sort an array using heapsort.
+
+ Solution:    http://en.wikipedia.org/wiki/Heapsort
+              http://www.sorting-algorithms.com/heap-sort
  */
 
 #ifndef HEAPSORT_H_
@@ -14,9 +17,9 @@
 #include <utility>
 using std::swap;
 
-#define PARENT(i)  ((i-1)/2)
-#define LEFT(i)    (2*i+1)
-#define RIGHT(i)   (2*i+2)
+#define PARENT(i)  (((i)-1)/2)
+#define LEFT(i)    (2*(i)+1)
+#define RIGHT(i)   (2*(i)+2)
 
 class Solution {
 public:
