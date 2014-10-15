@@ -16,13 +16,16 @@
                                     p          i             j           r
 
               Initialization:   A  |                                    |x|
-                                  i j                                    r
+                                  i p                                    r
+                                    j
 
               Termination:      A  |       <=x       |        >x        |x|
-                                    p               i                    j
+                                    p               i                    r
+                                                                         j
 
                                 A  |       <=x       |x|      >x          |
-                                    p               i                    j
+                                    p               i q                  r
+                                                                         j
  */
 
 #ifndef QUICKSORTARRAY_H_
@@ -35,17 +38,20 @@ class Solution {
 public:
 	// Both p and r are inclusive
 	void quickSort(int A[], int p, int r) {
-		if (p < r) {
-			int q = partition(A, p, r);
-			quickSort(A, p, q - 1);
-			quickSort(A, q + 1, r);
+		if (p < r) {                    // initial range A[p...r]
+			int q = partition(A, p, r); // p <= q and q <= r
+			quickSort(A, p, q - 1);     // reduced range A[p...q-1]
+			quickSort(A, q + 1, r);     // reduced range A[q+1...r]
 		}
 	}
 
 	// 2-way partition
 	int partition(int A[], int p, int r) {
+		// choose a pivot element from A[p...r]
+		// and exchange it and A[r]
 		int q = pivot(A, p, r), x = A[q];
 		swap(A[q], A[r]);
+
 		int i = p - 1;
 		for (int j = p; j < r; ++j) {
 			if (A[j] <= x) {
