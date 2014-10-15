@@ -45,6 +45,7 @@ class Solution {
 		}
 	}
 
+	// 3-way partition
 	pair<int, int> partition3(int A[], int p, int r, int mid, int high) {
 		int i = p-1, j = p, k = r + 1;
 		while (j < k) {
