@@ -56,9 +56,9 @@ public:
 	// Both p and r are inclusive
 	void quickSort(int A[], int p, int r) {
 		if (p < r) {                    // initial range A[p...r]
-			int q = partition(A, p, r); // p <= q and q <= r
-			quickSort(A, p, q - 1);     // reduced range A[p...q-1]
-			quickSort(A, q + 1, r);     // reduced range A[q+1...r]
+		    int q = partition(A, p, r); // p <= q and q <= r
+		    quickSort(A, p, q - 1);     // reduced range A[p...q-1]
+		    quickSort(A, q + 1, r);     // reduced range A[q+1...r]
 		}
 	}
 
@@ -67,15 +67,15 @@ public:
 		if (p < r)
 		    stk.push(make_pair(p, r));
 		while (!stk.empty()) {
-			p = stk.top().first;
-			r = stk.top().second;
-			stk.pop();
+		    p = stk.top().first;
+		    r = stk.top().second;
+		    stk.pop();
 
-			int q = partition(A, p, r);
-			if (q+1 < r)
-				stk.push(make_pair(q+1, r));
-			if (p < q-1)
-				stk.push(make_pair(p, q-1));
+		    int q = partition(A, p, r);
+		    if (q+1 < r)
+		   	    stk.push(make_pair(q+1, r));
+		    if (p < q-1)
+			    stk.push(make_pair(p, q-1));
 		}
 	}
 
