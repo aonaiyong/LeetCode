@@ -62,8 +62,8 @@ class Solution {
         if (p < r)
             stk.push(make_pair(p, r));
         while (!stk.empty()) {
-	        p = stk.top().first;
-	        r = stk.top().second;
+            p = stk.top().first;
+            r = stk.top().second;
 	        stk.pop();
 
 	        int x = A[pivot(A, p, r)];
