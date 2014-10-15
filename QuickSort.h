@@ -95,7 +95,7 @@ public:
         }
         swap(A[i+1], A[r]);
 
-	    return i+1;
+        return i+1;
     }
 
     int pivot(int A[], int p, int r) {
