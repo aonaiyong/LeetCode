@@ -59,53 +59,53 @@ public:
             int q = partition(A, p, r); // p <= q and q <= r
             quickSort(A, p, q - 1);     // reduced range A[p...q-1]
             quickSort(A, q + 1, r);     // reduced range A[q+1...r]
-	    }
+        }
     }
 
-	void quickSortIterative(int A[], int p, int r) {
-		stack<pair<int, int>> stk;
-		if (p < r)
-		    stk.push(make_pair(p, r));
-		while (!stk.empty()) {
-		    p = stk.top().first;
-		    r = stk.top().second;
-		    stk.pop();
+    void quickSortIterative(int A[], int p, int r) {
+	    stack<pair<int, int>> stk;
+	    if (p < r)
+	        stk.push(make_pair(p, r));
+	    while (!stk.empty()) {
+	        p = stk.top().first;
+	        r = stk.top().second;
+	        stk.pop();
 
 		    int q = partition(A, p, r);
 		    if (q+1 < r)
 		        stk.push(make_pair(q+1, r));
 		    if (p < q-1)
 		        stk.push(make_pair(p, q-1));
-		}
-	}
+	    }
+    }
 
-	// 2-way partition
-	int partition(int A[], int p, int r) {
-		// choose a pivot element from A[p...r]
-		// and exchange it and A[r]
-		int q = pivot(A, p, r), x = A[q];
-		swap(A[q], A[r]);
+    // 2-way partition
+    int partition(int A[], int p, int r) {
+	    // choose a pivot element from A[p...r]
+	    // and exchange it and A[r]
+	    int q = pivot(A, p, r), x = A[q];
+	    swap(A[q], A[r]);
 
-		int i = p - 1;
-		for (int j = p; j < r; ++j) {
+	    int i = p - 1;
+	    for (int j = p; j < r; ++j) {
 		    if (A[j] <= x) {
 		        ++i;
 		        swap(A[i], A[j]);
 		    }
-		}
-		swap(A[i+1], A[r]);
+	    }
+	    swap(A[i+1], A[r]);
 
-		return i+1;
-	}
+	    return i+1;
+    }
 
-	int pivot(int A[], int p, int r) {
-		return median(A, p, r);
-	}
+    int pivot(int A[], int p, int r) {
+	    return median(A, p, r);
+    }
 
-	// median of the first, middle and last element (2-3 comparisons)
-	int median(int A[], int p, int r) {
-		int q = p + (r - p) / 2;
-		if (A[p] < A[q]) {
+    // median of the first, middle and last element (2-3 comparisons)
+    int median(int A[], int p, int r) {
+	    int q = p + (r - p) / 2;
+	    if (A[p] < A[q]) {
 		    if (A[p] > A[r])       // (A[r], A[p], A[q])
 		        return p;
 		    else if (A[q] < A[r])  // (A[p], A[q], A[r])
@@ -116,9 +116,9 @@ public:
 		        return q;
 		    else if (A[p] < A[r])  // (A[q], A[p], A[r]
 		        return p;
-		}
-		return r;                 // (A[p], A[r], A[q]) or (A[q], A[r], A[p])
-	}
+	    }
+	    return r;                 // (A[p], A[r], A[q]) or (A[q], A[r], A[p])
+    }
 };
 
 #endif /* QUICKSORT_H_ */
