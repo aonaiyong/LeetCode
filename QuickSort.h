@@ -75,7 +75,7 @@ public:
 			if (q+1 < r)
 				stk.push(make_pair(q+1, r));
 			if (p < q-1)
-			    stk.push(make_pair(p, q-1));
+				stk.push(make_pair(p, q-1));
 		}
 	}
 
