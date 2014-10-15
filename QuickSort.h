@@ -73,9 +73,9 @@ public:
 
 		    int q = partition(A, p, r);
 		    if (q+1 < r)
-		   	    stk.push(make_pair(q+1, r));
+		        stk.push(make_pair(q+1, r));
 		    if (p < q-1)
-			    stk.push(make_pair(p, q-1));
+		        stk.push(make_pair(p, q-1));
 		}
 	}
 
@@ -89,8 +89,8 @@ public:
 		int i = p - 1;
 		for (int j = p; j < r; ++j) {
 		    if (A[j] <= x) {
-			    ++i;
-			    swap(A[i], A[j]);
+		        ++i;
+		        swap(A[i], A[j]);
 		    }
 		}
 		swap(A[i+1], A[r]);
