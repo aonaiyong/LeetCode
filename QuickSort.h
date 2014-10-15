@@ -63,8 +63,8 @@ public:
     }
 
     void quickSortIterative(int A[], int p, int r) {
-	    stack<pair<int, int>> stk;
-	    if (p < r)
+        stack<pair<int, int>> stk;
+        if (p < r)
 	        stk.push(make_pair(p, r));
 	    while (!stk.empty()) {
 	        p = stk.top().first;
@@ -74,8 +74,8 @@ public:
 	        int q = partition(A, p, r);
 	        if (q+1 < r)
 	            stk.push(make_pair(q+1, r));
-		    if (p < q-1)
-		        stk.push(make_pair(p, q-1));
+	        if (p < q-1)
+	            stk.push(make_pair(p, q-1));
 	    }
     }
 
@@ -99,7 +99,7 @@ public:
     }
 
     int pivot(int A[], int p, int r) {
-	    return median(A, p, r);
+        return median(A, p, r);
     }
 
     // median of the first, middle and last element (2-3 comparisons)
