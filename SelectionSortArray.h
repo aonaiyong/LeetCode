@@ -43,18 +43,18 @@ using std::swap;
 
 class Solution {
 public:
-	void selectionSortArray(int A[], int n) {
-		for (int i = 0; i < n-1; ++i) {
-			int iMin = i;
-			for (int j = i + 1; j < n; ++j) {
-				if (A[j] < A[iMin])
-				    iMin = j;
-			}
+    void selectionSortArray(int A[], int n) {
+        for (int i = 0; i < n-1; ++i) {
+            int iMin = i;
+            for (int j = i + 1; j < n; ++j) {
+                if (A[j] < A[iMin])
+                    iMin = j;
+            }
 
-			if (iMin != i)
-			    swap(A[i], A[iMin]);
-		}
-	}
+            if (iMin != i)
+                swap(A[i], A[iMin]);
+        }
+    }
 };
 
 #endif /* SELECTIONSORTARRAY_H_ */
