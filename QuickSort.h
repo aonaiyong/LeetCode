@@ -109,7 +109,7 @@ public:
             if (A[p] > A[r])       // (A[r], A[p], A[q])
                 return p;
             else if (A[q] < A[r])  // (A[p], A[q], A[r])
-		        return q;
+                return q;
         }
         else {
             if (A[q] > A[r])       // (A[r], A[q], A[p])
