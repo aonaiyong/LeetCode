@@ -61,30 +61,30 @@ class Solution {
         stack<pair<int, int>> stk;
         if (p < r)
             stk.push(make_pair(p, r));
-	    while (!stk.empty()) {
-		    p = stk.top().first;
-		    r = stk.top().second;
-		    stk.pop();
+        while (!stk.empty()) {
+	        p = stk.top().first;
+	        r = stk.top().second;
+	        stk.pop();
 
-		    int x = A[pivot(A, p, r)];
-		    pair<int, int> q = partition3(A, p, r, x, x);
-		    if (q.second < r)
-			    stk.push(make_pair(q.second, r));
+	        int x = A[pivot(A, p, r)];
+	        pair<int, int> q = partition3(A, p, r, x, x);
+	        if (q.second < r)
+	            stk.push(make_pair(q.second, r));
 		    if (p < q.first)
-			    stk.push(make_pair(p, q.first));
-	    }
+		        stk.push(make_pair(p, q.first));
+        }
     }
 
     // 3-way partition
     pair<int, int> partition3(int A[], int p, int r, int mid, int high) {
-	    int i = p-1, j = p, k = r + 1;
+        int i = p-1, j = p, k = r + 1;
 	    while (j < k) {
-		    if (A[j] < mid)
-			    swap(A[++i], A[j++]);
-		    else if (A[j] > high)
-			    swap(A[j], A[--k]);
-		    else
-			    ++j;
+	        if (A[j] < mid)
+	            swap(A[++i], A[j++]);
+	        else if (A[j] > high)
+	            swap(A[j], A[--k]);
+	        else
+	            ++j;
 	    }
 	    return make_pair(i, j);
     }
