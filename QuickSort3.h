@@ -80,13 +80,13 @@ class Solution {
         int i = p-1, j = p, k = r + 1;
         while (j < k) {
             if (A[j] < mid)
-	            swap(A[++i], A[j++]);
-	        else if (A[j] > high)
-	            swap(A[j], A[--k]);
-	        else
-	            ++j;
-	    }
-	    return make_pair(i, j);
+                swap(A[++i], A[j++]);
+            else if (A[j] > high)
+                swap(A[j], A[--k]);
+            else
+                ++j;
+        }
+        return make_pair(i, j);
     }
 
     int pivot(int A[], int p, int r) {
