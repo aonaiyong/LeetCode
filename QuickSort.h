@@ -65,10 +65,10 @@ public:
     void quickSortIterative(int A[], int p, int r) {
         stack<pair<int, int>> stk;
         if (p < r)
-	        stk.push(make_pair(p, r));
-	    while (!stk.empty()) {
-	        p = stk.top().first;
-	        r = stk.top().second;
+            stk.push(make_pair(p, r));
+        while (!stk.empty()) {
+            p = stk.top().first;
+            r = stk.top().second;
 	        stk.pop();
 
 	        int q = partition(A, p, r);
