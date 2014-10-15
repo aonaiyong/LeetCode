@@ -1,7 +1,7 @@
 /*
  Author:      naiyong, aonaiyong@gmail.com
  Date:        Oct 14, 2014
- Problem:     QuickSort
+ Problem:     Quicksort
  Difficulty:  3
  Source:      http://en.wikipedia.org/wiki/Quicksort
  Notes:
