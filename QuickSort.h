@@ -69,31 +69,31 @@ public:
         while (!stk.empty()) {
             p = stk.top().first;
             r = stk.top().second;
-	        stk.pop();
+            stk.pop();
 
-	        int q = partition(A, p, r);
-	        if (q+1 < r)
-	            stk.push(make_pair(q+1, r));
-	        if (p < q-1)
-	            stk.push(make_pair(p, q-1));
-	    }
+            int q = partition(A, p, r);
+            if (q+1 < r)
+                stk.push(make_pair(q+1, r));
+            if (p < q-1)
+                stk.push(make_pair(p, q-1));
+        }
     }
 
     // 2-way partition
     int partition(int A[], int p, int r) {
-	    // choose a pivot element from A[p...r]
-	    // and exchange it and A[r]
-	    int q = pivot(A, p, r), x = A[q];
-	    swap(A[q], A[r]);
+        // choose a pivot element from A[p...r]
+        // and exchange it and A[r]
+        int q = pivot(A, p, r), x = A[q];
+        swap(A[q], A[r]);
 
-	    int i = p - 1;
-	    for (int j = p; j < r; ++j) {
-		    if (A[j] <= x) {
-		        ++i;
-		        swap(A[i], A[j]);
-		    }
-	    }
-	    swap(A[i+1], A[r]);
+        int i = p - 1;
+        for (int j = p; j < r; ++j) {
+            if (A[j] <= x) {
+                ++i;
+                swap(A[i], A[j]);
+            }
+        }
+        swap(A[i+1], A[r]);
 
 	    return i+1;
     }
