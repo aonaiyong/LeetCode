@@ -57,9 +57,9 @@ public:
     void quickSort(int A[], int p, int r) {
         if (p < r) {                    // initial range A[p...r]
             int q = partition(A, p, r); // p <= q and q <= r
-		    quickSort(A, p, q - 1);     // reduced range A[p...q-1]
-		    quickSort(A, q + 1, r);     // reduced range A[q+1...r]
-		}
+            quickSort(A, p, q - 1);     // reduced range A[p...q-1]
+            quickSort(A, q + 1, r);     // reduced range A[q+1...r]
+	    }
     }
 
 	void quickSortIterative(int A[], int p, int r) {
