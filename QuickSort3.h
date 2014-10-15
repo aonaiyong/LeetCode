@@ -78,8 +78,8 @@ class Solution {
     // 3-way partition
     pair<int, int> partition3(int A[], int p, int r, int mid, int high) {
         int i = p-1, j = p, k = r + 1;
-	    while (j < k) {
-	        if (A[j] < mid)
+        while (j < k) {
+            if (A[j] < mid)
 	            swap(A[++i], A[j++]);
 	        else if (A[j] > high)
 	            swap(A[j], A[--k]);
