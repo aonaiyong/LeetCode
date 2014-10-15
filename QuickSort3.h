@@ -40,6 +40,9 @@
 #ifndef QUICKSORT3_H_
 #define QUICKSORT3_H_
 
+#include <stack>
+using std::stack;
+
 #include <utility>
 using std::swap;
 using std::pair; using std::make_pair;
@@ -51,6 +54,24 @@ class Solution {
 			pair<int, int> q = partition3(A, p, r, x, x);
 			quickSort3(A, p, q.first);
 			quickSort3(A, q.second, r);
+		}
+	}
+
+	void quickSort3Iterative(int A[], int p, int r) {
+		stack<pair<int, int>> stk;
+		if (p < r)
+		    stk.push(make_pair(p, r));
+		while (!stk.empty()) {
+			p = stk.top().first;
+			r = stk.top().second;
+			stk.pop();
+
+			int x = A[pivot(A, p, r)];
+			pair<int, int> q = partition3(A, p, r, x, x);
+			if (q.second < r)
+			    stk.push(make_pair(q.second, r));
+			if (p < q.first)
+			    stk.push(make_pair(p, q.first));
 		}
 	}
 
