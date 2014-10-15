@@ -30,6 +30,15 @@
                                 A  |                                      |
                                     p                  q                 r
                   choose median of A[p], A[q], and A[r] as pivot.
+
+               3. Property.
+                  - Not stable.
+                  - Not adaptive.
+                  - Best-case time: O(nlogn).
+                  - Average-case time: O(nlogn).
+                  - Worst-case time: O(n^2)
+                  - Worst-case space: O(logn). This is achieved by recursing into the smaller
+                    side of the partition, then using a tail call to recurse into the other.
  */
 
 #ifndef QUICKSORT_H_

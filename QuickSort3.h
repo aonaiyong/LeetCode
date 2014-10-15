@@ -26,6 +26,15 @@
 
               2. Choose pivot.
                  Choose median of the first, middle, and last element as pivot.
+
+              3. Property.
+                 - Not stable.
+                 - Adaptive when few unique keys.
+                 - Best-case time: O(n) when O(1) unique keys.
+                 - Average-case time: O(nlogn).
+                 - Worst-case time: O(n^2).
+                 - Worst-case space: O(logn). This is achieved by recursing into the smaller
+                   side of the partition, then using a tail call to recurse into the other.
  */
 
 #ifndef QUICKSORT3_H_
