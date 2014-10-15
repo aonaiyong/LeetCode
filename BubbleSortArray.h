@@ -43,8 +43,8 @@ public:
     	    int newn = 0;
             for (int i = 1; i < n; ++i) {
             	if (A[i-1] > A[i]) {
-        		    swap(A[i-1], A[i]);
-				    newn = i;
+            	    swap(A[i-1], A[i]);
+            	    newn = i;
                 }
             }
             n = newn;
