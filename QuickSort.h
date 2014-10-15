@@ -1,7 +1,7 @@
 /*
  Author:      naiyong, aonaiyong@gmail.com
  Date:        Oct 14, 2014
- Problem:     Quick Sort Array
+ Problem:     QuickSort
  Difficulty:  3
  Source:      http://en.wikipedia.org/wiki/Quicksort
  Notes:
@@ -28,8 +28,8 @@
                                                                          j
  */
 
-#ifndef QUICKSORTARRAY_H_
-#define QUICKSORTARRAY_H_
+#ifndef QUICKSORT_H_
+#define QUICKSORT_H_
 
 #include <utility>
 using std::swap;
@@ -87,4 +87,4 @@ public:
 	}
 };
 
-#endif /* QUICKSORTARRAY_H_ */
+#endif /* QUICKSORT_H_ */
