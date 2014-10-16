@@ -49,6 +49,23 @@ public:
             maxHeapify(A, n, largest);
         }
     }
+
+    void maxHeapifyIterative(int A[], int n, int i) {
+        while (LEFT(i) < n) {
+            int l = LEFT(i), r = RIGHT(i);
+            int largest = i;
+            if (A[l] > A[largest])
+                largest = l;
+            if (r < n && A[r] > A[largest])
+                largest = r;
+            if (largest != i) {
+                swap(A[i], A[largest]);
+                i = largest;
+            }
+            else
+                return;
+        }
+    }
 };
 
 #endif /* HEAPSORT_H_ */
