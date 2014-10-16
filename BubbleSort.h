@@ -2,7 +2,7 @@
 
  Author:      naiyong, aonaiyong@gmail.com
  Date:        Oct 14, 2014
- Problem:     Bubble Sort Array
+ Problem:     Bubble Sort
  Difficulty:  2
  Source:      http://en.wikipedia.org/wiki/Bubble_sort
  Notes:
@@ -30,8 +30,8 @@
               Property:    Stable & In-place & Adaptive.
  */
 
-#ifndef BUBBLESORTARRAY_H_
-#define BUBBLESORTARRAY_H_
+#ifndef BUBBLESORT_H_
+#define BUBBLESORT_H_
 
 #include <utility>
 using std::swap;
@@ -52,4 +52,4 @@ public:
     }
 };
 
-#endif /* BUBBLESORTARRAY_H_ */
+#endif /* BUBBLESORT_H_ */

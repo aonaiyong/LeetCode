@@ -35,8 +35,8 @@
 
  */
 
-#ifndef SELECTIONSORTARRAY_H_
-#define SELECTIONSORTARRAY_H_
+#ifndef SELECTIONSORT_H_
+#define SELECTIONSORT_H_
 
 #include <utility>
 using std::swap;
@@ -57,4 +57,4 @@ public:
     }
 };
 
-#endif /* SELECTIONSORTARRAY_H_ */
+#endif /* SELECTIONSORT_H_ */
