@@ -23,6 +23,20 @@ using std::swap;
 
 class Solution {
 public:
+    void heapSort(int A[], int n) {
+        buildMaxHeap(A, n);
+        for (int i = n-1; i >= 1; --i) {
+            swap(A[0], A[i]);
+            maxHeapify(A, i, 0);
+        }
+    }
+
+    void buildMaxHeap(int A[], int n) {
+		for (int i = PARENT(n-1); i >= 0; --i) {
+			maxHeapify(A, n, i);
+		}
+	}
+
     void maxHeapify(int A[], int n, int i) {
         int l = LEFT(i), r = RIGHT(i);
         int largest = i;
@@ -33,20 +47,6 @@ public:
         if (largest != i) {
             swap(A[i], A[largest]);
             maxHeapify(A, n, largest);
-        }
-    }
-
-    void buildMaxHeap(int A[], int n) {
-        for (int i = PARENT(n-1); i >= 0; --i) {
-            maxHeapify(A, n, i);
-        }
-    }
-
-    void heapSort(int A[], int n) {
-        buildMaxHeap(A, n);
-        for (int i = n-1; i >= 1; --i) {
-            swap(A[0], A[i]);
-            maxHeapify(A, i, 0);
         }
     }
 };
