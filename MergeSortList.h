@@ -1,7 +1,7 @@
 /*
  Author:     naiyong, aonaiyong@gmail.com
  Date:       Sep 24, 2014
- Problem:    Sort List
+ Problem:    Merge Sort List
  Difficulty: 3
  Source:     https://oj.leetcode.com/problems/sort-list/
  Notes:
@@ -20,8 +20,8 @@
              Time: O(nlogn), Space: O(logn) for recursion
  */
 
-#ifndef SORTLIST_H_
-#define SORTLIST_H_
+#ifndef MERGESORTLIST_H_
+#define MERGESORTLIST_H_
 
 #include "ListNode.h"
 
@@ -89,4 +89,4 @@ public:
     }
 };
 
-#endif /* SORTLIST_H_ */
+#endif /* MERGESORTLIST_H_ */
