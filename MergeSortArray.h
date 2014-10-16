@@ -53,13 +53,12 @@ using std::min;
 
 class Solution {
 public:
-
     void mergeSort(int A[], int n) {
         int *B = new int[n/2];
         // topDownMergeSort(A, 0, n - 1, B);
-	    bottomUpMergeSort(A, n, B);
+        bottomUpMergeSort(A, n, B);
 
-	    delete[] B;
+        delete[] B;
     }
 
     void bottomUpMergeSort(int A[], int n, int B[]) {
@@ -76,8 +75,8 @@ public:
             int q = p + (r - p) / 2;          // p <= q < r
             topDownMergeSort(A, p, q, B);     // Reduced range A[p...q]
             topDownMergeSort(A, q + 1, r, B); // Reduced range A[q+1...r]
-		    merge(A, p, q, r, B);             // Merge sorted array A[p...q] and A[q+1...r]
-	    }
+            merge(A, p, q, r, B);             // Merge sorted array A[p...q] and A[q+1...r]
+        }
     }
 
     // Merge two sorted array A[p...q] and A[q+1...r]
