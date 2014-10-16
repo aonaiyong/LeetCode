@@ -95,7 +95,7 @@ public:
 
         while (j >= 0)
             A[k--] = B[j--];
-	}
+    }
 };
 
 #endif /* MERGESORTARRAY_H_ */
