@@ -60,21 +60,18 @@ public:
     }
 
     // Divide-and-Conquer: O(n*k*log(k)) time, O(1) space
-    ListNode *mergeKListsDQ(vector<ListNode *> &lists) {
+    ListNode *mergeKListsDAC(vector<ListNode *> &lists) {
         if (lists.empty()) return nullptr;
 
         int k = lists.size();
         while (k > 1) {
-            for (int i = 0; i < k / 2; ++i) {
+        	int newk = k / 2
+            for (int i = 0; i < newk; ++i)
                 lists[i] = mergeTwoLists(lists[2 * i], lists[2 * i + 1]);
-            }
+            if (k % 2)
+                lists[newk++] = lists[k-1];
 
-            int i = k / 2;
-            if (k % 2) {
-                ++i;
-                lists[i-1] = lists[k-1];
-            }
-            k = i;
+            k = newk;
         }
 
         return lists[0];
