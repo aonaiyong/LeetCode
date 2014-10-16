@@ -40,7 +40,7 @@ public:
     void maxHeapify(int A[], int n, int i) {
         int l = LEFT(i), r = RIGHT(i);
         int largest = i;
-        if (l < n && A[l] > A[i])
+        if (l < n && A[l] > A[largest])
             largest = l;
         if (r < n && A[r] > A[largest])
             largest = r;
