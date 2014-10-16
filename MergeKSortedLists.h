@@ -65,7 +65,7 @@ public:
 
         int k = lists.size();
         while (k > 1) {
-        	int newk = k / 2;
+            int newk = k / 2;
             for (int i = 0; i < newk; ++i)
                 lists[i] = mergeTwoLists(lists[2 * i], lists[2 * i + 1]);
             if (k % 2)
