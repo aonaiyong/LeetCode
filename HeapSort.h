@@ -51,5 +51,4 @@ public:
     }
 };
 
-
 #endif /* HEAPSORT_H_ */
