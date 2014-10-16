@@ -9,6 +9,12 @@
 
  Solution:    http://en.wikipedia.org/wiki/Heapsort
               http://www.sorting-algorithms.com/heap-sort
+
+              Time:   O(nlogn)
+              Space:  O(1)
+
+              Property:  Not stable.
+                         Not really adaptive.
  */
 
 #ifndef HEAPSORT_H_
