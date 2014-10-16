@@ -91,10 +91,10 @@ public:
         // Merge A[p...q] and B[0...m]
         int i = q, j = m, k = r;  // i, j, and k are all inclusive
         while (i >= p && j >= 0)
-		    A[k--] = A[i] <= B[j] ? B[j--] : A[i--];
+            A[k--] = A[i] <= B[j] ? B[j--] : A[i--];
 
         while (j >= 0)
-		    A[k--] = B[j--];
+            A[k--] = B[j--];
 	}
 };
 
