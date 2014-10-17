@@ -12,6 +12,7 @@
  The number of elements initialized in A and B are m and n respectively.
 
  Solution:   Copy from back to forth.
+             Time: O(m+n), Space: O(1).
  */
 
 #ifndef MERGESORTEDARRAY_H_
@@ -23,7 +24,6 @@ public:
         int i = m - 1, j = n - 1, k = m + n - 1;
         while (i >= 0 && j >= 0)
             A[k--] = A[i] <= B[j] ? B[j--] : A[i--];
-
         while (j >= 0)
             A[k--] = B[j--];
     }
