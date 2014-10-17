@@ -27,7 +27,7 @@ public:
 
     int memoizedClimbStairsAux(int n, vector<int> &ways) {
         if (ways[n] >= 0)
-        	return ways[n];
+            return ways[n];
 
         int m = -1;
         if (n == 1)
