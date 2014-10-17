@@ -25,7 +25,7 @@
               Worst-case time:      O(n^2) comparisons/swaps.
               Best-case time:       O(n) comparisons, O(1) swaps.
               Average-case time:    O(n^2) comparisons/swaps.
-              Worst-case time:      O(1).
+              Worst-case space:     O(1).
 
               Property:    Stable & In-place & Adaptive.
  */
