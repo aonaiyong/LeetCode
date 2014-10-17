@@ -62,29 +62,23 @@ public:
     }
 
     void countingSort(int A[], int n) {
-        vector<int> B(n);
         int C[3] = {0};
-
         // count
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i)
             ++C[A[i]];
-        }
-
         // prefix sum
-        for (int i = 1; i < 3; ++i) {
+        for (int i = 1; i < 3; ++i)
             C[i] += C[i-1];
-        }
 
+        vector<int> B(n);
         // stable sort (back-to-forth)
         for (int i = n - 1; i >= 0; --i) {
             --C[A[i]];
             B[C[A[i]]] = A[i];
         }
-
         // copy back
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i)
             A[i] = B[i];
-        }
     }
 
 };
