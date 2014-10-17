@@ -84,15 +84,13 @@ public:
     void merge(int A[], int p, int q, int r, int B[]) {
         int m = r-q-1;           // m is inclusive
         // Copy A[q+1...r] into B[0...m]
-        for (int i = 0; i <= m; ++i) {
+        for (int i = 0; i <= m; ++i)
             B[i] = A[i + q + 1];
-        }
 
         // Merge A[p...q] and B[0...m]
         int i = q, j = m, k = r;  // i, j, and k are all inclusive
         while (i >= p && j >= 0)
             A[k--] = A[i] <= B[j] ? B[j--] : A[i--];
-
         while (j >= 0)
             A[k--] = B[j--];
     }
