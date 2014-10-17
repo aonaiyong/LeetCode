@@ -1,4 +1,5 @@
 /*
+
  Author:      naiyong, aonaiyong@gmail.com
  Date:        Oct 16, 2014
  Problem:     Shell Sort
@@ -23,10 +24,10 @@ class Solution {
 				int key = A[i];
 				int j = i - gap;
 				while (j >= 0 && A[j] > key) {
-					A[j+gap] = A[j];
+					A[j + gap] = A[j];
 					j -= gap;
 				}
-				A[j+gap] = key;
+				A[j + gap] = key;
 			}
 	}
 };
