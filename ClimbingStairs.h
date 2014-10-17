@@ -31,11 +31,11 @@ public:
 
         int m = -1;
         if (n == 1)
-        	m = 1;
+            m = 1;
         else if (n == 2)
-        	m = 2;
+            m = 2;
         else
-        	m = memoizedClimbStairsAux(n-1, ways) + memoizedClimbStairsAux(n-2, ways);
+            m = memoizedClimbStairsAux(n-1, ways) + memoizedClimbStairsAux(n-2, ways);
         ways[n] = m;
         return m;
     }
