@@ -15,6 +15,10 @@
 
               Property:  Not stable.
                          Not really adaptive.
+
+              Because of the O(nlogn) upper bound on heapsort's running time and constant upper bound
+              on its auxiliary storage, embedded systems with real-time constraints or systems concerned
+              with security often use heapsort.
  */
 
 #ifndef HEAPSORT_H_
