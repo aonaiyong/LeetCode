@@ -43,6 +43,7 @@
                   - Stability is required.
                   - Sort linked lists.
                   - Random access is much more expensive than sequential access.
+                  - highly parallelizable (up to O(logn) using the Three HUngarian's Algorithm).
  */
 
 #ifndef MERGESORTARRAY_H_
