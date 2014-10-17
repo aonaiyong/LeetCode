@@ -34,7 +34,8 @@ public:
     }
 
     ListNode *mergeSortList(ListNode *&head, int n) {
-        if (n <= 0) return nullptr;
+        if (n <= 0)
+        	return nullptr;
         if (n == 1) {
             ListNode *single = head;
             head = head->next;
@@ -50,7 +51,8 @@ public:
 
     // Both p and r are inclusive
     ListNode *mergeSortList(ListNode *&head, int p, int r) {
-        if (p > r) return nullptr;
+        if (p > r)
+        	return nullptr;
         if (p == r) {
             ListNode *single = head;
             head = head->next;
