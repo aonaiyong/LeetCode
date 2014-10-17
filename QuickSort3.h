@@ -97,13 +97,13 @@ class Solution {
     int median(int A[], int p, int r) {
         int q = p + (r - p) / 2;
         if (A[p] < A[q]) {
-            if (A[p] > A[r])       // (A[r], A[p], A[q])
+            if (A[r] < A[p])       // (A[r], A[p], A[q])
                 return p;
             else if (A[q] < A[r])  // (A[p], A[q], A[r])
                 return q;
         }
         else {
-            if (A[q] > A[r])       // (A[r], A[q], A[p])
+            if (A[r] < A[q])       // (A[r], A[q], A[p])
                 return q;
             else if (A[p] < A[r])  // (A[q], A[p], A[r]
                 return p;
