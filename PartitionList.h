@@ -30,45 +30,39 @@ public:
 
     // succinct but maybe less efficient
     ListNode *partitionDecouple(ListNode *head, int x) {
-        ListNode leftDummy(0), rightDummy(0);
-        ListNode *left = &leftDummy, *right = &rightDummy;
+    	ListNode dummy1(0), *tail1 = &dummy1;
+    	ListNode dummy2(0), *tail2 = &dummy2;
         // decouple nodes < x and nodes >= x, respectively
         while (head) {
-            if (head->val < x) {
-                left = left->next = head;
-            }
-            else {
-                right = right->next = head;
-            }
+            if (head->val < x)
+                tail1 = tail1->next = head;
+            else
+                tail2 = tail2->next = head;
 
             head = head->next;
         }
-
         // splice the two lists
-        left->next = rightDummy.next;
-        right->next = nullptr;
-        return leftDummy.next;
+        tail1->next = dummy2.next;
+        tail2->next = nullptr;     // important
+
+        return dummy1.next;
     }
 
     // verbose
     ListNode *partitionInPlace(ListNode *head, int x) {
-        ListNode dummy(0);
+        ListNode dummy(0), *less = &dummy, *greater = &dummy;
         dummy.next = head;
-        ListNode *less = &dummy, *greater = &dummy;
         while (greater->next) {
-            ListNode *temp = greater->next;
-            if (x <= temp->val) {
-                greater = temp;
-            }
+            ListNode *curr = greater->next;
+            if (x <= curr->val)
+                greater = curr;
             else {
-                if (less == greater) { // "greater part" is empty
-                    less = greater = temp;
-                }
+                if (less == greater)  // "greater part" is empty
+                    less = greater = curr;
                 else {
-                    greater->next = temp->next;
-                    temp->next = less->next;
-                    less->next = temp;
-                    less = temp;
+                    greater->next = curr->next;
+                    curr->next = less->next;
+                    less = less->next = curr;
                 }
             }
         }
