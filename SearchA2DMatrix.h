@@ -57,7 +57,6 @@ public:
             else
                 top = mid;
         }
-
         int i = low / n, j = low % n;
         return low == top && A[i][j] == target;
     }
@@ -76,7 +75,6 @@ public:
             else
                 top = mid - 1;
         }
-
         return false;
     }
 
@@ -92,6 +90,8 @@ public:
             else
                 top = mid;
         }
+        if (low != top)
+        	return false;
         int i = target < A[low][0]? low - 1: low;
         if (i == -1)
         	return false;
@@ -105,7 +105,7 @@ public:
             else
                 top = mid;
         }
-        return A[i][low] == target;
+        return low == top && A[i][low] == target;
     }
 
     // two-pass & two-branch
