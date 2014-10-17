@@ -59,7 +59,7 @@ public:
         }
 
         int i = low / n, j = low % n;
-        return A[i][j] == target;
+        return low == top && A[i][j] == target;
     }
 
     // one-pass & two-branch
