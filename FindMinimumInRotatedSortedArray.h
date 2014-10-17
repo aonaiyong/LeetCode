@@ -27,6 +27,9 @@
 #include <vector>
 using std::vector;
 
+#include <limits>
+using std::numeric_limits;
+
 class Solution {
 public:
     int findMin(vector<int> &num) {
@@ -39,10 +42,7 @@ public:
                 low = mid + 1;        // reduced range A[mid+1...top]
         }
 
-        if (low == top)
-            return num[low];
-        else
-            return -1;
+        return low == top ? num[low] : numeric_limits<int>::min();
     }
 };
 
