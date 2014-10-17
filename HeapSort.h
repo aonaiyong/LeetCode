@@ -38,9 +38,8 @@ public:
     }
 
     void buildMaxHeap(int A[], int n) {
-        for (int i = PARENT(n-1); i >= 0; --i) {
+        for (int i = PARENT(n-1); i >= 0; --i)
             maxHeapify(A, n, i);
-        }
     }
 
     void maxHeapify(int A[], int n, int i) {
