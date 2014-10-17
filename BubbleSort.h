@@ -38,15 +38,14 @@ using std::swap;
 
 class Solution {
 public:
-    void bubbleSortArray(int A[], int n) {
+    void bubbleSort(int A[], int n) {
     	while (n > 0) {
     	    int newn = 0;
-            for (int i = 1; i < n; ++i) {
+            for (int i = 1; i < n; ++i)
             	if (A[i-1] > A[i]) {
             	    swap(A[i-1], A[i]);
             	    newn = i;
                 }
-            }
             n = newn;
     	}
     }
