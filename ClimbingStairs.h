@@ -1,8 +1,11 @@
 /*
- * ClimbingStairs.h
- *
- *  Created on: Oct 11, 2014
- *      Author: naiyong
+ Author:      naiyong, aonaiyong@gmail.com
+ Date:        Oct 17, 2014
+ Problem:     ClimbingStairs.h   
+ Difficulty:  
+ Source:      
+ Notes:
+ Solution:
  */
 
 #ifndef CLIMBINGSTAIRS_H_
@@ -23,12 +26,16 @@ public:
     }
 
     int memoizedClimbStairsAux(int n, vector<int> &ways) {
-        if (ways[n] >= 0) return ways[n];
+        if (ways[n] >= 0)
+        	return ways[n];
 
         int m = -1;
-        if (n == 1) m = 1;
-        else if (n == 2) m = 2;
-        else m = memoizedClimbStairsAux(n-1, ways) + memoizedClimbStairsAux(n-2, ways);
+        if (n == 1)
+        	m = 1;
+        else if (n == 2)
+        	m = 2;
+        else
+        	m = memoizedClimbStairsAux(n-1, ways) + memoizedClimbStairsAux(n-2, ways);
         ways[n] = m;
         return m;
     }
@@ -37,9 +44,12 @@ public:
         vector<int> ways(n+1, -1);
         for (int i = 1; i <= n; ++i) {
             int m = -1;
-            if (i == 1) m = 1;
-            else if (i == 2) m = 2;
-            else m = ways[i-1] + ways[i-2];
+            if (i == 1)
+            	m = 1;
+            else if (i == 2)
+            	m = 2;
+            else
+            	m = ways[i-1] + ways[i-2];
             ways[i] = m;
         }
         return ways[n];
@@ -60,6 +70,5 @@ public:
 
     }
 };
-
 
 #endif /* CLIMBINGSTAIRS_H_ */
