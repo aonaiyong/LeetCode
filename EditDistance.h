@@ -30,7 +30,7 @@
                  - column-by-column
                  - anti-diagonal
 
-                 Base case: DP(|x|, j) = j, DP(i, |y|) = i
+                 Base case: DP(0, j) = j, DP(i, 0) = i
 
               5. Original Problem: DP(|x|, |y|)
                  - Shortest path from (0, 0) to (|x|, |y|) in the DAG (visualized as a
