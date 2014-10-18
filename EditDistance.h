@@ -13,7 +13,31 @@
  b) Delete a character
  c) Replace a character
 
- Solution:
+ Solution:    Dynamic Programming.
+              1. Subproblem = edit distance on x[:i] & y[:j] (prefixes)
+                 - #subprobs = O(|x|*|y|)
+              2. Guess: one of 3 possibilities
+                 - replace x[i-1]->y[j-1]
+                 - insert y[j-1]
+                 - delete x[i-1]
+              3. Recurrence
+                 DP(i, j) =  DP(i-1, j-1),   if x[i-1] == y[j-1]
+                             min(min(DP(i-1, j-1), DP(i, j-1)), DP(i-1, j)) + 1,  otherwise
+                 - time/subprob = O(1)
+              4. for i = 1...|x|
+                     for j = 1...|y|
+                 - row-by-row (as shown above)
+                 - column-by-column
+                 - anti-diagonal
+
+                 Base case: DP(|x|, j) = j, DP(i, |y|) = i
+
+              5. Original Problem: DP(|x|, |y|)
+                 - Shortest path from (0, 0) to (|x|, |y|) in the DAG (visualized as a
+                   2-dimensional matrix). Each cell in the matrix corresponds to a node
+                   in the DAG.
+                 - Time: #subprobs * time/subprob = O(|x|*|y|)
+                   Space: only keep the last row (column) = O(|y|) (O(|x|))
  */
 
 #ifndef EDITDISTANCE_H_
@@ -33,6 +57,7 @@ public:
         return minDistanceQuadratic(word1, word2);
     }
 
+    // Time: O(M * N), Space: O(M * N)
     int minDistanceQuadratic(const string &word1, const string &word2) {
         int M = word1.size(), N = word2.size();
         vector<vector<int>> DP(M + 1, vector<int>(N + 1));
@@ -52,6 +77,7 @@ public:
         return DP[M][N];
     }
 
+    // Time: O(M * N), Space: O(N)
     int minDistanceLinear(const string &word1, const string &word2) {
         int M = word1.size(), N = word2.size();
         vector<int> DP(N + 1);
