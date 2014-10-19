@@ -27,9 +27,8 @@ using std::swap;
 class Solution {
 public:
     void rotate(vector<vector<int> > &matrix) {
-        if (matrix.empty() || matrix[0].empty()) return;
-
-        rotateOnePass(matrix);
+        if (!matrix.empty() && !matrix[0].empty())
+            rotateOnePass(matrix);
     }
 
     // n^2/4 4-element swaps
@@ -54,16 +53,13 @@ public:
         int n = A.size();
         // transpose: A[i][j] <-> A[j][i], for j = i+1 to n-1
         for (int i = 0; i < n; ++i) {
-            for (int j = i+1; j < n; ++j) {
+            for (int j = i+1; j < n; ++j)
                 swap(A[i][j], A[j][i]);
-            }
         }
-
         // column j <-> column n-1-j, for j = 0 to n/2 - 1
         for (int i = 0; i < n; ++i) {
-            for (int j = 0; j < n/2; ++j) {
+            for (int j = 0; j < n/2; ++j)
                 swap(A[i][j], A[i][n-1-j]);
-            }
         }
     }
 };
