@@ -15,6 +15,17 @@
 
  Solution:   Two pointers.
              Property of result array: at most two consecutive duplicates.
+
+             Loop Invariant:    A   |               |        |       ?      |
+                                     0         i-1 i          j          n-1
+
+             Initialization:    A   |     |                ?                |
+                                     i-1 i j                             n-1
+
+             Termination:       A   |                       |               |
+                                     0                 i-1 i             n-1 j
+
+             Time: O(n), Space: O(1)
  */
 
 #ifndef REMOVEDUPLICATESFROMSORTEDARRAYII_H_

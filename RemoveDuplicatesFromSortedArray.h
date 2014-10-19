@@ -17,14 +17,14 @@
  Solution:    Two pointers.
               Property of result array: no duplicates, i.e., consecutive elements are different.
 
-              Loop Invariant:    A   |    unique    |   duplicate    |     ?     |
-                                      0            i                j         n-1
+              Loop Invariant:    A   |     unique     |               |     ?     |
+                                      0              i               j         n-1
 
               Initialization:    A   | |                   ?                      |
                                       i j                                      n-1
 
-              Termination:       A   |        unique       |      duplicate      |
-                                      0                   i                   n-1 j
+              Termination:       A   |         unique          |                  |
+                                      0                       i                n-1 j
 
               Time: O(n), Space: O(1)
  */
