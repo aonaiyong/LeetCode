@@ -15,16 +15,16 @@
  Your function should return length = 2, and A is now [1,2].
 
  Solution:    Two pointers.
-              Property of result array: no duplicates, i.e., consecutive elements are different.
+              Property of result array: strictly increasing.
 
-              Loop Invariant:    A   |     unique     |               |     ?     |
-                                      0              i               j         n-1
+              Loop Invariant:    A   |      <       |     <=      |    ?     |
+                                      0            i            j         n-1
 
-              Initialization:    A   | |                   ?                      |
-                                      i j                                      n-1
+              Initialization:    A   |<|                 ?                   |
+                                      i j                                 n-1
 
-              Termination:       A   |         unique          |                  |
-                                      0                       i                n-1 j
+              Termination:       A   |         <          |        <=        |
+                                      0                  i                n-1 j
 
               Time: O(n), Space: O(1)
  */

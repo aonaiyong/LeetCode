@@ -22,20 +22,19 @@
 class Solution {
 public:
     ListNode *deleteDuplicates(ListNode *head) {
-        if (!head || !head->next) return head;
+        if (!head || !head->next)
+        	return head;
 
         ListNode *tail = head;
         while (tail->next) {
-            ListNode *temp = tail->next;
-            if (tail->val != temp->val) {
-                tail = temp;
-            }
+            ListNode *curr = tail->next;
+            if (tail->val != curr->val)
+                tail = curr;
             else {
-                tail->next = temp->next;
-                delete temp;
+                tail->next = curr->next;
+                delete curr;
             }
         }
-
         return head;
     }
 };
