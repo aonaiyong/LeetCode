@@ -16,7 +16,7 @@
             Initialization:    A   |                  ?                  |
                                   i j                                 n-1
 
-            Termination:       A   |        !=          |      ==        |
+            Termination:       A   |        !=          |                |
                                     0                  i              n-1 j
 
             Time: O(n), Space: O(1)
