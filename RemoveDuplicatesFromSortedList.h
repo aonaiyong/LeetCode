@@ -12,7 +12,7 @@
  Given 1->1->2->3->3, return 1->2->3.
 
  Solution:   Two pointers.
-
+             Property of result list: strictly increasing.
  */
 
 #ifndef REMOVEDUPLICATESFROMSORTEDLIST_H_
