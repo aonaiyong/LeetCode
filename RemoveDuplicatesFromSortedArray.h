@@ -20,8 +20,8 @@
               Loop Invariant:    A   |    unique    |   duplicate    |     ?     |
                                       0            i                j         n-1
 
-              Initialization:    A   |                    ?                      |
-                                    i j                                       n-1
+              Initialization:    A   | |                   ?                      |
+                                      i j                                      n-1
 
               Termination:       A   |        unique       |      duplicate      |
                                       0                   i                   n-1 j

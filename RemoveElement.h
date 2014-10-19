@@ -10,7 +10,7 @@
  The order of elements can be changed. It doesn't matter what you leave beyond the new length.
 
  Solution:  Two pointers.
-            Loop Invariant:    A   |     !=      |    ==    |      ?     |
+            Loop Invariant:    A   |     !=      |          |      ?     |
                                     0           i            j        n-1
 
             Initialization:    A   |                  ?                  |
