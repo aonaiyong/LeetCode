@@ -18,6 +18,8 @@
 
             Termination:       A   |        !=          |      ==        |
                                     0                  i              n-1 j
+
+            Time: O(n), Space: O(1)
  */
 
 #ifndef REMOVEELEMENT_H_
