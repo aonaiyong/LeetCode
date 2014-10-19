@@ -10,6 +10,14 @@
  The order of elements can be changed. It doesn't matter what you leave beyond the new length.
 
  Solution:  Two pointers.
+            Loop Invariant:    A   |     !=      |    ==    |      ?     |
+                                    0           i            j        n-1
+
+            Initialization:    A   |                  ?                  |
+                                  i j                                 n-1
+
+            Termination:       A   |        !=          |      ==        |
+                                    0                  i              n-1 j
  */
 
 #ifndef REMOVEELEMENT_H_
@@ -20,11 +28,9 @@ public:
     int removeElement(int A[], int n, int elem) {
         int i = -1;
         for (int j = 0; j < n; ++j) {
-            if (A[j] != elem) {
+            if (A[j] != elem)
                 A[++i] = A[j];
-            }
         }
-
         return i + 1;
     }
 };
