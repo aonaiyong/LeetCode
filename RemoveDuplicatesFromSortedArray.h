@@ -16,6 +16,15 @@
 
  Solution:    Two pointers.
               Property of result array: no duplicates, i.e., consecutive elements are different.
+
+              Loop Invariant:    A   |    unique    |   duplicate    |     ?     |
+                                      0            i                j         n-1
+
+              Initialization:    A   |                    ?                      |
+                                    i j                                       n-1
+
+              Termination:       A   |        unique       |      duplicate      |
+                                      0                   i                   n-1 j
  */
 
 #ifndef REMOVEDUPLICATESFROMSORTEDARRAY_H_
@@ -24,15 +33,14 @@
 class Solution {
 public:
     int removeDuplicates(int A[], int n) {
-        if (n <= 1) return n;
+        if (n <= 1)
+        	return n;
 
         int i = 0;
         for (int j = 1; j < n; ++j) {
-            if (A[j] != A[i]) {  // equivalent to A[j] != A[j-1]
+            if (A[j] != A[i])   // equivalent to A[j] != A[j-1]
                 A[++i] = A[j];
-            }
         }
-
         return i + 1;
     }
 };
