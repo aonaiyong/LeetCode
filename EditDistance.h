@@ -32,12 +32,13 @@
 
                  Base case: DP(0, j) = j, DP(i, 0) = i
 
-              5. Original Problem: DP(|x|, |y|)
+              5. Original problem: DP(|x|, |y|)
                  - Shortest path from (0, 0) to (|x|, |y|) in the DAG (visualized as a
                    2-dimensional matrix). Each cell in the matrix corresponds to a node
                    in the DAG.
                  - Time: #subprobs * time/subprob = O(|x|*|y|)
-                   Space: only keep the last row (column) = O(|y|) (O(|x|))
+                   Space: only keep the last row    = O(|y|)
+                          only keep the last column = O(|x|)
  */
 
 #ifndef EDITDISTANCE_H_

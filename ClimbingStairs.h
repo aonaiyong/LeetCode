@@ -67,7 +67,7 @@ public:
     }
 
     int ClimbStairsLogn(int n) {
-
+    	return 0;
     }
 };
 
