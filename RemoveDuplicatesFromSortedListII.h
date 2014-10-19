@@ -13,7 +13,8 @@
 
  Solution:   Check consecutive nodes (a window). If they have differing values, add the first node into
              current result and advance the window; Otherwise, delete all nodes have that value. Note
-             that in the end, there might be only one node in the window.
+             that in the end, there might be only one node in the window. In this case, we simply update
+             the result and advance the window.
 
              Time: O(n), Space: O(1)
  */
