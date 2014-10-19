@@ -13,6 +13,8 @@
 
  Solution:   Two pointers.
              Property of result list: strictly increasing.
+
+             Time: O(n), Space: O(1)
  */
 
 #ifndef REMOVEDUPLICATESFROMSORTEDLIST_H_

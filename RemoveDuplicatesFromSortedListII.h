@@ -14,6 +14,8 @@
  Solution:   check consecutive nodes (a window). If they have differing values, advance the window;
              Otherwise, delete all nodes have that value. Note that in the end, there might be only
              one node in the window.
+
+             Time: O(n), Space: O(1)
  */
 
 #ifndef REMOVEDUPLICATESFROMSORTEDLISTII_H_
@@ -24,7 +26,8 @@
 class Solution {
 public:
     ListNode *deleteDuplicates(ListNode *head) {
-        if (!head || !head->next) return head;
+        if (!head || !head->next)
+        	return head;
 
         ListNode dummy(0), *tail = &dummy;
         dummy.next = head;
@@ -33,9 +36,8 @@ public:
             int value = curr->val;
 
             // check consecutive nodes
-            if (!curr->next || curr->next->val != value) {
+            if (!curr->next || curr->next->val != value)
                 tail = curr;
-            }
             else { // duplicates to be deleted
                 while (curr && curr->val == value) {
                     tail->next = curr->next;
@@ -45,7 +47,6 @@ public:
                 }
             }
         }
-
         return dummy.next;
     }
 };
