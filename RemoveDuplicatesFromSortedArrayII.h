@@ -26,6 +26,11 @@
                                      0                 i-1 i             n-1 j
 
              Time: O(n), Space: O(1)
+
+             A generalized problem "What if duplicates are allowed at most k times".
+               - Solution: Compare A[j] with A[i], A[i-1], ..., A[i-k+1] (top k elements in current result)
+                   - if they are identical, then we can exclude A[j];
+                   - otherwise, we add A[j] into current result.
  */
 
 #ifndef REMOVEDUPLICATESFROMSORTEDARRAYII_H_
