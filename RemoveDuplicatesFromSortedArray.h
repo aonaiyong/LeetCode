@@ -25,6 +25,8 @@
 
               Termination:       A   |        unique       |      duplicate      |
                                       0                   i                   n-1 j
+
+              Time: O(n), Space: O(1)
  */
 
 #ifndef REMOVEDUPLICATESFROMSORTEDARRAY_H_
