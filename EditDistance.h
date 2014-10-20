@@ -37,8 +37,9 @@
                    2-dimensional matrix). Each cell in the matrix corresponds to a node
                    in the DAG.
                  - Time: #subprobs * time/subprob = O(|x|*|y|)
-                   Space: only keep the last row    = O(|y|)
-                          only keep the last column = O(|x|)
+                   Space: O(min(|x|, |y|))
+                          - only keep the last row    = O(|y|)
+                          - only keep the last column = O(|x|)
  */
 
 #ifndef EDITDISTANCE_H_

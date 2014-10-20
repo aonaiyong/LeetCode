@@ -38,7 +38,6 @@ public:
             int last = n-1-i;
             for (int j = i; j < last; ++j) {
                 int offset = j - i;
-
                 int top = A[i][j];
                 A[i][j] = A[last-offset][i];              // bottom->top
                 A[last-offset][i] = A[last][last-offset]; // right->left
