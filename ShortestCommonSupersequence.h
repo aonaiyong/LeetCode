@@ -1,11 +1,12 @@
 /*
  Author:      naiyong, aonaiyong@gmail.com
  Date:        Oct 20, 2014
- Problem:     ShortestCommonSupersequence.h   
- Difficulty:  
- Source:      
+ Problem:     Shortest Common Supersequence
+ Difficulty:  3
+ Source:      http://en.wikipedia.org/wiki/Shortest_common_supersequence
  Notes:
- Solution:
+
+ Solution:    Dynamic Programming.
  */
 
 #ifndef SHORTESTCOMMONSUPERSEQUENCE_H_
@@ -22,6 +23,7 @@ using std::min;
 
 class Solution {
 public:
+	// Time: O(|x|*|y|), Space: O(|x|*|y|)
 	int SCSLength(const string &x, const string &y, vector<vector<int> > &DP) {
 		int m = x.size(), n = y.size();
 		for (int i = 0; i <= m; ++i)
@@ -39,6 +41,7 @@ public:
 		return DP[m][n];
 	}
 
+	// Time: O(|x|+|y|), Space: O(|x|*|y|)
 	string backtrace(const string &x, const string &y, const vector<vector<int> > &DP, int i, int j) {
 		if (i == 0)
 			return y.substr(0, j);
