@@ -5,6 +5,8 @@
  Difficulty:  3
  Source:      http://en.wikipedia.org/wiki/Shortest_common_supersequence
  Notes:
+ Find the shortest common supersequence of strings x and y, which is a shortest string z
+ such that both x and y are subsequences of z
 
  Solution:    Dynamic Programming.
  */
