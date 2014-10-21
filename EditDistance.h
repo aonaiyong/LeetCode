@@ -21,7 +21,9 @@
                  - insert y[j-1]
                  - delete x[i-1]
               3. Recurrence
-                 DP(i, j) =  DP(i-1, j-1),   if x[i-1] == y[j-1]
+                 DP(i, j) =  j,    if i == 0
+                             i,    if j == 0
+                             DP(i-1, j-1),    if x[i-1] == y[j-1]
                              min(min(DP(i-1, j-1), DP(i, j-1)), DP(i-1, j)) + 1,  otherwise
                  - time/subprob = O(1)
               4. for i = 1...|x|
