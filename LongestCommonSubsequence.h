@@ -29,26 +29,26 @@ public:
     int LCSLength(const string &x, const string &y, vector<vector<int> > &DP) {
         int m = x.size(), n = y.size();
         for (int i = 1; i <= m; ++i) {
-			for (int j = 1; j <= n; ++j)
-				if (x[i-1] == y[j-1])
-					DP[i][j] = DP[i-1][j-1] + 1;
-				else
-					DP[i][j] = max(DP[i][j-1], DP[i-1][j]);
-		}
-		return DP[m][n];
-	}
+            for (int j = 1; j <= n; ++j)
+                if (x[i-1] == y[j-1])
+                    DP[i][j] = DP[i-1][j-1] + 1;
+                else
+                    DP[i][j] = max(DP[i][j-1], DP[i-1][j]);
+        }
+        return DP[m][n];
+    }
 
-	// Time: O(|x|+|y|), Space: O(|x|*|y|)
-	string backtrace(const string &x, const string &y, const vector<vector<int> > &DP, int i, int j) {
-		if (i == 0 || j == 0)
-			return "";
-		if (x[i-1] == y[j-1])
-			return backtrace(x, y, DP, i-1, j-1) + x[i-1];
-		if (DP[i][j] == DP[i][j-1])
-			return backtrace(x, y, DP, i, j-1);
-		else
-			return backtrace(x, y, DP, i-1, j);
-	}
+    // Time: O(|x|+|y|), Space: O(|x|*|y|)
+    string backtrace(const string &x, const string &y, const vector<vector<int> > &DP, int i, int j) {
+        if (i == 0 || j == 0)
+            return "";
+        if (x[i-1] == y[j-1])
+            return backtrace(x, y, DP, i-1, j-1) + x[i-1];
+        if (DP[i][j] == DP[i][j-1])
+            return backtrace(x, y, DP, i, j-1);
+        else
+            return backtrace(x, y, DP, i-1, j);
+    }
 };
 
 #endif /* LONGESTCOMMONSUBSEQUENCE_H_ */
