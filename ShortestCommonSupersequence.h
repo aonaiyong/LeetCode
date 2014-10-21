@@ -34,22 +34,22 @@ public:
             DP[0][j] = j;
 
         for (int i = 1; i <= m; ++i) {
-		    for (int j = 1; j <= n; ++j)
-		        if (x[i-1] == y[j-1])
-			        DP[i][j] = DP[i-1][j-1] + 1;
-		        else
-		            DP[i][j] = min(DP[i][j-1], DP[i-1][j]) + 1;
+            for (int j = 1; j <= n; ++j)
+                if (x[i-1] == y[j-1])
+                    DP[i][j] = DP[i-1][j-1] + 1;
+                else
+                    DP[i][j] = min(DP[i][j-1], DP[i-1][j]) + 1;
         }
         return DP[m][n];
     }
 
-	// Time: O(|x|+|y|), Space: O(|x|*|y|)
-	string backtrace(const string &x, const string &y, const vector<vector<int> > &DP, int i, int j) {
-		if (i == 0)
-			return y.substr(0, j);
-		if (j == 0)
-			return x.substr(0, i);
-		if (x[i-1] == y[j-1])
+    // Time: O(|x|+|y|), Space: O(|x|*|y|)
+    string backtrace(const string &x, const string &y, const vector<vector<int> > &DP, int i, int j) {
+        if (i == 0)
+            return y.substr(0, j);
+        if (j == 0)
+            return x.substr(0, i);
+        if (x[i-1] == y[j-1])
 			return backtrace(x, y, DP, i-1, j-1) + x[i-1];
 		if (DP[i][j] == DP[i][j-1] + 1)
 			return backtrace(x, y, DP, i, j-1) + y[j-1];
