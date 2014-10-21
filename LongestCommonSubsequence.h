@@ -25,10 +25,10 @@ using std::max;
 
 class Solution {
 public:
-	// Time: O(|x|*|y|), Space: O(|x|*|y|)
-	int LCSLength(const string &x, const string &y, vector<vector<int> > &DP) {
-		int m = x.size(), n = y.size();
-		for (int i = 1; i <= m; ++i) {
+    // Time: O(|x|*|y|), Space: O(|x|*|y|)
+    int LCSLength(const string &x, const string &y, vector<vector<int> > &DP) {
+        int m = x.size(), n = y.size();
+        for (int i = 1; i <= m; ++i) {
 			for (int j = 1; j <= n; ++j)
 				if (x[i-1] == y[j-1])
 					DP[i][j] = DP[i-1][j-1] + 1;

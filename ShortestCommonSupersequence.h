@@ -50,12 +50,12 @@ public:
         if (j == 0)
             return x.substr(0, i);
         if (x[i-1] == y[j-1])
-			return backtrace(x, y, DP, i-1, j-1) + x[i-1];
-		if (DP[i][j] == DP[i][j-1] + 1)
-			return backtrace(x, y, DP, i, j-1) + y[j-1];
-		else
-			return backtrace(x, y, DP, i-1, j) + x[i-1];
-	}
+            return backtrace(x, y, DP, i-1, j-1) + x[i-1];
+        if (DP[i][j] == DP[i][j-1] + 1)
+            return backtrace(x, y, DP, i, j-1) + y[j-1];
+        else
+            return backtrace(x, y, DP, i-1, j) + x[i-1];
+    }
 };
 
 
