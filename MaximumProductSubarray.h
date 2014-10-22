@@ -31,6 +31,7 @@ public:
         return maxProductConstant(A, n);
     }
 
+    // Time: O(n), Space: O(n)
     int maxProductLinear(int A[], int n) {
         vector<int> minDP(n), maxDP(n);
         minDP[0] = maxDP[0] = A[0];
@@ -47,6 +48,7 @@ public:
         return largest;
     }
 
+    // Time: O(n), Space: O(1)
     int maxProductConstant(int A[], int n) {
         int minDP = A[0], maxDP = A[0];
         int largest = A[0];
@@ -60,6 +62,5 @@ public:
         return largest;
     }
 };
-
 
 #endif /* MAXIMUMPRODUCTSUBARRAY_H_ */
