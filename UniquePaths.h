@@ -26,6 +26,7 @@ public:
         return uniquePathsLinear(m, n);
     }
 
+    // Time: O(m*n), Space: O(m*n)
     int uniquePathsQuadratic(int m, int n) {
         vector<vector<int> > DP(m, vector<int>(n, 1));
         for (int i = 1; i < m; ++i) {
@@ -35,6 +36,7 @@ public:
         return DP[m-1][n-1];
     }
 
+    // Time: O(m*n), Space: O(min(m,n))
     int uniquePathsLinear(int m, int n) {
         vector<int> DP(n, 1);
         for (int i = 1; i < m; ++i) {
