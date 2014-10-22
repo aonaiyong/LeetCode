@@ -11,7 +11,7 @@
  the contiguous subarray [4,−1,2,1] has the largest sum = 6.
 
  Solution:    Dynamic Programming.
-              1. Subproblem = maximum subarray ending at i
+              1. Subproblem = maximum subarray ending at i (suffix A[h...i] of prefix A[0...i])
                  #subprobs = O(n)
               2. Guess: one of 2 possibilities
                  - extend maximum subarray ending at i-1
@@ -21,7 +21,7 @@
                           max(DP(i-1) + A[i], A[i]),  if i > 0
                  - time/subprob = O(1)
               4. for i = 1...n-1
-              5. DP(n-1)
+              5. max{DP[0], ..., DP[n-1]}
  */
 
 #ifndef MAXIMUMSUBARRAY_H_
