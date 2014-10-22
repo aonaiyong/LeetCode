@@ -1,11 +1,14 @@
 /*
  Author:      naiyong, aonaiyong@gmail.com
  Date:        Oct 21, 2014
- Problem:     LongestCommonSubstring.h   
- Difficulty:  
- Source:      
+ Problem:     Longest Common Substring
+ Difficulty:  3
+ Source:      http://en.wikipedia.org/wiki/Longest_common_substring_problem
  Notes:
- Solution:
+ Find the longest string (or strings) that is a substring (or are substrings)
+ of two or more strings
+
+ Solution:    Dynamic Programming
  */
 
 #ifndef LONGESTCOMMONSUBSTRING_H_
