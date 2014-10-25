@@ -28,9 +28,8 @@ public:
             digits[i] = sum % 10;
         }
 
-        if (carry) {
+        if (carry) 
             digits.insert(digits.begin(), carry);
-        }
 
         return digits;
     }
