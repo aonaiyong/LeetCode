@@ -27,7 +27,6 @@ public:
             carry = sum / 10;
             digits[i] = sum % 10;
         }
-
         if (carry) 
             digits.insert(digits.begin(), carry);
 
