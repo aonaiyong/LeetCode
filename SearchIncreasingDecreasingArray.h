@@ -38,9 +38,9 @@ public:
              int mid = low + (top - low) / 2;
              if (mid > 0 && A[mid - 1] > A[mid])
                  top = mid - 1;
-            else if (mid < n - 1 && A[mid] < A[mid + 1])
+             else if (mid < n - 1 && A[mid] < A[mid + 1])
                  low = mid + 1;
-            else
+             else
                  return mid;
          }
          return low == top ? low : -1;
@@ -52,8 +52,8 @@ public:
              int mid = low + (top - low) / 2;
              if (comp(A[mid], target))
                  low = mid + 1;
-            else
-                top = mid;
+             else
+                 top = mid;
         }
         if (low == top && A[low] == target)
             return low;
