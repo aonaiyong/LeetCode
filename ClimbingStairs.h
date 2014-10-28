@@ -1,7 +1,7 @@
 /*
  Author:      naiyong, aonaiyong@gmail.com
  Date:        Oct 17, 2014
- Problem:     ClimbingStairs.h   
+ Problem:     Climbing Stairs
  Difficulty:  
  Source:      
  Notes:
