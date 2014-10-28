@@ -26,14 +26,16 @@
 class Solution {
 public:
     int lengthOfLastWord(const char *s) {
-        int len = strlen(s);
-        int ret = 0;
-        for (int i = len - 1; i >= 0; --i) {
-            if (s[i] != ' ') ++ret;
-            else if (ret) break;    // ignore trailing space
+        int len = 0;
+        int n = strlen(s);
+        for (int i = n - 1; i >= 0; --i) {
+            if (s[i] != ' ') 
+                ++len;
+            else if (len) 
+                break;    // ignore trailing space
         }
 
-        return ret;
+        return len;
     }
 };
 
