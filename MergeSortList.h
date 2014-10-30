@@ -52,7 +52,7 @@ public:
     // Both p and r are inclusive
     ListNode *mergeSortList(ListNode *&head, int p, int r) {
         if (p > r)
-        	return nullptr;
+            return nullptr;
         if (p == r) {
             ListNode *single = head;
             head = head->next;
