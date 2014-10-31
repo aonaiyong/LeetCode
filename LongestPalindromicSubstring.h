@@ -22,18 +22,19 @@ using std::pair; using std::make_pair;
 class Solution {
 public:
     string longestPalindrome(string s) {
-        return longestPalindromeQuadratic(s);
+        return longestPalindromeLinear(s);
     }
 
+    // Time: O(n^2), Space: O(n^2)
     string longestPalindromeQuadratic(const string &s) {
         int n = s.size();
         // vector<vector<bool>> DP(n, vector<bool>(n, true));  // Time Limit Exceeded
-        bool DP[1000][1000];
+        bool DP[N][N];
         pair<int, int> longest = make_pair(0, 0);
         for (int k = 1; k <= n; ++k) {         // length of substring
             for (int i = 0; i <= n - k; ++i) { // starting index
                 int j = i + k - 1;             // ending index
-                if (k == 1 || k == 2)
+                if (k == 1 || k == 2)          // two base cases
                     DP[i][j] = s[i] == s[j];
                 else
                     DP[i][j] = s[i] == s[j] && DP[i+1][j-1];
@@ -44,6 +45,29 @@ public:
         }
         return s.substr(longest.first, longest.second);
     }
+
+    // Time: O(n^2), Space: O(n)
+    string longestPalindromeLinear(const string &s) {
+        int n = s.size();
+        bool DP[N][2];
+        pair<int, int> longest = make_pair(0, 0);
+        for (int k = 1; k <= n; ++k) {           // length of substring
+            int m = k % 2;                       // parity of k
+            for (int i = 0; i <= n - k; ++i) {   // starting index
+                int j = i + k - 1;               // ending index;
+                if (k == 1 || k == 2)            // two base cases
+                    DP[i][m] = s[i] == s[j];
+                else
+                    DP[i][m] = s[i] == s[j] && DP[i+1][m];
+
+                if (DP[i][m] && longest.second < k)
+                    longest = make_pair(i, k);
+            }
+        }
+        return s.substr(longest.first, longest.second);
+    }
+private:
+    const int N = 1000;
 };
 
 #endif /* LONGESTPALINDROMICSUBSTRING_H_ */
