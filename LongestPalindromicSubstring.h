@@ -22,7 +22,7 @@ using std::pair; using std::make_pair;
 class Solution {
 public:
     string longestPalindrome(string s) {
-        return longestPalindromeLinear(s);
+        return longestPalindromeConstant(s);
     }
 
     // Time: O(n^2), Space: O(n^2)
@@ -66,6 +66,26 @@ public:
         }
         return s.substr(longest.first, longest.second);
     }
+
+    // Time: O(n^2), Space: O(1)
+    string longestPalindromeConstant(const string &s) {
+        int n = s.size();
+        pair<int, int> longest = make_pair(0, 0);
+        for (int i = 0; i < n; ++i) {      // starting index
+            for (int j = 0; j < 2; ++j) {  // two centers
+                int l = i, r = i + j;      // two boundaries (inclusive)
+                while (l >= 0 && r <= n-1 && s[l] == s[r]) { // expand from center (i, i+j)
+                    --l;
+                    ++r;
+                }
+
+                if (longest.second < r-l-1)
+                    longest = make_pair(l+1, r-l-1);
+            }
+        }
+        return s.substr(longest.first, longest.second);
+    }
+
 private:
     const int N = 1000;
 };
