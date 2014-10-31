@@ -73,7 +73,7 @@ public:
         pair<int, int> longest = make_pair(0, 0);
         for (int i = 0; i < n; ++i) {      // starting index
             for (int j = 0; j < 2; ++j) {  // two centers
-                int l = i, r = i + j;      // two boundaries (inclusive)
+                int l = i, r = i + j;      // two boundaries (exclusive)
                 while (l >= 0 && r <= n-1 && s[l] == s[r]) { // expand from center (i, i+j)
                     --l;
                     ++r;
