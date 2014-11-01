@@ -47,8 +47,7 @@ public:
          return low == top ? low : -1;
      }
 
-     // search in A[low...top] for target,
-     // return its index if present or -1 if not.
+     // search in A[low...top] for target, return its index if present or -1 if not.
      // A[low...top] is either sorted or reverse sorted.
      template <typename Compare>
      int binarySearch(int A[], int low, int top, int target, Compare comp) {
