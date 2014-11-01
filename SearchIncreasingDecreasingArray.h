@@ -63,7 +63,6 @@ public:
         else
             return -1;
     }
-
 };
 
 #endif /* SEARCHINCREASINGDECREASINGARRAY_H_ */
