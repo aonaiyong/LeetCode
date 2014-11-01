@@ -19,10 +19,13 @@ using std::string;
 #include <utility>
 using std::pair; using std::make_pair;
 
+#include <algorithm>
+using std::min;
+
 class Solution {
 public:
     string longestPalindrome(string s) {
-        return longestPalindromeConstant(s);
+        return longestPalindromeManacher(s);
     }
 
     // Time: O(n^2), Space: O(n^2)
@@ -73,17 +76,48 @@ public:
         pair<int, int> longest = make_pair(0, 0);
         for (int i = 0; i < n; ++i) {      // starting index
             for (int j = 0; j < 2; ++j) {  // two centers
-                int l = i, r = i + j;      // two boundaries (exclusive)
-                while (l >= 0 && r <= n-1 && s[l] == s[r]) { // expand from center (i, i+j)
-                    --l;
-                    ++r;
+                int lt = i, rt = i + j;    // two boundaries (exclusive)
+                while (lt >= 0 && rt <= n-1 && s[lt] == s[rt]) { // expand from center (i, i+j)
+                    --lt;
+                    ++rt;
                 }
 
-                if (longest.second < r-l-1)
-                    longest = make_pair(l+1, r-l-1);
+                if (longest.second < rt - lt - 1)
+                    longest = make_pair(lt + 1, rt - lt - 1);
             }
         }
         return s.substr(longest.first, longest.second);
+    }
+
+    // Time: O(n), Space: O(n)
+    string longestPalindromeManacher(const string &s) {
+        int n = s.size();
+        int P[2 * N + 1];
+        int id = 0, mx = 0;
+        for (int i = 0; i < 2 * n + 1; ++i) {
+            int j = 2 * id - i;
+            P[i] = mx > i ? min(P[j], mx - i) : 1;
+            for (int lt = i - P[i], rt = i + P[i]; lt >= 0 && rt <= 2 * n; --lt, ++rt) {
+                if (lt % 2 && s[lt / 2] != s[rt / 2])
+                    break;
+                else
+                    ++P[i];
+            }
+
+            if (i + P[i] > mx) {
+                id = i;
+                mx = i + P[i];
+            }
+        }
+
+        int centerIndex = 0;
+        int maxLen = 0;
+        for (int i = 1; i < 2 * n + 1; ++i)
+            if (P[i] > P[centerIndex]) {
+                centerIndex = i;
+                maxLen = P[i] - 1;
+            }
+        return s.substr((centerIndex - maxLen) / 2, maxLen);
     }
 
 private:
