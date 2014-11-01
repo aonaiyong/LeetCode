@@ -26,8 +26,8 @@ class Solution {
 public:
     vector<int> search(int A[], int n, int target) {
         int peakIndex = peakFinder(A, n);
-        int i = binarySearch(A, 0, peakIndex, target, less<int>());
-        int j = binarySearch(A, peakIndex + 1, n - 1, target, greater<int>());
+        int i = binarySearch(A, 0, peakIndex, target, less<int>()); // A[0...peakIndex] is sorted
+        int j = binarySearch(A, peakIndex + 1, n - 1, target, greater<int>()); // A[peakIndex+1...n-1] is reverse sorted.
         return {i, j};
      }
 
@@ -46,6 +46,8 @@ public:
          return low == top ? low : -1;
      }
 
+     // search in A[low...top] for target,
+     // return its index if present or -1 if not.
      template <typename Compare>
      int binarySearch(int A[], int low, int top, int target, Compare comp) {
          while (low < top) {
