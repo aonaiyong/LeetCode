@@ -31,7 +31,8 @@ public:
         return {i, j};
      }
 
-     // return index of the maximum element (peak)
+     // find the maximum element (peak) and return its index
+     // Time: O(logn), Space: O(1)
      int peakFinder(int A[], int n) {
          int low = 0, top = n - 1;
          while (low < top) {
