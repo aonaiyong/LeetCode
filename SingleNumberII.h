@@ -19,19 +19,17 @@
 class Solution {
 public:
     int singleNumber(int A[], int n) {
-        int ret = 0;
-
-        for (int i = 0; i < 32; ++i) {
+        int single = 0;
+        for (int k = 0; k < 32; ++k) {
             int count = 0;
-            int mask = 1 << i;
-            for (int j = 0; j < n; ++j) {
-                if (A[j] & mask) ++count;
+            for (int i = 0; i < n; ++i) {
+                if (A[i] & 1 << k)
+                    ++count;
             }
-
-            if (count % 3) ret |= mask;
+            if (count % 3)
+                single |= 1 << k;
         }
-
-        return ret;
+        return single;
     }
 };
 
