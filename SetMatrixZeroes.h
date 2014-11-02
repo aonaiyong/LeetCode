@@ -2,10 +2,21 @@
  Author:      naiyong, aonaiyong@gmail.com
  Date:        Nov 2, 2014
  Problem:     Set Matrix Zeroes
- Difficulty:  
- Source:      
+ Difficulty:  3
+ Source:      https://oj.leetcode.com/problems/set-matrix-zeroes/
  Notes:
- Solution:
+ Given a m x n matrix, if an element is 0, set its entire row and column to 0. Do it in place.
+
+ Follow up:
+ Did you use extra space?
+ A straight forward solution using O(mn) space is probably a bad idea.
+ A simple improvement uses O(m + n) space, but still not the best solution.
+ Could you devise a constant space solution?
+
+ Solution:    1. Use two auxiliary arrays to flag whether there's 0 in a given row/column.
+                 Time: O(mn), Space: O(m + n).
+              2. Use the first row/column to flag whether there's 0 in a given row/column of the rest of the matrix.
+                 Time: O(mn), Space: O(1).
  */
 
 #ifndef SETMATRIXZEROES_H_
