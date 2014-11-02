@@ -26,19 +26,20 @@
 #ifndef REVERSEINTEGER_H_
 #define REVERSEINTEGER_H_
 
-#include <climits>
+#include <limits>
+using std::numeric_limits;
+
 #include <cassert>
 
 class Solution {
 public:
     int reverse(int x) {
         long long y = 0;
-        while (x != 0) {
+        while (x) {
             y = y * 10 + x % 10;
             x /= 10;
         }
-
-        assert(INT_MIN <= y && y <= INT_MAX);
+        assert(y >= numeric_limits<int>::min() && y <= numeric_limits<int>::max());
         return y;
     }
 };
