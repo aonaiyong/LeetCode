@@ -13,8 +13,8 @@
  Solution:   Count number of 1s.
  */
 
-#ifndef SINGLE_NUMBERII_H_
-#define SINGLE_NUMBERII_H_
+#ifndef SINGLENUMBERII_H_
+#define SINGLENUMBERII_H_
 
 class Solution {
 public:
@@ -35,4 +35,4 @@ public:
     }
 };
 
-#endif /* SINGLE_NUMBERII_H_ */
+#endif /* SINGLENUMBERII_H_ */
