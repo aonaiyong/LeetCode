@@ -1,7 +1,7 @@
 /*
  Author:     naiyong, aonaiyong@gmail.com
  Date:       Sep 23, 2014
- Problem:    Single NumberII.h
+ Problem:    Single Number II
  Difficulty: 3
  Source:     https://oj.leetcode.com/problems/single-number-ii/
  Notes:
