@@ -23,17 +23,15 @@
 class Solution {
 public:
     ListNode *swapPairs(ListNode *head) {
-        ListNode dummy(0), *prev = &dummy;
+        ListNode dummy(0), *node = &dummy;
         dummy.next = head;
-        ListNode *curr = head;
-        while (curr && curr->next) {
-            ListNode *temp = curr->next;
-            curr->next = temp->next;
-            temp->next = prev->next;
-            prev->next = temp;
+        while (node->next && node->next->next) {
+            ListNode *first = node->next, *second = first->next;
+            first->next = second->next;
+            second->next = first;
+            node->next = second;
 
-            prev = curr;
-            curr = curr->next;
+            node = first;
         }
         return dummy.next;
     }
