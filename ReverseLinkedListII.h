@@ -36,10 +36,10 @@ public:
         // reverse nodes from position m + 1 to n
         ListNode *first = prev->next;
         for (int i = 0; i < n - m; ++i) {
-            ListNode *move = first->next;
-            first->next = move->next;
-            move->next = prev->next;
-            prev->next = move;
+            ListNode *second = first->next;
+            first->next = second->next;
+            second->next = prev->next;
+            prev->next = second;
         }
         return dummy.next;
     }
