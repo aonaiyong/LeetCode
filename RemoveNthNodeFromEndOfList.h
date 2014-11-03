@@ -40,7 +40,7 @@ public:
     }
 
     // find the n-th node from the end of list
-    // the last node is the first node from the end
+    // the last node counts as the first node from the end
     ListNode *findNthFromEnd(ListNode *head, int n) {
         ListNode *front = head, *back = head;
         while (n > 0 && front) {
