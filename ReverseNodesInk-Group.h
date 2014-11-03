@@ -2,8 +2,8 @@
  Author:     naiyong, aonaiyong@gmail.com
  Date:       Sep 22, 2014
  Problem:    Reverse Nodes in k-Group
- Difficulty:
- Source:
+ Difficulty: 4
+ Source:     https://oj.leetcode.com/problems/reverse-nodes-in-k-group/
  Notes:
  Given a linked list, reverse the nodes of a linked list k at a time and return its modified list.
 
@@ -31,43 +31,37 @@
 class Solution {
 public:
     ListNode *reverseKGroup(ListNode *head, int k) {
-        if (k <= 1) return head;
+        if (k <= 1)
+            return head;
 
-        // calculate how many reverses need done
-        int len = getLength(head);
-        int times = len / k;
-        if (!times) return head;
+        // number of k-groups need to be reversed
+        int ngroup = getLength(head) / k;
+        if (ngroup < 1)
+            return head;
 
-        ListNode dummy(0);
+        // prev -> end of last k-Group
+        ListNode dummy(0), *prev = &dummy;
         dummy.next = head;
-        // prev -> tail of last k-Group
-        // curr -> head of current k-Group
-        ListNode *prev = &dummy, *curr = head;
-        for (int i = 0; i < times; ++i) {
-            // insert k-1 nodes between prev and tail
+        for (int i = 0; i < ngroup; ++i) {
+            ListNode *first = prev->next;
             for (int j = 0; j < k - 1; ++j) {
-                ListNode *temp = curr->next;
-                curr->next = temp->next;
-                temp->next = prev->next;
-                prev->next = temp;
+                ListNode *second = first->next;
+                first->next = second->next;
+                second->next = prev->next;
+                prev->next = second;
             }
-
-            // advance to next group
-            prev = curr;
-            curr = curr->next;
+            prev = first;
         }
-
         return dummy.next;
     }
 
-    // calculate number of nodes in the list
     int getLength(ListNode *head) {
-        int len = 0;
+        int n = 0;
         while (head) {
-            ++len;
+            ++n;
             head = head->next;
         }
-        return len;
+        return n;
     }
 };
 
