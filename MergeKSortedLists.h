@@ -44,9 +44,10 @@ public:
 
        // build a heap of size k
        // O(k) time complexity, O(k) space complexity
-       for (int i = 0; i < lists.size(); ++i)
+       for (int i = 0; i < lists.size(); ++i) {
            if (lists[i])
                q.push(lists[i]);
+       }
 
        ListNode dummy(0), *tail = &dummy;
        while (!q.empty()) {        // n * k steps
