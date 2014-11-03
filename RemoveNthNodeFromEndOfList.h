@@ -29,36 +29,31 @@ public:
     ListNode *removeNthFromEnd(ListNode *head, int n) {
         ListNode dummy(0);
         dummy.next = head;
-
         // find the (n+1)st node from the end of list
         ListNode *node = findNthFromEnd(&dummy, n + 1);
-        if (!node) return head;
-        ListNode *temp = node->next;
-        node->next = temp->next;
-        delete temp;
-
+        if (!node)
+            return head;
+        ListNode *del = node->next;
+        node->next = del->next;
+        delete del;
         return dummy.next;
     }
 
     // find the n-th node from the end of list
     // the last node is the first node from the end
     ListNode *findNthFromEnd(ListNode *head, int n) {
-        if (n <= 0) return nullptr;
-
-        ListNode *curr = head;
-        while (n && curr) {
+        ListNode *front = head, *back = head;
+        while (n > 0 && front) {
             --n;
-            curr = curr->next;
+            front = front->next;
         }
-        if (n) return nullptr;
-
-        ListNode *prev = head;
-        while (curr) {
-            prev = prev->next;
-            curr = curr->next;
+        if (n > 0)
+            return nullptr;
+        while (front) {
+            back = back->next;
+            front = front->next;
         }
-
-        return prev;
+        return back;
     }
 };
 
