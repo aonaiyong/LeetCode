@@ -35,7 +35,7 @@ public:
 
     ListNode *mergeSortList(ListNode *&head, int n) {
         if (n <= 0)
-        	return nullptr;
+            return nullptr;
         if (n == 1) {
             ListNode *single = head;
             head = head->next;
@@ -72,7 +72,6 @@ public:
             ++n;
             head = head->next;
         }
-
         return n;
     }
 
@@ -86,7 +85,6 @@ public:
             min = min->next;
         }
         tail->next = l1 ? l1 : l2;
-
         return dummy.next;
     }
 };
