@@ -22,13 +22,10 @@ public:
         ListNode dummy(0), *tail = &dummy;
         while (l1 && l2) {
             ListNode *&min = l1->val <= l2->val ? l1 : l2;
-            tail->next = min;
-            tail = tail->next;
-
+            tail = tail->next = min;
             min = min->next;
         }
         tail->next = l1 ? l1 : l2;
-
         return dummy.next;
     }
 };
