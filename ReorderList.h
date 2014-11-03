@@ -24,19 +24,21 @@
 class Solution {
 public:
     void reorderList(ListNode *head) {
-        if (!head || !head->next) return;
+        if (!head || !head->next)
+            return;
 
         // find the middle node
         ListNode *mid = findMiddle(head);
         // reverse the second half
-        ListNode *tail = reverse(mid->next);
+        ListNode *head2 = reverse(mid->next);
         mid->next = nullptr;
-        head = interleave(head, tail);
+        head = interleave(head, head2);
     }
 
     // find the middle node
     ListNode *findMiddle(ListNode *head) {
-        if (!head) return nullptr;
+        if (!head || !head->next)
+            return head;
 
         // Note that we have to skip the nullptr node at the end of list
         ListNode *slow = head, *fast = head->next;
@@ -49,30 +51,30 @@ public:
 
     // reverse the list
     ListNode *reverse(ListNode *head) {
-        if (!head) return nullptr;
+        if (!head || !head->next)
+            return head;
 
         ListNode dummy(0);
         dummy.next = head;
         while (head->next) {
-            ListNode *temp = head->next;
-            head->next = temp->next;
-            temp->next = dummy.next;
-            dummy.next = temp;
+            ListNode *move = head->next;
+            head->next = move->next;
+            move->next = dummy.next;
+            dummy.next = move;
         }
         return dummy.next;
     }
 
     // interleave nodes in the lists
-    ListNode *interleave(ListNode *head1, ListNode *head2) {
+    ListNode *interleave(ListNode *l1, ListNode *l2) {
         int i = 1;
         ListNode dummy(0), *tail = &dummy;
-        while (head1 && head2) {
-            ListNode *&head = i % 2 ? head1 : head2;
-            tail = tail->next = head;
-            head = head->next;
-            ++i;
+        while (l1 && l2) {
+            ListNode *&node = i++ % 2 ? l1 : l2;
+            tail = tail->next = node;
+            node = node->next;
         }
-        tail->next = head1 ? head1 : head2;
+        tail->next = l1 ? l1 : l2;
         return dummy.next;
     }
 };
