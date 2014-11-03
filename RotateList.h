@@ -22,27 +22,28 @@
 class Solution {
 public:
     ListNode *rotateRight(ListNode *head, int k) {
-        if (!head) return nullptr;
+        if (!head)
+            return nullptr;
 
         // find tail node and calculate size of list
         ListNode *tail = head;
-        int size = 1;
+        int n = 1;
         while (tail->next) {
-            ++size;
+            ++n;
             tail = tail->next;
         }
-        k %= size;
-        if (!k) return head;
+        k %= n;
+        if (!k)
+            return head;
 
         // find the (k+1)st node from the end of list
-        ListNode *curr = head;
-        for (int i = 0; i < size - k - 1; ++i) {
-            curr = curr->next;
+        ListNode *newTail = head;
+        for (int i = 0; i < n - k - 1; ++i) {
+            newTail = newTail->next;
         }
         tail->next = head;
-        head = curr->next;
-        curr->next = nullptr;
-
+        head = newTail->next;
+        newTail->next = nullptr;
         return head;
     }
 };
