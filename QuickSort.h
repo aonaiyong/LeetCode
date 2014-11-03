@@ -104,7 +104,7 @@ public:
     int median(int A[], int p, int r) {
         int q = p + (r - p) / 2;
         if (A[p] < A[q]) {
-            if (A[r] < A[q])       // (A[r], A[p], A[q])
+            if (A[r] < A[p])       // (A[r], A[p], A[q])
                 return p;
             else if (A[q] < A[r])  // (A[p], A[q], A[r])
                 return q;
