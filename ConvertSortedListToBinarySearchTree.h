@@ -24,25 +24,24 @@ public:
     }
 
     TreeNode *sortedListToBST(ListNode *&head, int n) {
-        if (n <= 0) return nullptr;
+        if (n <= 0)
+            return nullptr;
 
         TreeNode *left = sortedListToBST(head, n/2);
         TreeNode *root = new TreeNode(head->val);
         head = head->next;
         root->left = left;
         root->right = sortedListToBST(head, n-n/2-1);
-
         return root;
     }
 
     int getLength(ListNode *head) {
-        int len = 0;
+        int n = 0;
         while (head) {
-            ++len;
+            ++n;
             head = head->next;
         }
-
-        return len;
+        return n;
     }
 };
 
