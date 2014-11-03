@@ -50,12 +50,12 @@ public:
        }
 
        ListNode dummy(0), *tail = &dummy;
-       while (!q.empty()) {        // n * k steps
-           tail = tail->next = q.top();   // O(1) time
-           q.pop();                // O(log(k)) time
+       while (!q.empty()) {             // n * k steps
+           tail = tail->next = q.top(); // O(1) time
+           q.pop();                     // O(log(k)) time
 
            if (tail->next)
-               q.push(tail->next); // O(log(k)) time
+               q.push(tail->next);      // O(log(k)) time
        }
        return dummy.next;
     }
