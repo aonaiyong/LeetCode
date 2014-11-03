@@ -35,8 +35,7 @@ public:
             }
 
             carry = sum / 10;
-            tail->next = new ListNode(sum % 10);
-            tail = tail->next;
+            tail = tail->next = new ListNode(sum % 10);
         }
         return dummy.next;
     }
