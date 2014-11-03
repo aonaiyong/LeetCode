@@ -62,7 +62,8 @@ public:
 
     // Divide-and-Conquer: O(n*k*log(k)) time, O(1) space
     ListNode *mergeKListsDAC(vector<ListNode *> &lists) {
-        if (lists.empty()) return nullptr;
+        if (lists.empty())
+            return nullptr;
 
         int k = lists.size();
         while (k > 1) {
