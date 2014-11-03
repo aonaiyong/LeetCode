@@ -29,20 +29,18 @@ public:
     ListNode *reverseBetween(ListNode *head, int m, int n) {
         ListNode dummy(0), *prev = &dummy;
         dummy.next = head;
-        // find position m - 1
-        for (int i = 0; i < m - 1; ++i) {
+        // traverse to position m - 1
+        for (int i = 0; i < m - 1; ++i)
             prev = prev->next;
-        }
 
         // reverse nodes from position m + 1 to n
-        ListNode *curr = prev->next;
+        ListNode *first = prev->next;
         for (int i = 0; i < n - m; ++i) {
-            ListNode *temp = curr->next;
-            curr->next = temp->next;
-            temp->next = prev->next;
-            prev->next = temp;
+            ListNode *move = first->next;
+            first->next = move->next;
+            move->next = prev->next;
+            prev->next = move;
         }
-
         return dummy.next;
     }
 };
