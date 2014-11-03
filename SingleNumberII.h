@@ -19,6 +19,10 @@
 class Solution {
 public:
     int singleNumber(int A[], int n) {
+        return singleNumberCount(A, n);
+    }
+
+    int singleNumberCount(int A[], int n) {
         int single = 0;
         for (int k = 0; k < 32; ++k) {
             int count = 0;
@@ -30,6 +34,18 @@ public:
                 single |= 1 << k;
         }
         return single;
+    }
+
+    int singleNumberMask(int A[], int n) {
+        int ones = 0, twos = 0, threes = 0;
+        for (int i = 0; i < n; ++i) {
+            twos |= ones & A[i];
+            ones ^= A[i];
+            threes = ones & twos;
+            ones &= ~threes;
+            twos &= ~threes;
+        }
+        return ones;
     }
 };
 
