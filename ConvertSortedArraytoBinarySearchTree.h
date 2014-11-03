@@ -25,13 +25,13 @@ public:
         return sortedArrayToBST(num, 0, num.size() - 1);
     }
 
-    TreeNode *sortedArrayToBST(vector<int> &num, int low, int top) {
-        if (top < low) return nullptr;
+    TreeNode *sortedArrayToBST(vector<int> &A, int low, int top) {
+        if (top < low)
+            return nullptr;
         int mid = low + (top - low) / 2;
-        TreeNode *root = new TreeNode(num[mid]);
-        root->left = sortedArrayToBST(num, low, mid - 1);
-        root->right = sortedArrayToBST(num, mid + 1, top);
-
+        TreeNode *root = new TreeNode(A[mid]);
+        root->left = sortedArrayToBST(A, low, mid - 1);
+        root->right = sortedArrayToBST(A, mid + 1, top);
         return root;
     }
 };
