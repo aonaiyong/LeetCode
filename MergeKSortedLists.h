@@ -75,7 +75,6 @@ public:
 
             k = newk;
         }
-
         return lists[0];
     }
 
