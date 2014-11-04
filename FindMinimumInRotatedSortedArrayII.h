@@ -19,8 +19,11 @@
 
  Solution:    Binary Search. http://en.wikipedia.org/wiki/Binary_search_algorithm
               Observation:
-                - If num[mid] > num[high], then the pivot must be in range num[mid+1...high]
-                - If num[mid] < num[left], then the pivot must be in range num[low...mid]
+              - If num[low] < num[high], then num[low] is the minimum.
+              - Otherwise num[low] >= num[high]
+                - If num[mid] > num[high], then the pivot must be in num[mid+1...high]
+                - If num[mid] < num[low], then the pivot must be in num[low...mid]
+                - Otherwise the pivot must be in num[low+1..top]
  */
 
 #ifndef FINDMINIMUMINROTATEDSORTEDARRAYII_H_
@@ -36,14 +39,14 @@ class Solution {
 public:
     int findMin(vector<int> &num) {
         int low = 0, high = num.size() - 1;
-        while (low < high && num[low] >= num[high]) {
-            int mid = low + (high - low) / 2;
-            if (num[mid] > num[high])
-                low = mid + 1;
-            else if (num[mid] < num[low])
-                high = mid;
-            else
-                ++low;
+        while (low < high && num[low] >= num[high]) { // initial range num[low...high]
+            int mid = low + (high - low) / 2;         // mid >= low and mid < high
+            if (num[mid] > num[high])     // case 1
+                low = mid + 1;            // reduced range num[mid+1...high]
+            else if (num[mid] < num[low]) // case 2
+                high = mid;               // reduced range num[low...mid]
+            else         // case 3
+                ++low;   // reduced range num[low+1...high]
         }
         if (num[low] >= num[high])
             return low == high ? num[low] : numeric_limits<int>::min();
