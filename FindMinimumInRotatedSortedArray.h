@@ -15,10 +15,10 @@
 
  Solution:    Binary Search. http://en.wikipedia.org/wiki/Binary_search_algorithm
               Observation:
-                - For low < top, mid is strictly less than top, which means
-                  num[mid] and num[top] are not identical.
+                - For low < top, mid is strictly less than top, which means num[mid] and num[top]
+                  are not identical.
                 - If num[mid] > num[top], then the pivot must be in range num[mid+1...top]
-                - Otherwise, the pivot must be in range num[low...top]
+                - Otherwise, the pivot must be in range num[low...mid]
  */
 
 #ifndef FINDMINIMUMINROTATEDSORTEDARRAY_H_
