@@ -29,22 +29,22 @@ public:
 
     // Two-branch Binary Search
     int search2B(int A[], int n, int target) {
-        int low = 0, top = n - 1;
-        while (low <= top) {
-            int mid = low + (top - low) / 2;
+        int low = 0, high = n - 1;
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
             if (A[mid] == target)
             	return mid;               // at this point A[mid] is ruled out
             else if (A[low] <= A[mid]) {  // first half is sorted
                 if (A[low] <= target && target < A[mid])
-                    top = mid - 1;
+                    high = mid - 1;
                 else
                     low = mid + 1;
             }
             else { // second half is sorted
-                if (A[mid] < target && target <= A[top])
+                if (A[mid] < target && target <= A[high])
                     low = mid + 1;
                 else
-                    top = mid - 1;
+                    high = mid - 1;
             }
         }
         return -1;
@@ -52,9 +52,9 @@ public:
 
     // One-branch Binary Search
     int search1B(int A[], int n, int target) {
-        int low = 0, top = n - 1;
-        while (low < top) {
-            int mid = low + (top - low) / 2;
+        int low = 0, high = n - 1;
+        while (low < high) {
+            int mid = low + (high - low) / 2;
             if (A[low] <= A[mid]) {
                 if (A[low] <= target && target <= A[mid])
                     return binarySearch(A, low, mid, target);
@@ -62,30 +62,30 @@ public:
                     low = mid + 1;
             }
             else {  // we have A[low] > A[mid] here, which indicates
-                    // A[mid] <= A[top]
-                if (A[mid] <= target && target <= A[top])
-                    return binarySearch(A, mid, top, target);
+                    // A[mid] <= A[high]
+                if (A[mid] <= target && target <= A[high])
+                    return binarySearch(A, mid, high, target);
                 else
-                    top = mid - 1;
+                    high = mid - 1;
             }
         }
 
-        if (low == top && A[low] == target)
+        if (low == high && A[low] == target)
         	return low;
         else
         	return -1;
     }
 
-    int binarySearch(int A[], int low, int top, int target) {
-        while (low < top) {
-            int mid = low + (top - low) / 2;
+    int binarySearch(int A[], int low, int high, int target) {
+        while (low < high) {
+            int mid = low + (high - low) / 2;
             if (A[mid] < target)
                 low = mid + 1;
             else
-                top = mid;
+                high = mid;
         }
 
-        if (low == top && A[low] == target)
+        if (low == high && A[low] == target)
         	return low;
         else
         	return -1;

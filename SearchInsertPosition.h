@@ -20,10 +20,10 @@
                  Works even if there're duplicates, in which case the first occurrence is guaranteed to be found.
 
                  Loop invariant:   |    <    |      =?      |   >=   |
-                                    0         low        top      n-1
+                                    0         low       high      n-1
 
                  Termination:      |       <       |=?|      >=      |
-                                    0              low (top)      n-1
+                                    0              low (high)     n-1
                  Note that low is in range [0,n-1].
 
 
@@ -31,14 +31,14 @@
                  Works only when there're no duplicates.
 
                  Loop invariant:   |    <    |      =?      |    >   |
-                                    0         low        top      n-1
+                                    0         low       high      n-1
 
                  Termination:      |    <    |      =       |    >   |
-                                    0         low        top      n-1
+                                    0         low       high      n-1
 
                                    |         <      |        >       |
-                                    0            top low          n-1
-                 Note that [top,low] could be [-1,0] or [n-1,n].
+                                    0           high low          n-1
+                 Note that [high,low] could be [-1,0] or [n-1,n].
 
               3. One-branch (current position and width).
                  See SearchForARange.h for more details.
@@ -55,20 +55,20 @@ public:
 
     // one-branch (two index limits)
     int searchInsert1B(int A[], int n, int target) {
-        int low = 0, top = n - 1;
-        while (low < top) {       // search range [low, top], where low < top
-            int mid = low + (top - low) / 2;  // mid is in range [low, top)
+        int low = 0, high = n - 1;
+        while (low < high) {       // search range [low, high], where low < high
+            int mid = low + (high - low) / 2;  // mid is in range [low, high)
             if (A[mid] < target)
-                low = mid + 1;    // reduced range [mid + 1, top]
+                low = mid + 1;    // reduced range [mid + 1, high]
             else
-                top = mid;        // reduced range [low, mid]
+                high = mid;        // reduced range [low, mid]
         }
         // At exit of while:
-        //    if A[] is empty, then top < low
-        //    otherwise top == low
+        //    if A[] is empty, then high < low
+        //    otherwise high == low
 
         // deferred test for equality
-        if (low == top && A[low] < target)
+        if (low == high && A[low] < target)
             return low + 1;
         else
             return low;
@@ -76,15 +76,15 @@ public:
 
     // two-branch (two index limits)
     int searchInsert2B(int A[], int n, int target) {
-        int low = 0, top = n - 1;
-        while (low <= top) {      // search range [low, top], where low <= top
-            int mid = low + (top - low) / 2;  // mid is in range [low, top]
+        int low = 0, high = n - 1;
+        while (low <= high) {      // search range [low, high], where low <= high
+            int mid = low + (high - low) / 2;  // mid is in range [low, high]
             if (A[mid] == target)
             	return mid;
             else if(A[mid] < target)
-                low = mid + 1;     // reduced range [mid + 1, top]
+                low = mid + 1;     // reduced range [mid + 1, high]
             else
-                top = mid - 1;     // reduced range [low, mid - 1]
+                high = mid - 1;     // reduced range [low, mid - 1]
         }
 
         return low;

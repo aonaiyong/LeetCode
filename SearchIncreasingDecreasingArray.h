@@ -34,31 +34,31 @@ public:
      // find the maximum element (peak) and return its index
      // Time: O(logn), Space: O(1)
      int peakFinder(int A[], int n) {
-         int low = 0, top = n - 1;
-         while (low < top) {
-             int mid = low + (top - low) / 2;
+         int low = 0, high = n - 1;
+         while (low < high) {
+             int mid = low + (high - low) / 2;
              if (mid > 0 && A[mid - 1] > A[mid])
-                 top = mid - 1;
+                 high = mid - 1;
              else if (mid < n - 1 && A[mid] < A[mid + 1])
                  low = mid + 1;
              else
                  return mid;
          }
-         return low == top ? low : -1;
+         return low == high ? low : -1;
      }
 
-     // search in A[low...top] for target, return its index if present or -1 if not.
-     // A[low...top] is either sorted or reverse sorted.
+     // search in A[low...high] for target, return its index if present or -1 if not.
+     // A[low...high] is either sorted or reverse sorted.
      template <typename Compare>
-     int binarySearch(int A[], int low, int top, int target, Compare comp) {
-         while (low < top) {
-             int mid = low + (top - low) / 2;
+     int binarySearch(int A[], int low, int high, int target, Compare comp) {
+         while (low < high) {
+             int mid = low + (high - low) / 2;
              if (comp(A[mid], target))
                  low = mid + 1;
              else
-                 top = mid;
+                 high = mid;
         }
-        if (low == top && A[low] == target)
+        if (low == high && A[low] == target)
             return low;
         else
             return -1;

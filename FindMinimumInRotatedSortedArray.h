@@ -15,9 +15,9 @@
 
  Solution:    Binary Search. http://en.wikipedia.org/wiki/Binary_search_algorithm
               Observation:
-                - For low < top, mid is strictly less than top, which means num[mid] and num[top]
+                - For low < high, mid is strictly less than high, which means num[mid] and num[high]
                   are not identical.
-                - If num[mid] > num[top], then the pivot must be in range num[mid+1...top]
+                - If num[mid] > num[high], then the pivot must be in range num[mid+1...high]
                 - Otherwise, the pivot must be in range num[low...mid]
  */
 
@@ -33,15 +33,15 @@ using std::numeric_limits;
 class Solution {
 public:
     int findMin(vector<int> &num) {
-        int low = 0, top = num.size() - 1;
-        while (low < top) {                 // initial range A[low...top], where low < top
-            int mid = low + (top - low) / 2;// mid >= low and mid < top
-            if (num[mid] > num[top])
-                low = mid + 1;              // reduced range A[mid+1...top]
+        int low = 0, high = num.size() - 1;
+        while (low < high) {                 // initial range A[low...high], where low < high
+            int mid = low + (high - low) / 2;// mid >= low and mid < high
+            if (num[mid] > num[high])
+                low = mid + 1;              // reduced range A[mid+1...high]
             else
-                top = mid;                  // reduced range A[low...mid]
+                high = mid;                  // reduced range A[low...mid]
         }
-        return low == top ? num[low] : numeric_limits<int>::min();
+        return low == high ? num[low] : numeric_limits<int>::min();
     }
 };
 
