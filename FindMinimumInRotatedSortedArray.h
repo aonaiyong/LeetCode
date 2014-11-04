@@ -34,14 +34,13 @@ class Solution {
 public:
     int findMin(vector<int> &num) {
         int low = 0, top = num.size() - 1;
-        while (low < top) {           // initial range A[low...top], where low < top
-            int mid = low + (top - low) / 2;  // mid >= low and mid < top
+        while (low < top) {                 // initial range A[low...top], where low < top
+            int mid = low + (top - low) / 2;// mid >= low and mid < top
             if (num[mid] < num[top])
-                top = mid;            // reduced range A[low...mid]
+                top = mid;                  // reduced range A[low...mid]
             else
-                low = mid + 1;        // reduced range A[mid+1...top]
+                low = mid + 1;              // reduced range A[mid+1...top]
         }
-
         return low == top ? num[low] : numeric_limits<int>::min();
     }
 };
