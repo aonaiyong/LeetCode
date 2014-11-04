@@ -36,10 +36,10 @@ public:
         int low = 0, top = num.size() - 1;
         while (low < top) {                 // initial range A[low...top], where low < top
             int mid = low + (top - low) / 2;// mid >= low and mid < top
-            if (num[mid] < num[top])
-                top = mid;                  // reduced range A[low...mid]
-            else
+            if (num[mid] > num[top])
                 low = mid + 1;              // reduced range A[mid+1...top]
+            else
+                top = mid;                  // reduced range A[low...mid]
         }
         return low == top ? num[low] : numeric_limits<int>::min();
     }
