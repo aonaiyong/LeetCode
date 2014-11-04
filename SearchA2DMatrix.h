@@ -40,9 +40,9 @@ class Solution {
 public:
     bool searchMatrix(vector<vector<int> > &matrix, int target) {
     	if (matrix.empty() || matrix[0].empty())
-    		return false;
+    	    return false;
     	else
-    		return searchMatrix1P1B(matrix, target);
+    	    return searchMatrix1P1B(matrix, target);
     }
 
     // one-pass & one-branch
