@@ -12,7 +12,7 @@
  b = "1"
  Return "100".
 
- Solution:
+ Solution:    Math.
  */
 
 #ifndef ADDBINARY_H_
