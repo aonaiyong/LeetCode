@@ -35,7 +35,7 @@ public:
         if (m == 0 && n == 0)
             return NAN;
         else
-            return findMedianSortedArraysBS(A, m, B, n);
+            return findMedianSortedArraysDAC(A, m, B, n);
     }
 
     double findMedianSortedArraysMerge(int A[], int m, int B[], int n) {
@@ -48,6 +48,31 @@ public:
         }
 
         return (m + n) % 2 ? curr : (prev + curr) / 2.0;
+    }
+
+    double findMedianSortedArraysDAC(int A[], int m, int B[], int n) {
+        int t = m + n;
+        if (t % 2)
+            return findKthSortedArrays(A, m, B, n, t / 2 + 1);
+        else
+            return (findKthSortedArrays(A, m, B, n, t / 2) + findKthSortedArrays(A, m, B, n, t / 2 + 1)) / 2;
+    }
+
+    double findKthSortedArrays(int A[], int m, int B[], int n, int k) {
+        if (m > n)
+            return findKthSortedArrays(B, n, A, m, k);
+        if (m == 0)
+            return B[k - 1];
+        if (k == 1)
+            return min(A[0], B[0]);
+
+        int i = min(k / 2, m), j = k - i;
+        if (A[i - 1] < B[j - 1])
+            return findKthSortedArrays(A + i, m - i, B, j, k - i);
+        else if (A[i - 1] > B[j - 1])
+            return findKthSortedArrays(A, i, B + j, n - j, k - j);
+        else
+            return A[i - 1];
     }
 
     double findMedianSortedArraysBS(int A[], int m, int B[], int n) {
