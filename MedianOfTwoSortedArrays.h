@@ -27,16 +27,15 @@ public:
     }
 
     double findMedianSortedArraysMerge(int A[], int m, int B[], int n) {
-        int k = m + n;
         int prev = 0, curr = 0;
-        for (int i = 0, j = 0; i + j <= k / 2; ) {
+        for (int i = 0, j = 0; i + j <= (m + n) / 2; ) {
             prev = curr;
             int Ai = i == m ? INT_MAX : A[i];
             int Bj = j == n ? INT_MAX : B[j];
             curr = Ai <= Bj ? A[i++] : B[j++];
         }
 
-        return k % 2 ? curr : (prev + curr) / 2.0;
+        return (m + n) % 2 ? curr : (prev + curr) / 2.0;
     }
 
     double findMedianSortedArraysBS(int A[], int m, int B[], int n) {
@@ -51,8 +50,8 @@ public:
         int j = (m + n) / 2 - i;
 
         int Ai_1 = i == 0 ? INT_MIN : A[i - 1];
-        int Ai = i == m ? INT_MAX : A[i];
         int Bj_1 = j == 0 ? INT_MIN : B[j - 1];
+        int Ai = i == m ? INT_MAX : A[i];
         int Bj = j == n ? INT_MAX : B[j];
 
         if (Ai < Bj_1)
