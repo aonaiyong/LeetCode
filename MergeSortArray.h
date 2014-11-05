@@ -90,16 +90,17 @@ public:
 
         // Merge A[p...q] and B[0...m]
         int i = q, j = m, k = r;  // i, j, and k are all inclusive
-//        while (i >= p && j >= 0)
-//            A[k--] = A[i] <= B[j] ? B[j--] : A[i--];
-//        while (j >= 0)
-//            A[k--] = B[j--];
+        while (i >= p && j >= 0)
+            A[k--] = A[i] <= B[j] ? B[j--] : A[i--];
+        while (j >= 0)
+            A[k--] = B[j--];
 
-        while (i >= p && j >= 0) {
-            int Ai = i >= p ? A[i] : INT_MIN;
-            int Bj = j >= 0 ? B[j] : INT_MIN;
-            A[k--] = Ai <= Bj ? B[j--] : A[i--];
-        }
+//        // alternative
+//        while (i >= p && j >= 0) {
+//            int Ai = i >= p ? A[i] : INT_MIN;
+//            int Bj = j >= 0 ? B[j] : INT_MIN;
+//            A[k--] = Ai <= Bj ? B[j--] : A[i--];
+//        }
     }
 };
 
