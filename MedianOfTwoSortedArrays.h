@@ -67,12 +67,13 @@ public:
             return min(A[0], B[0]);
 
         int i = min(k / 2, m), j = k - i;
-        if (A[i - 1] < B[j - 1])
+        int a = A[i - 1], b = B[j - 1];
+        if (a < b)
             return findKthSortedArrays(A + i, m - i, B, j, k - i);
-        else if (A[i - 1] > B[j - 1])
+        else if (a > b)
             return findKthSortedArrays(A, i, B + j, n - j, k - j);
         else
-            return A[i - 1];
+            return a;
     }
 
     double findMedianSortedArraysBS(int A[], int m, int B[], int n) {
