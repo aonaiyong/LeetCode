@@ -8,12 +8,21 @@
  There are two sorted arrays A and B of size m and n respectively. Find the median of the two sorted arrays.
  The overall run time complexity should be O(log (m+n)).
 
- Solution:    1. Simply count while merging.
+ Solution:     Meidan. http://en.wikipedia.org/wiki/Median
+
+               1. Count while merging.
+                  Time: O(m + n), Space: O(1)
+
+               2.
+
+
 
  */
 
 #ifndef MEDIANOFTWOSORTEDARRAYS_H_
 #define MEDIANOFTWOSORTEDARRAYS_H_
+
+#include <cmath>
 
 #include <algorithm>
 using std::min; using std::max;
@@ -23,7 +32,10 @@ using std::min; using std::max;
 class Solution {
 public:
     double findMedianSortedArrays(int A[], int m, int B[], int n) {
-        return findMedianSortedArraysMerge(A, m, B, n);
+        if (m == 0 && n == 0)
+            return NAN;
+        else
+            return findMedianSortedArraysBS(A, m, B, n);
     }
 
     double findMedianSortedArraysMerge(int A[], int m, int B[], int n) {
@@ -50,8 +62,8 @@ public:
         int j = (m + n) / 2 - i;
 
         int Ai_1 = i == 0 ? INT_MIN : A[i - 1];
-        int Bj_1 = j == 0 ? INT_MIN : B[j - 1];
         int Ai = i == m ? INT_MAX : A[i];
+        int Bj_1 = j == 0 ? INT_MIN : B[j - 1];
         int Bj = j == n ? INT_MAX : B[j];
 
         if (Ai < Bj_1)
@@ -61,7 +73,6 @@ public:
 
         return (m + n) % 2 ? Ai : (Ai + max(Ai_1, Bj_1)) / 2.0;
     }
-
 };
 
 #endif /* MEDIANOFTWOSORTEDARRAYS_H_ */
