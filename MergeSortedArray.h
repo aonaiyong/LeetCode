@@ -18,14 +18,22 @@
 #ifndef MERGESORTEDARRAY_H_
 #define MERGESORTEDARRAY_H_
 
+#include <climits>
+
 class Solution {
 public:
     void merge(int A[], int m, int B[], int n) {
         int i = m - 1, j = n - 1, k = m + n - 1;
-        while (i >= 0 && j >= 0)
-            A[k--] = A[i] <= B[j] ? B[j--] : A[i--];
-        while (j >= 0)
-            A[k--] = B[j--];
+        // while (i >= 0 && j >= 0)
+        //     A[k--] = A[i] <= B[j] ? B[j--] : A[i--];
+        // while (j >= 0)
+        //     A[k--] = B[j--];
+
+        while (i >= 0 || j >= 0) {
+            int Ai = i >= 0 ? A[i] : INT_MIN;
+            int Bj = j >= 0 ? B[j] : INT_MIN;
+            A[k--] = Ai <= Bj ? B[j--] : A[i--];
+        }
     }
 };
 
