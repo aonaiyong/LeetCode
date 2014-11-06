@@ -84,6 +84,7 @@ public:
         return medianSearch(A, m, B, n, max(0, (m + n) / 2 - n), min(m - 1, (m + n) / 2));
     }
 
+    // Binary search in A[left...right] for the median.
     double medianSearch(int A[], int m, int B[], int n, int left, int right) {
          if (right < left)
              return medianSearch(B, n, A, m, max(0, (m + n) / 2 - m), min(n - 1, (m + n) / 2));
