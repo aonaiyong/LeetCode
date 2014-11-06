@@ -73,9 +73,9 @@ public:
         }
 
         if (low == high && A[low] == target)
-        	return low;
+            return low;
         else
-        	return -1;
+            return -1;
     }
 
     template <typename Compare>
