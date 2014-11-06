@@ -91,13 +91,12 @@ public:
                 high = mid;
         }
         if (low != high)
-        	return false;
+            return false;
         int i = target < A[low][0]? low - 1: low;
         if (i == -1)
-        	return false;
+            return false;
 
-        low = 0;
-        high = n - 1;
+        low = 0; high = n - 1;
         while (low < high) {
             int mid = low + (high - low) / 2;
             if (A[i][mid] < target)
