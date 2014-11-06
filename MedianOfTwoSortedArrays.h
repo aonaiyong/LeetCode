@@ -63,6 +63,8 @@ public:
     double findKthSortedArrays(int A[], int m, int B[], int n, int k) {
         if (m > n)
             return findKthSortedArrays(B, n, A, m, k);
+
+        // two base cases
         if (m == 0)
             return B[k - 1];
         if (k == 1)
