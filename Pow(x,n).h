@@ -12,8 +12,8 @@
 
               2. Iterative solution.
                  Let n_i be the i-th bit of n, and p_i be the (2^i)-th power of x
-                 then x^n = n_0 * p_0 * n_1 * p_1 * ... * n_31 * p_31
-                      p_(i+1) = p_i * p_i
+                 then if n > 0, x^n = (n_0 * p_0) * (n_1 * p_1) * ... * (n_31 * p_31)
+                      if n < 0, x^n = 1 / ((n_0 * p_0) * (n_1 * p_1) * ... * (n_31 * p_31))
 
                  Time: O(log|n|), Space: O(1).
  */
