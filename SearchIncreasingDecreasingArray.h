@@ -24,7 +24,7 @@ using std::less; using std::greater;
 
 class Solution {
 public:
-    vector<int> search(int A[], int n, int target) {
+    vector<int> search(const int A[], int n, int target) {
         int peakIndex = peakFinder(A, n);      // find the maximum element
         int i = binarySearch(A, 0, peakIndex, target, less<int>());            // A[0...peakIndex] is sorted
         int j = binarySearch(A, peakIndex + 1, n - 1, target, greater<int>()); // A[peakIndex+1...n-1] is reverse sorted.
@@ -33,7 +33,7 @@ public:
 
      // find a peak and return its index
      // Time: O(logn), Space: O(1)
-     int peakFinder(int A[], int n) {
+     int peakFinder(const int A[], int n) {
          int low = 0, high = n - 1;
          while (low <= high) {
              int mid = low + (high - low) / 2;
@@ -50,7 +50,7 @@ public:
      // search in A[low...high] for target, return its index if present or -1 if not.
      // A[low...high] is either sorted or reverse sorted.
      template <typename Compare>
-     int binarySearch(int A[], int low, int high, int target, Compare comp) {
+     int binarySearch(const int A[], int low, int high, int target, Compare comp) {
          while (low < high) {
              int mid = low + (high - low) / 2;
              if (comp(A[mid], target))
