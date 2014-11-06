@@ -24,11 +24,9 @@
 #define MEDIANOFTWOSORTEDARRAYS_H_
 
 #include <cmath>
-
+#include <climits>
 #include <algorithm>
 using std::min; using std::max;
-
-#include <climits>
 
 class Solution {
 public:
