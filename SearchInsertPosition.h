@@ -54,7 +54,7 @@ public:
     }
 
     // one-branch (two index limits)
-    int searchInsert1B(int A[], int n, int target) {
+    int searchInsert1B(const int A[], int n, int target) {
         int low = 0, high = n - 1;
         while (low < high) {       // search range [low, high], where low < high
             int mid = low + (high - low) / 2;  // mid is in range [low, high)
@@ -75,7 +75,7 @@ public:
     }
 
     // two-branch (two index limits)
-    int searchInsert2B(int A[], int n, int target) {
+    int searchInsert2B(const int A[], int n, int target) {
         int low = 0, high = n - 1;
         while (low <= high) {      // search range [low, high], where low <= high
             int mid = low + (high - low) / 2;  // mid is in range [low, high]
@@ -91,8 +91,8 @@ public:
     }
 
     // one-branch (current position and width)
-    int lowerBound(int A[], int n, int target) {
-        int *B = A;
+    int lowerBound(const int A[], int n, int target) {
+        const int *B = A;
         while (n > 0) {         // size n
             int step = n / 2;   // step >= 0 and step < n
             if (B[step] < target) {

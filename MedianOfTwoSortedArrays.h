@@ -31,7 +31,7 @@ using std::min; using std::max;
 class Solution {
 public:
     double findMedianSortedArrays(int A[], int m, int B[], int n) {
-        if (m == 0 && n == 0)
+        if (m <= 0 && n <= 0)
             return NAN;
         else
             return findMedianKthSmallest(A, m, B, n);

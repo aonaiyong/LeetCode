@@ -66,8 +66,8 @@ public:
     }
 
     template <typename Compare>
-    int Bound(int A[], int n, int target, Compare comp) {
-        int *B = A;
+    int Bound(const int A[], int n, int target, Compare comp) {
+        const int *B = A;
         while (n > 0) {        // size n
             int step = n / 2;  // 0 <= step < n
             if (comp(B[step], target)) {
@@ -81,8 +81,8 @@ public:
         return B - A;
     }
 
-    int lowerBound(int A[], int n, int target) {
-        int *B = A;
+    int lowerBound(const int A[], int n, int target) {
+        const int *B = A;
         while (n > 0) {
             int step = n / 2;
             if (B[step] < target) {
@@ -96,8 +96,8 @@ public:
         return B - A;
     }
 
-    int upperBound(int A[], int n, int target) {
-        int *B = A;
+    int upperBound(const int A[], int n, int target) {
+        const int *B = A;
         while (n > 0) {
             int step = n / 2;
             if (B[step] <= target) {
