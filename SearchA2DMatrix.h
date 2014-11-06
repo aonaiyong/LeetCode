@@ -120,12 +120,11 @@ public:
             else
                 high = mid - 1;
         }
-        if (high == -1)
-        	return false;
+        int i = high;         // i-th row to be searched
+        if (i == -1)
+            return false;
 
-        int i = high;    // i-th row to be searched
-        low = 1;        // starting from 1 (A[i][0] is already ruled out)
-        high = n - 1;
+        low = 1; high = n - 1; // starting from 1 (A[i][0] is already ruled out)
         while (low <= high) {
             int mid = low + (high - low) / 2;
             if (A[i][mid] == target)
