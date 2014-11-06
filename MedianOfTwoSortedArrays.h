@@ -84,7 +84,7 @@ public:
         if (right < left)
             return medianSearch(B, n, A, m, max(0, (m + n) / 2 - m), min(n - 1, (m + n) / 2));
 
-        int i = (left + right) / 2;
+        int i = left + (right - left) / 2;
         int j = (m + n) / 2 - i;
 
         int Ai_1 = i == 0 ? INT_MIN : A[i - 1];
