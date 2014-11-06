@@ -91,14 +91,14 @@ public:
         return medianSearch(A, m, B, n, max(0, (m + n) / 2 - n), min(m - 1, (m + n) / 2));
     }
 
-    // Binary search in A[left...right] for the median.
+    // Binary search in A[low...high] for the median.
     // Time: O(logm + logn)
-    double medianSearch(int A[], int m, int B[], int n, int left, int right) {
-         if (right < left)
+    double medianSearch(int A[], int m, int B[], int n, int low, int high) {
+         if (high < low)
              return medianSearch(B, n, A, m, max(0, (m + n) / 2 - m), min(n - 1, (m + n) / 2));
 
-         // [left, right] is a subrange of [0, m - 1]
-         int i = left + (right - left) / 2;
+         // [low, high] is a subrange of [0, m - 1]
+         int i = low + (high - low) / 2;
          int j = (m + n) / 2 - i;
 
          int Ai_1 = i == 0 ? INT_MIN : A[i - 1];
