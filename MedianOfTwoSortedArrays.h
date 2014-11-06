@@ -10,13 +10,12 @@
 
  Solution:     Meidan. http://en.wikipedia.org/wiki/Median
 
-               1. Count while merging.
-                  Time: O(m + n)
+               1. Count while merging, Time: O(m + n).
 
                2.
 
-               3. Binary search.
-                  Time: O(logm + logn)
+               3. Binary search, Time: O(logm + logn).
+                  http://ocw.mit.edu/courses/electrical-engineering-and-computer-science/6-046j-introduction-to-algorithms-sma-5503-fall-2005/assignments/ps9sol.pdf
  */
 
 #ifndef MEDIANOFTWOSORTEDARRAYS_H_
