@@ -21,6 +21,9 @@
 #ifndef SEARCHINROTATEDSORTEDARRAY_H_
 #define SEARCHINROTATEDSORTEDARRAY_H_
 
+#include <functional>
+using std::less;
+
 class Solution {
 public:
     int search(int A[], int n, int target) {
@@ -57,14 +60,13 @@ public:
             int mid = low + (high - low) / 2;
             if (A[low] <= A[mid]) {
                 if (A[low] <= target && target <= A[mid])
-                    return binarySearch(A, low, mid, target);
+                    return binarySearch(A, low, mid, target, less<int>());
                 else
                     low = mid + 1;
             }
-            else {  // we have A[low] > A[mid] here, which indicates
-                    // A[mid] <= A[high]
+            else {  // we have A[low] > A[mid] here, which indicates A[mid] <= A[high]
                 if (A[mid] <= target && target <= A[high])
-                    return binarySearch(A, mid, high, target);
+                    return binarySearch(A, mid, high, target, less<int>());
                 else
                     high = mid - 1;
             }
@@ -76,22 +78,21 @@ public:
         	return -1;
     }
 
-    int binarySearch(int A[], int low, int high, int target) {
+    template <typename Compare>
+    int binarySearch(const int A[], int low, int high, int target, Compare comp) {
         while (low < high) {
             int mid = low + (high - low) / 2;
-            if (A[mid] < target)
+            if (comp(A[mid], target))
                 low = mid + 1;
             else
                 high = mid;
         }
 
         if (low == high && A[low] == target)
-        	return low;
+            return low;
         else
-        	return -1;
-    }
+            return -1;
+     }
 };
-
-
 
 #endif /* SEARCHINROTATEDSORTEDARRAY_H_ */
