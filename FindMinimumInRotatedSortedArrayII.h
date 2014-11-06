@@ -32,8 +32,7 @@
 #include <vector>
 using std::vector;
 
-#include <limits>
-using std::numeric_limits;
+#include <climits>
 
 class Solution {
 public:
@@ -41,17 +40,14 @@ public:
         int low = 0, high = num.size() - 1;
         while (low < high && num[low] >= num[high]) { // initial range num[low...high]
             int mid = low + (high - low) / 2;         // mid >= low and mid < high
-            if (num[mid] > num[high])     // case 1
-                low = mid + 1;            // reduced range num[mid+1...high]
-            else if (num[mid] < num[low]) // case 2
-                high = mid;               // reduced range num[low...mid]
-            else         // case 3
-                ++low;   // reduced range num[low+1...high]
+            if (num[mid] > num[high])    // case 1
+                low = mid + 1;           // reduced range num[mid+1...high]
+            else if (num[mid] < num[low])// case 2
+                high = mid;              // reduced range num[low...mid]
+            else                         // case 3
+                ++low;                   // reduced range num[low+1...high]
         }
-        if (num[low] >= num[high])
-            return low == high ? num[low] : numeric_limits<int>::min();
-        else
-            return num[low];
+        return low > high ? INT_MIN : num[low];
     }
 };
 
