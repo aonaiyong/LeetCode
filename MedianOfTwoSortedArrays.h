@@ -60,6 +60,7 @@ public:
             return (findKthSortedArrays(A, m, B, n, t / 2) + findKthSortedArrays(A, m, B, n, t / 2 + 1)) / 2;
     }
 
+    // Time: O(logk)
     double findKthSortedArrays(int A[], int m, int B[], int n, int k) {
         if (m > n)
             return findKthSortedArrays(B, n, A, m, k);
@@ -71,7 +72,7 @@ public:
             return min(A[0], B[0]);
 
         // We have m <= n and m >= 1, k >= 2 and k <= m + n here
-        // so i is in [1, m], and j in [1, n]
+        // Note that i <= k / 2 <= j (i = j = k / 2, or i = m and j = k - m)
         int i = min(k / 2, m), j = k - i;
         int a = A[i - 1], b = B[j - 1];
         if (a < b)
@@ -89,6 +90,7 @@ public:
     }
 
     // Binary search in A[left...right] for the median.
+    // Time: O(logm + logn)
     double medianSearch(int A[], int m, int B[], int n, int left, int right) {
          if (right < left)
              return medianSearch(B, n, A, m, max(0, (m + n) / 2 - m), min(n - 1, (m + n) / 2));
