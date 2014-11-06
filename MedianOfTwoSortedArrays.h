@@ -42,6 +42,7 @@ public:
         int prev = 0, curr = 0;
         for (int i = 0, j = 0; i + j <= (m + n) / 2; ) {
             prev = curr;
+            // Note: assuming A[m] = B[n] = +INF
             int Ai = i == m ? INT_MAX : A[i];
             int Bj = j == n ? INT_MAX : B[j];
             curr = Ai <= Bj ? A[i++] : B[j++];
@@ -87,6 +88,7 @@ public:
         int i = left + (right - left) / 2;
         int j = (m + n) / 2 - i;
 
+        // Note: assuming A[-1] = B[-1] = -INF and A[m] = B[n] = +INF
         int Ai_1 = i == 0 ? INT_MIN : A[i - 1];
         int Ai = i == m ? INT_MAX : A[i];
         int Bj_1 = j == 0 ? INT_MIN : B[j - 1];
