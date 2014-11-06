@@ -85,7 +85,6 @@ public:
             return a;
     }
 
-
     // Binary search. Time: O(logm + logn).
     double findMedianBinarySearch(int A[], int m, int B[], int n) {
         return medianSearch(A, m, B, n, max(0, (m + n) / 2 - n), min(m - 1, (m + n) / 2));
