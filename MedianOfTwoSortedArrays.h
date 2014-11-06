@@ -85,25 +85,26 @@ public:
     }
 
     double medianSearch(int A[], int m, int B[], int n, int left, int right) {
-        if (right < left)
-            return medianSearch(B, n, A, m, max(0, (m + n) / 2 - m), min(n - 1, (m + n) / 2));
+         if (right < left)
+             return medianSearch(B, n, A, m, max(0, (m + n) / 2 - m), min(n - 1, (m + n) / 2));
 
-        int i = left + (right - left) / 2;
-        int j = (m + n) / 2 - i;
+         // [left, right] is a subrange of [0, m - 1]
+         int i = left + (right - left) / 2;
+         int j = (m + n) / 2 - i;
 
-        // Note: assuming A[-1] = B[-1] = -INF and A[m] = B[n] = +INF
-        int Ai_1 = i == 0 ? INT_MIN : A[i - 1];
-        int Bj_1 = j == 0 ? INT_MIN : B[j - 1];
-        int Ai = i == m ? INT_MAX : A[i];
-        int Bj = j == n ? INT_MAX : B[j];
+         int Ai_1 = i == 0 ? INT_MIN : A[i - 1];
+         int Bj_1 = j == 0 ? INT_MIN : B[j - 1];
+         // int Ai = i == m ? INT_MAX : A[i];
+         int Ai = A[i];    // i <= m - 1
+         int Bj = j == n ? INT_MAX : B[j];
 
-        if (Ai < Bj_1)
-            return medianSearch(A, m, B, n, i + 1, right);
-        if (Ai > Bj)
-            return medianSearch(A, m, B, n, left, i - 1);
+         if (Ai < Bj_1)
+             return medianSearch(A, m, B, n, i + 1, right);
+         if (Ai > Bj)
+             return medianSearch(A, m, B, n, left, i - 1);
 
-        return (m + n) % 2 ? Ai : (Ai + max(Ai_1, Bj_1)) / 2.0;
-    }
+         return (m + n) % 2 ? Ai : (Ai + max(Ai_1, Bj_1)) / 2.0;
+     }
 };
 
 #endif /* MEDIANOFTWOSORTEDARRAYS_H_ */
