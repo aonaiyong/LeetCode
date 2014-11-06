@@ -46,7 +46,7 @@ public:
     }
 
     // one-pass & one-branch
-    bool searchMatrix1P1B(vector<vector<int> > &A, int target) {
+    bool searchMatrix1P1B(const vector<vector<int> > &A, int target) {
         int m = A.size(), n = A[0].size();
         int low = 0, high = m * n - 1;
         while (low < high) {
@@ -62,7 +62,7 @@ public:
     }
 
     // one-pass & two-branch
-    bool searchMatrix1P2B(vector<vector<int> > &A, int target) {
+    bool searchMatrix1P2B(const vector<vector<int> > &A, int target) {
         int m = A.size(), n = A[0].size();
         int low = 0, high = m * n - 1;
         while (low <= high) {
@@ -79,7 +79,7 @@ public:
     }
 
     // two-pass & one-branch
-    bool searchMatrix2P1B(vector<vector<int> > &A, int target) {
+    bool searchMatrix2P1B(const vector<vector<int> > &A, int target) {
         int m = A.size(), n = A[0].size();
         int low = 0, high = m - 1;
         while (low < high) {
@@ -109,7 +109,7 @@ public:
     }
 
     // two-pass & two-branch
-    bool searchMatrix2P2B(vector<vector<int> > &A, int target) {
+    bool searchMatrix2P2B(const vector<vector<int> > &A, int target) {
         int m = A.size(), n = A[0].size();
         int low = 0, high = m - 1;
         while (low <= high) {
