@@ -68,6 +68,8 @@ public:
         if (k == 1)
             return min(A[0], B[0]);
 
+        // We have m <= n and m >= 1, k >= 2 and k <= m + n here
+        // so i is in [1, m], and j in [1, n]
         int i = min(k / 2, m), j = k - i;
         int a = A[i - 1], b = B[j - 1];
         if (a < b)
