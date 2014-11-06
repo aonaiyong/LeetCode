@@ -11,12 +11,12 @@
  Solution:     Meidan. http://en.wikipedia.org/wiki/Median
 
                1. Count while merging.
-                  Time: O(m + n), Space: O(1)
+                  Time: O(m + n)
 
                2.
 
-
-
+               3. Binary search.
+                  Time: O(logm + logn)
  */
 
 #ifndef MEDIANOFTWOSORTEDARRAYS_H_
@@ -38,6 +38,7 @@ public:
             return findMedianSortedArraysDAC(A, m, B, n);
     }
 
+    // Count while merge, Time: O(m + n)
     double findMedianSortedArraysMerge(int A[], int m, int B[], int n) {
         int prev = 0, curr = 0;
         for (int i = 0, j = 0; i + j <= (m + n) / 2; ) {
@@ -77,6 +78,8 @@ public:
             return a;
     }
 
+
+    // Binary search, Time: O(logm + logn)
     double findMedianSortedArraysBS(int A[], int m, int B[], int n) {
         return medianSearch(A, m, B, n, max(0, (m + n) / 2 - n), min(m - 1, (m + n) / 2));
     }
