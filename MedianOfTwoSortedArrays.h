@@ -11,6 +11,7 @@
  Solution:     Meidan. http://en.wikipedia.org/wiki/Median
 
                1. Count while merging, Time: O(m + n).
+                  http://en.wikipedia.org/wiki/Merge_sort
 
                2.
 
