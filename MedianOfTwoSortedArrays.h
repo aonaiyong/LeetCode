@@ -105,9 +105,9 @@ public:
          int Bj = j == n ? INT_MAX : B[j];
 
          if (Ai < Bj_1)
-             return medianSearch(A, m, B, n, i + 1, right);
+             return medianSearch(A, m, B, n, i + 1, high);
          if (Ai > Bj)
-             return medianSearch(A, m, B, n, left, i - 1);
+             return medianSearch(A, m, B, n, low, i - 1);
 
          return (m + n) % 2 ? Ai : (Ai + max(Ai_1, Bj_1)) / 2.0;
      }
