@@ -41,9 +41,9 @@ public:
     // only works for integer square root
     int sqrtBinarySearch(int x) {
         long long low = 0;
-        long long top = x;
-        while (low <= top) {
-            long long mid = low + (top - low) / 2;
+        long long high = x;
+        while (low <= high) {
+            long long mid = low + (high - low) / 2;
             long long square = mid * mid;
             if (square == x) {
                 return mid;
@@ -52,11 +52,11 @@ public:
                 low = mid + 1;
             }
             else {
-                top = mid - 1;
+                high = mid - 1;
             }
         }
 
-        return static_cast<int>(top);
+        return static_cast<int>(high);
     }
 };
 
