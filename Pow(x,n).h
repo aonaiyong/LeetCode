@@ -11,6 +11,10 @@
                  Time: O(log|n|), Space: O(log|n|).
 
               2. Iterative solution.
+                 Let n_i be the i-th bit of n, and p_i be x^(2^i)
+                 then x^n = n_0 * p_0 * n_1 * p_1 * ... * n_31 * p_31
+                      p_(i+1) = p_i * p_i
+
                  Time: O(log|n|), Space: O(1).
  */
 
