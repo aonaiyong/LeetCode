@@ -13,7 +13,8 @@
                1. Count while merging.
                   Time: O(m + n).
 
-               2.
+               2. Find the kth smallest of two sorted arrays.
+                  Time: O(log(m + n))
 
                3. Binary search.
                   Time: O(logm + logn).
@@ -35,11 +36,11 @@ public:
         if (m == 0 && n == 0)
             return NAN;
         else
-            return findMedianSortedArraysDAC(A, m, B, n);
+            return findMedianKthSmallest(A, m, B, n);
     }
 
     // Count while merge. Time: O(m + n).
-    double findMedianSortedArraysMerge(int A[], int m, int B[], int n) {
+    double findMedianMerge(int A[], int m, int B[], int n) {
         int prev = 0, curr = 0;
         for (int i = 0, j = 0; i + j <= (m + n) / 2; ) {
             prev = curr;
@@ -52,18 +53,19 @@ public:
         return (m + n) % 2 ? curr : (prev + curr) / 2.0;
     }
 
-    double findMedianSortedArraysDAC(int A[], int m, int B[], int n) {
+    // Time: O(log(m + n))
+    double findMedianKthSmallest(int A[], int m, int B[], int n) {
         int t = m + n;
         if (t % 2)
-            return findKthSortedArrays(A, m, B, n, t / 2 + 1);
+            return findKthSmallest(A, m, B, n, t / 2 + 1);
         else
-            return (findKthSortedArrays(A, m, B, n, t / 2) + findKthSortedArrays(A, m, B, n, t / 2 + 1)) / 2;
+            return (findKthSmallest(A, m, B, n, t / 2) + findKthSmallest(A, m, B, n, t / 2 + 1)) / 2;
     }
 
     // Time: O(logk)
-    double findKthSortedArrays(int A[], int m, int B[], int n, int k) {
+    double findKthSmallest(int A[], int m, int B[], int n, int k) {
         if (m > n)
-            return findKthSortedArrays(B, n, A, m, k);
+            return findKthSmallest(B, n, A, m, k);
 
         // two base cases
         if (m == 0)
@@ -76,16 +78,16 @@ public:
         int i = min(k / 2, m), j = k - i;
         int a = A[i - 1], b = B[j - 1];
         if (a < b)
-            return findKthSortedArrays(A + i, m - i, B, j, k - i);
+            return findKthSmallest(A + i, m - i, B, j, k - i);
         else if (a > b)
-            return findKthSortedArrays(A, i, B + j, n - j, k - j);
+            return findKthSmallest(A, i, B + j, n - j, k - j);
         else
             return a;
     }
 
 
     // Binary search. Time: O(logm + logn).
-    double findMedianSortedArraysBS(int A[], int m, int B[], int n) {
+    double findMedianBinarySearch(int A[], int m, int B[], int n) {
         return medianSearch(A, m, B, n, max(0, (m + n) / 2 - n), min(m - 1, (m + n) / 2));
     }
 
