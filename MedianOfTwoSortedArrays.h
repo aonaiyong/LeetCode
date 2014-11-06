@@ -38,7 +38,7 @@ public:
             return findMedianSortedArraysDAC(A, m, B, n);
     }
 
-    // Count while merge, Time: O(m + n)
+    // Count while merge. Time: O(m + n).
     double findMedianSortedArraysMerge(int A[], int m, int B[], int n) {
         int prev = 0, curr = 0;
         for (int i = 0, j = 0; i + j <= (m + n) / 2; ) {
@@ -79,7 +79,7 @@ public:
     }
 
 
-    // Binary search, Time: O(logm + logn)
+    // Binary search. Time: O(logm + logn).
     double findMedianSortedArraysBS(int A[], int m, int B[], int n) {
         return medianSearch(A, m, B, n, max(0, (m + n) / 2 - n), min(m - 1, (m + n) / 2));
     }
@@ -93,8 +93,8 @@ public:
 
         // Note: assuming A[-1] = B[-1] = -INF and A[m] = B[n] = +INF
         int Ai_1 = i == 0 ? INT_MIN : A[i - 1];
-        int Ai = i == m ? INT_MAX : A[i];
         int Bj_1 = j == 0 ? INT_MIN : B[j - 1];
+        int Ai = i == m ? INT_MAX : A[i];
         int Bj = j == n ? INT_MAX : B[j];
 
         if (Ai < Bj_1)
