@@ -37,7 +37,7 @@ public:
             quotient += q;
         }
 
-        return negative ? -quotient : quotient;
+        return negative ? -static_cast<int>(quotient) : static_cast<int>(quotient);
     }
 };
 
