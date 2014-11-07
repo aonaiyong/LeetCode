@@ -30,6 +30,9 @@
 
              2. Hash (one pass).
                 Time: O(n), Space: O(n).
+
+             3. Hash (two passes).
+                Time: O(n), Space: O(n).
  */
 
 #ifndef TWOSUM_H_
