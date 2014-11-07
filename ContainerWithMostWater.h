@@ -11,7 +11,20 @@
 
  Note: You may not slant the container.
 
- Solution:
+ Solution:    Two pointers.
+
+              A   |                              |
+                   i                            j
+              S[i, j] = min(A[i], A[j]) * (j - i)
+              I.  If A[i] < A[j], then S[i, j] = A[i] * (j - i).
+                  For all k < j, we have S[i, k] = min(A[i], A[k]) * (k - i)
+                                                   < A[i] * (j - i) = S[i, j].
+              II. If A[i] >= A[j], similarly we have S[k, j] < S[i, j] for all k > i.
+
+
+
+
+
  */
 
 #ifndef CONTAINERWITHMOSTWATER_H_
