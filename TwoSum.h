@@ -40,26 +40,21 @@ public:
     vector<int> twoSumSort(vector<int> &num, int target) {
         int n = num.size();
         vector<int> ind(n);
-        for (int i = 0; i < n; ++i) {
+        for (int i = 0; i < n; ++i)
             ind[i] = i;
-        }
         sort(ind.begin(), ind.end(),
              [&num](int i, int j) { return num[i] < num[j]; });
 
-        int low = 0, top = n - 1;
-        while (low < top) {
-            int i = ind[low], j = ind[top];
+        int low = 0, high = n - 1;
+        while (low < high) {
+            int i = ind[low], j = ind[high];
             int sum = num[i] + num[j];
-            if (sum == target) {
+            if (sum == target)
                 return {min(i, j) + 1, max(i, j) + 1};
-            }
-
-            if (sum < target) { // exclude num[i]
+            else if (sum < target)  // exclude num[i]
                 ++low;
-            }
-            else {              // exclude num[j]
-                --top;
-            }
+            else            // exclude num[j]
+                --high;
         }
 
         return {-1, -1};
