@@ -27,7 +27,8 @@ public:
     // Rate of convergence is quadratic, which means the
     // number of correct bits roughly doubles in every step
     int sqrtNewtonsMethod(int x) {
-        if (x == 0) return 0;
+        if (x == 0)    // f'(0) = 0, so the convergence will not be quadratic
+            return 0;
 
         double prev = 0, curr = 1;
         while (curr != prev) {
@@ -45,15 +46,12 @@ public:
         while (low <= high) {
             long long mid = low + (high - low) / 2;
             long long square = mid * mid;
-            if (square == x) {
+            if (square == x)
                 return mid;
-            }
-            else if (square < x) {
+            else if (square < x)
                 low = mid + 1;
-            }
-            else {
+            else
                 high = mid - 1;
-            }
         }
 
         return static_cast<int>(high);
