@@ -20,11 +20,6 @@
                   For all k < j, we have S[i, k] = min(A[i], A[k]) * (k - i)
                                                    < A[i] * (j - i) = S[i, j].
               II. If A[i] >= A[j], similarly we have S[k, j] < S[i, j] for all k > i.
-
-
-
-
-
  */
 
 #ifndef CONTAINERWITHMOSTWATER_H_
