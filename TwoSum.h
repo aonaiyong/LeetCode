@@ -25,6 +25,11 @@
                     Since A[low] + A[j] <= A[low] + A[high] < target, A[low] is ruled out.
                 III. >,   --high.
                     Since A[i] + A[high] >= A[low] + A[high] > target, A[high] is ruled out.
+
+                Time: O(nlogn), Space: O(1).
+
+             2. Hash (one pass).
+                Time: O(n), Space: O(n).
  */
 
 #ifndef TWOSUM_H_
@@ -43,7 +48,7 @@ using std::min; using std::max;
 class Solution {
 public:
     vector<int> twoSum(vector<int> &numbers, int target) {
-        return twoSumHashTwoPass(numbers, target);
+        return twoSumHash2P(numbers, target);
     }
 
     // O(nlog(n)) time, O(n) space
@@ -70,32 +75,6 @@ public:
     }
 
     // O(n) time, O(n) space
-    vector<int> twoSumHashTwoPass(vector<int> &num, int target) {
-        int n = num.size();
-        unordered_map<int, vector<int>> umap;
-        for (int i = 0; i < n; ++i) {
-            umap[num[i]].push_back(i);
-        }
-
-        for (int i = 0; i < n; ++i) {
-            auto it = umap.find(target - num[i]);
-            if (it != umap.end()) {
-                int j = it->second[0];
-                if (num[i] == target - num[i]) {
-                    if (it->second.size() == 1) {
-                        continue;
-                    }
-                    j = it->second[1];  // ensure different indices
-                }
-
-                return {min(i, j) + 1, max(i, j) + 1};
-            }
-        }
-
-        return {-1, -1};
-    }
-
-    // O(n) time, O(n) space
     vector<int> twoSumHash1P(const vector<int> &num, int target) {
         int n = num.size();
         unordered_map<int, int> umap;
@@ -107,6 +86,28 @@ public:
         }
         return {-1, -1};
     }
+
+    // O(n) time, O(n) space
+    vector<int> twoSumHash2P(const vector<int> &num, int target) {
+         int n = num.size();
+         unordered_map<int, vector<int> > umap;
+         for (int i = 0; i < n; ++i)
+             umap[num[i]].push_back(i);
+
+         for (int i = 0; i < n; ++i) {
+             int diff = target - num[i];
+             if (umap.count(diff)) {
+                 int j = umap[diff][0];
+                 if (diff == num[i]) {
+                     if (umap[diff].size() == 1)
+                         continue;
+                     j = umap[diff][1];  // ensure different indices
+                 }
+                 return {min(i, j) + 1, max(i, j) + 1};
+             }
+         }
+         return {-1, -1};
+     }
 };
 
 #endif /* TWOSUM_H_ */
