@@ -24,11 +24,12 @@ using std::vector;
 using std::sort;
 
 #include <cstdlib>
+using std::abs;
 
 class Solution {
 public:
     int threeSumClosest(vector<int> &num, int target) {
-        int ret = target;
+        int result = target;
 
         int n = num.size();
         sort(num.begin(), num.end());
@@ -36,15 +37,18 @@ public:
             int j = i + 1, k = n - 1;
             while (j < k) {
                 int sum = num[i] + num[j] + num[k];
-                if (sum == target) return sum;
-                if (sum < target) ++j;
-                else --k;
+                if (sum == target)
+                    return sum;
+                if (sum < target)
+                    ++j;
+                else
+                    --k;
 
-                if (ret == target || abs(sum - target) < abs(ret - target)) ret = sum;
+                if (result == target || abs(sum - target) < abs(result - target))
+                    result = sum;
             }
         }
-
-        return ret;
+        return result;
     }
 };
 
