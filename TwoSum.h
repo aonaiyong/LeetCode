@@ -14,7 +14,17 @@
  Input: numbers={2, 7, 11, 15}, target=9
  Output: index1=1, index2=2
 
- Solution:
+ Solution:   1. Sort and Squeeze.
+                Given a sorted array A[n], find i and j so that A[i] + A[j] == target.
+
+                A    |             <              |
+                      low                     high
+                A[low] + A[high] ? target
+                I.   ==,  return.
+                II.  <,   ++low.
+                    Since A[low] + A[j] <= A[low] + A[high] < target, A[low] is ruled out.
+                III. >,   --high.
+                    Since A[i] + A[high] >= A[low] + A[high] > target, A[high] is ruled out.
  */
 
 #ifndef TWOSUM_H_
