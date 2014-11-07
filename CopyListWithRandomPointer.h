@@ -69,20 +69,15 @@ public:
     RandomListNode *copyRandomListHash(RandomListNode *head) {
         unordered_map<RandomListNode *, RandomListNode *> umap;
         RandomListNode dummy(0), *tail = &dummy;
-        RandomListNode *curr = head;
-        while (curr) {
-            if (umap.find(curr) == umap.end()) {
-                umap[curr] = new RandomListNode(curr->label);
-            }
+        while (head) {
+            if (!umap.count(head))
+                umap[head] = new RandomListNode(head->label);
+            if (head->random && !umap.count(head->random))
+                umap[head->random] = new RandomListNode(head->random->label);
+            tail = tail->next = umap[head];
+            tail->random = umap[head->random];
 
-            if (curr->random && umap.find(curr->random) == umap.end()) {
-                umap[curr->random] = new RandomListNode(curr->random->label);
-            }
-
-            tail->next = umap[curr];
-            tail = tail->next;
-            tail->random = umap[curr->random]; // umap[nullptr] will be value-initialized to nullptr
-            curr = curr->next;
+            head = head->next;
         }
 
         return dummy.next;
