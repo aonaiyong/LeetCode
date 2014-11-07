@@ -34,7 +34,7 @@ public:
 
         double y = pow(x, n / 2), yy = y * y;
         if (n % 2)
-            return n > 0 ? x * yy : 1 / x * yy;
+            return n > 0 ? yy * x : yy / x;
         else
             return yy;
     }
