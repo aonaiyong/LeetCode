@@ -39,7 +39,7 @@ public:
                 int sum = num[i] + num[j] + num[k];
                 if (sum == target)
                     return sum;
-                if (sum < target)
+                else if (sum < target)
                     ++j;
                 else
                     --k;
