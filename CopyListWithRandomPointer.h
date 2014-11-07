@@ -79,7 +79,6 @@ public:
 
             head = head->next;
         }
-
         return dummy.next;
     }
 };
