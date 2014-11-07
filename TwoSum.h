@@ -56,7 +56,6 @@ public:
             else            // exclude num[j]
                 --high;
         }
-
         return {-1, -1};
     }
 
