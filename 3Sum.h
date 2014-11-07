@@ -1,14 +1,14 @@
 /*
  Author:     naiyong, aonaiyong@gmail.com
  Date:       Sep 22, 2014
- Problem:    3Sum
+ Problem:    3 Sum
  Difficulty: 3
  Source:     https://oj.leetcode.com/problems/3sum/
  Notes:
  Given an array S of n integers, are there elements a, b, c in S such that a + b + c = 0? Find all unique triplets in the array which gives the sum of zero.
 
  Note:
- Elements in a triplet (a,b,c) must be in non-descending order. (ie, a ≤ b ≤ c)
+ Elements in a triplet (a,b,c) must be in non-descending order. (ie, a 鈮�b 鈮�c)
  The solution set must not contain duplicate triplets.
     For example, given array S = {-1 0 1 2 -1 -4},
 
@@ -19,8 +19,8 @@
  Solution:  3SUM. http://en.wikipedia.org/wiki/3SUM
  */
 
-#ifndef THREESUM_H_
-#define THREESUM_H_
+#ifndef 3SUM_H_
+#define 3SUM_H_
 
 #include <vector>
 using std::vector;
@@ -31,7 +31,7 @@ using std::sort;
 class Solution {
 public:
     vector<vector<int> > threeSum(vector<int> &num) {
-        vector<vector<int>> ret;
+        vector<vector<int> > result;
 
         sort(num.begin(), num.end());
         int n = num.size();
@@ -43,7 +43,7 @@ public:
             while (j < k) {
                 int sum = num[i] + num[j] + num[k];
                 if (sum == 0) {
-                   ret.push_back({num[i], num[j], num[k]});
+                   result.push_back({num[i], num[j], num[k]});
 
                    ++j; --k;
                    // skip duplicates
@@ -54,9 +54,8 @@ public:
                 else --k;
             }
         }
-
-        return ret;
+        return result;
     }
 };
 
-#endif /* THREESUM_H_ */
+#endif /* 3SUM_H_ */
