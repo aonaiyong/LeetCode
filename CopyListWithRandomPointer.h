@@ -25,7 +25,7 @@ using std::unordered_map;
 struct RandomListNode {
 	int label;
 	RandomListNode *next, *random;
-    RandomListNode(int x) : label(x), next(nullptr), random(nullptr) {}
+	RandomListNode(int x) : label(x), next(nullptr), random(nullptr) {}
  };
 
 class Solution {
@@ -37,34 +37,31 @@ public:
     // 3 * n steps, O(1) space
     RandomListNode *copyRandomListThreePass(RandomListNode *head) {
         // 1st pass: for each node in the list, create a copy right after it
-        RandomListNode *curr = head;
-        while (curr) {
-            RandomListNode *node = new RandomListNode(curr->label);
-            node->next = curr->next;
-            curr->next = node;
+        RandomListNode *node = head;
+        while (node) {
+            RandomListNode *copy = new RandomListNode(node->label);
+            copy->next = node->next;
+            node->next = copy;
 
-            curr = curr->next->next;
+            node = copy->next;
         }
 
         // 2nd pass: for all the copies, set the random pointers
-        curr = head;
-        while (curr) {
-            curr->next->random = curr->random ? curr->random->next : nullptr;
+        node = head;
+        while (node) {
+            RandomListNode *copy = node->next;
+            copy->random = node->random ? node->random->next : nullptr;
 
-            curr = curr->next->next;
+            node = copy->next;
         }
 
         // 3rd pass: decouple all the copies
+        node = head;
         RandomListNode dummy(0), *tail = &dummy;
-        curr = head;
-        while (curr) {
-            tail->next = curr->next;
-            tail = tail->next;
-            curr->next = curr->next->next;
-
-            curr = curr->next;
+        while (node) {
+            tail = tail->next = node->next;
+            node = node->next = tail->next;
         }
-
         return dummy.next;
     }
 
