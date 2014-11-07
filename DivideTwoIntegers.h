@@ -23,7 +23,7 @@ public:
     int divide(int dividend, int divisor) {
         assert(divisor != 0);
 
-        bool negative = (dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0);
+        bool sign = (dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0);
         long long dividendll = abs(static_cast<long long>(dividend));
         long long divisorll = abs(static_cast<long long>(divisor));
         long long quotient = 0;
@@ -37,7 +37,7 @@ public:
             quotient += q;
         }
 
-        return negative ? -static_cast<int>(quotient) : static_cast<int>(quotient);
+        return sign ? -static_cast<int>(quotient) : static_cast<int>(quotient);
     }
 };
 
