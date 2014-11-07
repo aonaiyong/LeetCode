@@ -27,8 +27,25 @@ public:
         long long dividendll = abs(static_cast<long long>(dividend));
         long long divisorll = abs(static_cast<long long>(divisor));
         long long quotient = 0;
+
+        // // top -> down
+        // long long d = divisorll, q = 1;
+        // while ((d << 1) <= dividendll) {
+        //     d <<= 1;
+        //     q <<= 1;
+        // }
+        // while (dividendll >= divisorll) {
+        //     if (dividendll >= d) {
+        //         dividendll -= d;
+        //         quotient += q;
+        //     }
+        //     d >>= 1;
+        //     q >>= 1;
+        // }
+
+        // bottom -> up
         while (dividendll >= divisorll) {
-            long long d =  divisorll, q = 1;
+            long long d = divisorll, q = 1;
             while ((d << 1) <= dividendll) {
                 d <<= 1;
                 q <<= 1;
