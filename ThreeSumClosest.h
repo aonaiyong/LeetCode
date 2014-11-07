@@ -12,6 +12,7 @@
     The sum that is closest to the target is 2. (-1 + 2 + 1 = 2).
 
  Solution:  3SUM. http://en.wikipedia.org/wiki/3SUM
+            Time: O(n^2), Space: O(1).
  */
 
 #ifndef THREESUMCLOSEST_H_

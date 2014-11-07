@@ -18,6 +18,7 @@
     (-2,  0, 0, 2)
 
  Solution:   3SUM. http://en.wikipedia.org/wiki/3SUM
+             Time: O(n^3), Space: O(1).
  */
 
 #ifndef FOURSUM_H_
