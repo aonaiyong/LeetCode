@@ -13,7 +13,7 @@
                  Time: O(logn) (2 * log(n/m) steps).
 
               2. bottom -> up solution.
-                 Time: O((logn)^2) (log(n/m) * (log(n/m) + 1) / 2).
+                 Time: O((logn)^2) (log(n/m) * (log(n/m) + 1) / 2) steps).
  */
 
 #ifndef DIVIDETWOINTEGERS_H_
