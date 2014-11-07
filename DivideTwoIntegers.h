@@ -9,10 +9,10 @@
 
  Solution:    Let q = div(n, m) and q_i be the i-th bit of q
               then n = (q_31 * 2^31) * m + ... + (q_1 * 2^1) * m + (q_0 * 2^0) * m
-              1. top -> down solution.
+              1. top -> down solution. (2 passes)
                  Time: O(logn) (to be exact, 2 * log(n/m) steps).
 
-              2. bottom -> up solution.
+              2. bottom -> up solution. (log(n/m) passes)
                  Time: O((logn)^2) (to be exact, log(n/m) * (log(n/m) + 1) / 2).
  */
 
