@@ -96,18 +96,15 @@ public:
     }
 
     // O(n) time, O(n) space
-    vector<int> twoSumHashOnePass(vector<int> &num, int target) {
+    vector<int> twoSumHash1P(const vector<int> &num, int target) {
         int n = num.size();
-        unordered_map<int, int> mp;
+        unordered_map<int, int> umap;
         for (int i = 0; i < n; ++i) {
-            auto it = mp.find(target - num[i]);
-            if (it != mp.end()) {
-                return {min(i, it->second) + 1, max(i, it->second) + 1};
-            }
-
-            mp[num[i]] = i;  // at this point, it's safe to overwrite
+            int diff = target - num[i];
+            if (umap.count(diff))
+                return {umap[diff] + 1, i + 1};
+            umap[num[i]] = i;   // at this point, it's safe to overwrite
         }
-
         return {-1, -1};
     }
 };
