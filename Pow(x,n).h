@@ -8,12 +8,13 @@
  Implement pow(x, n).
 
  Solution:    1. Recursive solution.
-                      ---
-                      |   1,                       if n = 0
-                      |   x^(n/2) * x^(n/2),       if n is even
-                 x^n =|   x^(n/2) * x^(n/2) * x,   if n is odd and n > 0
-                      |   x^(n/2) * x^(n/2) * 1/x, if n is odd and n < 0
-                      ---
+                      --
+                      |  1,                       if n = 0
+                      |  x^(n/2) * x^(n/2),       if n is even
+                 x^n =|  x^(n/2) * x^(n/2) * x,   if n is odd and n > 0
+                      |  x^(n/2) * x^(n/2) * 1/x, if n is odd and n < 0
+                      --
+
                  Time: O(log|n|), Space: O(log|n|).
 
               2. Iterative solution.
