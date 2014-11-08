@@ -46,28 +46,27 @@ using std::stack;
 class Solution {
 public:
     vector<int> preorderTraversal(TreeNode *root) {
-        vector<int> vals;
-        morrisPreorder(root, vals);
-
-        return vals;
+        vector<int> values;
+        iterativePreorder(root, values);
+        return values;
     }
 
     // Recursive Pre-order Traversal
-    void preorder(TreeNode *root, vector<int> &vals) {
+    void recursivePreorder(TreeNode *root, vector<int> &values) {
         if (!root) return;
 
-        vals.push_back(root->val);
-        preorder(root->left, vals);
-        preorder(root->right, vals);
+        values.push_back(root->val);
+        recursivePreorder(root->left, values);
+        recursivePreorder(root->right, values);
     }
 
     // Iterative Pre-order Traversal
-    void iterativePreorder(TreeNode *root, vector<int> &vals) {
-        TreeNode *node = root;
+    void iterativePreorder(TreeNode *root, vector<int> &values) {
         stack<TreeNode *> stk;
+        TreeNode *node = root;
         while (node || !stk.empty()) {
             if (node) {
-                vals.push_back(node->val);
+                values.push_back(node->val);
 
                 stk.push(node);
                 node = node->left;
@@ -80,16 +79,15 @@ public:
     }
 
     // Iterative Pre-order Traversal Method 2
-    void iterPreorder2(TreeNode *root, vector<int> &vals) {
-        TreeNode *node = root;
+    void iterativePreorder2(TreeNode *root, vector<int> &values) {
         stack<TreeNode *> stk;
-        stk.push(nullptr);
-        while (node) {
-            vals.push_back(node->val);
+        if (root) stk.push(root);
+        while (!stk.empty()) {
+            TreeNode *node = stk.top();
+            stk.pop();
+            values.push_back(node->val);
             if (node->right) stk.push(node->right);
             if (node->left) stk.push(node->left);
-            node = stk.top();
-            stk.pop();
         }
     }
 

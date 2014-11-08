@@ -12,6 +12,7 @@
  Note: You may not slant the container.
 
  Solution:    Two pointers.
+              Time: O(n), Space: O(1).
 
               A   |                              |
                    i                            j
