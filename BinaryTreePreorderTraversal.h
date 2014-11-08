@@ -20,10 +20,12 @@
 
  Solution:   http://en.wikipedia.org/wiki/Tree_traversal
              1. Recursive Pre-order Traversal.
-                Time: O(n), Space: O(n)  (left-skewed binary tree)
+                Time: O(n)   (to be exact, 2n)
+                Space: O(n)  (left-skewed binary tree)
 
              2. Iterative Pre-order Traversal (Stack).
-                Time: O(n), Space: O(n)  (left-skewed binary tree)
+                Time: O(n)   (to be exact, 2n and n for method 1 and 2, respetively)
+                Space: O(n)  (left-skewed binary tree)
 
              3. Morris Pre-order Traversal.
                 Time: O(n), Space: O(1)
