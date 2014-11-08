@@ -55,7 +55,8 @@ public:
     }
 
     void recursiveInorder(TreeNode *root, vector<int> &values) {
-        if (!root) return;
+        if (!root)
+            return;
 
         recursiveInorder(root->left, values);
         values.push_back(root->val);
