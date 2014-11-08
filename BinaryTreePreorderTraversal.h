@@ -68,7 +68,7 @@ public:
             if (node) {
                 values.push_back(node->val);
 
-                stk.push(node);         // stk.push(node->right);
+                stk.push(node);          // stk.push(node->right);
                 node = node->left;
             }
             else {
@@ -103,11 +103,10 @@ public:
             else {
                 // find the rightmost node of the left subtree
                 TreeNode *rightMost = node->left;
-                while (rightMost->right && rightMost->right != node) {
+                while (rightMost->right && rightMost->right != node)
                     rightMost = rightMost->right;
-                }
 
-                if (!rightMost->right) {  // left subtree is to be processed
+                if (!rightMost->right) {       // left subtree is to be processed
                     vals.push_back(node->val); // process node
 
                     rightMost->right = node;   // make node rightMost's right child
