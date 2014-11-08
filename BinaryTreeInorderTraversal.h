@@ -20,10 +20,12 @@
 
  Solution:   http://en.wikipedia.org/wiki/Tree_traversal
              1. Recursive In-order Traversal.
-                Time: O(n), Space: O(n)
+                Time: O(n)   (to be exact, 2n)
+                Space: O(n)  (left-skewed binary tree)
 
              2. Iterative In-order Traversal (Stack).
-                Time: O(n), Space: O(n)
+                Time: O(n)   (to be exact, 2n)
+                Space: O(n)  (left-skewed binary tree)
 
              3. Morris In-order Traversal.
                 Time: O(n), Space: O(1)
@@ -47,21 +49,20 @@ using std::stack;
 class Solution {
 public:
     vector<int> inorderTraversal(TreeNode *root) {
-        vector<int> vals;
-        morrisInorder(root, vals);
-
-        return vals;
+        vector<int> values;
+        morrisInorder(root, values);
+        return values;
     }
 
-    void inorder(TreeNode *root, vector<int> &vals) {
+    void recursiveInorder(TreeNode *root, vector<int> &values) {
         if (!root) return;
 
-        inorder(root->left, vals);
-        vals.push_back(root->val);
-        inorder(root->right, vals);
+        recursiveInorder(root->left, values);
+        values.push_back(root->val);
+        recursiveInorder(root->right, values);
     }
 
-    void iterativeInorder(TreeNode *root, vector<int> &vals) {
+    void iterativeInorder(TreeNode *root, vector<int> &values) {
         stack<TreeNode *> stk;
         TreeNode *node = root;
         while (node || !stk.empty()) {
@@ -70,10 +71,11 @@ public:
                 node = node->left;
             }
             else {
-                vals.push_back(stk.top()->val);
-                node = stk.top()->right;
-
+                node = stk.top();
                 stk.pop();
+
+                values.push_back(node->val);
+                node = node->right;
             }
         }
     }
@@ -89,13 +91,12 @@ public:
             else {
                 // find the rightmost node of the left subtree
                 TreeNode *rightMost = node->left;
-                while (rightMost->right && rightMost->right != node) {
+                while (rightMost->right && rightMost->right != node)
                     rightMost = rightMost->right;
-                }
 
-                if (!rightMost->right) {     // left subtree is to be processed
-                    rightMost->right = node; // make node rightMost's right child
-                    node = node->left;       // advance to left subtree
+                if (!rightMost->right) {        // left subtree is to be processed
+                    rightMost->right = node;    // make node rightMost's right child
+                    node = node->left;          // advance to left subtree
                 }
                 else {                          // left subtree is finished
                     vals.push_back(node->val);  // process node

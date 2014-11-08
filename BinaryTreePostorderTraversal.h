@@ -46,42 +46,39 @@ using std::stack;
 class Solution {
 public:
     vector<int> postorderTraversal(TreeNode *root) {
-        vector<int> vals;
-        morrisPostorder(root, vals);
-
-        return vals;
+        vector<int> values;
+        iterativePostorder(root, values);
+        return values;
     }
 
     // Recursive Post-order Traversal
-    void postorder(TreeNode *root, vector<int> &vals) {
-        if (!root) return;
+    void recursivePostorder(TreeNode *root, vector<int> &values) {
+        if (!root)
+            return;
 
-        postorder(root->left, vals);
-        postorder(root->right, vals);
-        vals.push_back(root->val);
+        recursivePostorder(root->left, values);
+        recursivePostorder(root->right, values);
+        values.push_back(root->val);
     }
 
     // Iterative Post-order Traversal
-    void iterativePostorder(TreeNode *root, vector<int> &vals) {
-        TreeNode *node = root;
+    void iterativePostorder(TreeNode *root, vector<int> &values) {
         stack<TreeNode *> stk;
-        TreeNode *lastNodeVisited = nullptr;    // the last node processed
+        TreeNode *node = root, *lastNodeVisited = nullptr;
         while (node || !stk.empty()) {
             if (node) {
                 stk.push(node);
                 node = node->left;
             }
             else {
-                TreeNode *peakNode = stk.top();    // node at the top of stack
-                if (!peakNode->right || peakNode->right == lastNodeVisited) {  // right subtree is empty or finished
-                    vals.push_back(peakNode->val);
+                TreeNode *peakNode = stk.top();
+                if (!peakNode->right || peakNode->right == lastNodeVisited) {
+                    values.push_back(peakNode->val);
                     lastNodeVisited = peakNode;
-
                     stk.pop();
                 }
-                else {  // right subtree is to be processed
-                    node = peakNode->right; // advance to right subtree
-                }
+                else
+                    node = peakNode->right;
             }
         }
     }
@@ -124,7 +121,8 @@ public:
         TreeNode *node = src;
         while (true) {
             vals.push_back(node->val);
-            if (node == dst) break;
+            if (node == dst)
+                break;
             node = node->right;
         }
 
@@ -132,7 +130,8 @@ public:
     }
 
     void morrisReversePath(TreeNode *src, TreeNode *dst) {
-        if (src == dst) return;
+        if (src == dst)
+            return;
 
         TreeNode *node = src->right;
         while (true) {
@@ -141,7 +140,8 @@ public:
             src = node;
             node = next;
 
-            if (src == dst) return;
+            if (src == dst)
+                return;
         }
     }
 };

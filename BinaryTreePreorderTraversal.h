@@ -29,6 +29,7 @@
 
              3. Morris Pre-order Traversal.
                 Time: O(n), Space: O(1)
+                Note that we have to fully traverse the tree to recover it.
 
                 For 1&2, each edge is traversed exactly once.
                 For 3, each edge is traversed at most 3 times.
@@ -55,7 +56,8 @@ public:
 
     // Recursive Pre-order Traversal
     void recursivePreorder(TreeNode *root, vector<int> &values) {
-        if (!root) return;
+        if (!root)
+            return;
 
         values.push_back(root->val);
         recursivePreorder(root->left, values);
@@ -83,13 +85,16 @@ public:
     // Iterative Pre-order Traversal Method 2
     void iterativePreorder2(TreeNode *root, vector<int> &values) {
         stack<TreeNode *> stk;
-        if (root) stk.push(root);
+        if (root)
+            stk.push(root);
         while (!stk.empty()) {
             TreeNode *node = stk.top();
             stk.pop();
             values.push_back(node->val);
-            if (node->right) stk.push(node->right);
-            if (node->left) stk.push(node->left);
+            if (node->right)
+                stk.push(node->right);
+            if (node->left)
+                stk.push(node->left);
         }
     }
 
