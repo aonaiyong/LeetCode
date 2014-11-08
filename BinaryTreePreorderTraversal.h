@@ -120,4 +120,5 @@ public:
         }
     }
 };
+
 #endif /* BINARYTREEPREORDERTRAVERSAL_H_ */
