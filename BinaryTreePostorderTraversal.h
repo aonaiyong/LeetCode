@@ -53,8 +53,7 @@ public:
 
     // Recursive Post-order Traversal
     void recursivePostorder(TreeNode *root, vector<int> &values) {
-        if (!root)
-            return;
+        if (!root) return;
 
         recursivePostorder(root->left, values);
         recursivePostorder(root->right, values);
