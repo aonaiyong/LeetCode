@@ -68,11 +68,11 @@ public:
             if (node) {
                 values.push_back(node->val);
 
-                stk.push(node);
+                stk.push(node);         // stk.push(node->right);
                 node = node->left;
             }
             else {
-                node = stk.top()->right;
+                node = stk.top()->right; // node = stk.top();
                 stk.pop();
             }
         }
