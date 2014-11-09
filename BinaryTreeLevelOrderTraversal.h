@@ -21,10 +21,10 @@
    [15,7]
  ]
  Solution:  http://en.wikipedia.org/wiki/Tree_traversal
-            1. Iterative LeverOrder Traversal (Queue).
+            1. Iterative LeverOrder Traversal (BFS & Queue).
                Time: O(n), Space: O(n)
 
-            2. Recursive LeverOrder Traversal.
+            2. Recursive LeverOrder Traversal (Pre-order & Recursion).
                Time: O(n), Space: O(n)
  */
 
