@@ -39,27 +39,25 @@ using std::queue;
 class Solution {
 public:
     vector<vector<int> > zigzagLevelOrder(TreeNode *root) {
-        vector<vector<int>> vals;
-        bool leftToRight = true;
+        vector<vector<int> > values;
         queue<TreeNode *> frontier;
+        bool leftToRight = true;
         if (root) frontier.push(root);
         while (!frontier.empty()) {
             int n = frontier.size();
             vector<int> level(n);
             for (int i = 0; i < n; ++i) {
                 TreeNode *node = frontier.front();
-                int j = leftToRight ? i : n-1-i;
+                int j = leftToRight ? i : n - 1 - i;
                 level[j] = node->val;
                 if (node->left) frontier.push(node->left);
                 if (node->right) frontier.push(node->right);
-
                 frontier.pop();
             }
-            vals.push_back(level);
+            values.push_back(level);
             leftToRight = !leftToRight;
         }
-
-        return vals;
+        return values;
     }
 };
 
