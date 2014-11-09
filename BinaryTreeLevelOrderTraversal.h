@@ -42,14 +42,14 @@ using std::queue;
 class Solution {
 public:
     vector<vector<int> > levelOrder(TreeNode *root) {
-        vector<vector<int>> vals;
-        levelOrder(root, vals);
-        // levelOrder(root, 0, vals);
-        return vals;
+        vector<vector<int> > values;
+        levelOrder(root, values);
+        // levelOrder(root, 0, values);
+        return values;
     }
 
     // Iterative Solution
-    void levelOrder(TreeNode *root, vector<vector<int>> &vals) {
+    void levelOrder(TreeNode *root, vector<vector<int> > &values) {
         queue<TreeNode *> frontier;
         if (root) frontier.push(root);
         while (!frontier.empty()) {
@@ -66,18 +66,18 @@ public:
                 // the front node is finished
                 frontier.pop();
             }
-            vals.push_back(level);
+            values.push_back(level);
         }
     }
 
     // Recursive Solution
-    void levelOrder(TreeNode *root, int depth, vector<vector<int>> &vals) {
+    void levelOrder(TreeNode *root, int depth, vector<vector<int> > &values) {
         if (!root) return;
-        if (vals.size() <= depth) vals.resize(depth + 1);
+        if (values.size() <= depth) values.resize(depth + 1);
 
-        vals[depth].push_back(root->val);
-        levelOrder(root->left, depth+1, vals);
-        levelOrder(root->right, depth+1, vals);
+        values[depth].push_back(root->val);
+        levelOrder(root->left, depth+1, values);
+        levelOrder(root->right, depth+1, values);
     }
 };
 
