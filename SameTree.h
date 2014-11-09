@@ -27,37 +27,36 @@ using std::queue;
 class Solution {
 public:
     bool isSameTree(TreeNode *p, TreeNode *q) {
-        return iterIsSameTree(p, q);
+        return iterativeIsSameTree(p, q);
     }
 
     // Recursive Pre-order Traversal
-    bool recurIsSameTree(TreeNode *p, TreeNode *q) {
+    bool recursiveIsSameTree(TreeNode *p, TreeNode *q) {
         if (!p && !q) return true;
         if (!p || !q) return false;
         if (p->val != q->val) return false;
 
-        return recurIsSameTree(p->left, q->left) &&
-               recurIsSameTree(p->right, q->right);
+        return recursiveIsSameTree(p->left, q->left) &&
+               recursiveIsSameTree(p->right, q->right);
     }
 
     // Iterative Level-Order Traversal
-    bool iterIsSameTree(TreeNode *p, TreeNode *q) {
-        queue<TreeNode *> frontier;
-        frontier.push(p);
-        frontier.push(q);
-        while (!frontier.empty()) {
-            p = frontier.front(); frontier.pop();
-            q = frontier.front(); frontier.pop();
-            if (!p && !q) continue;
-            if (!p || !q) return false;
-            if (p->val != q->val) return false;
+    bool iterativeIsSameTree(TreeNode *p, TreeNode *q) {
+         queue<TreeNode *> frontier;
+         frontier.push(p);
+         frontier.push(q);
+         while (!frontier.empty()) {
+             p = frontier.front(); frontier.pop();
+             q = frontier.front(); frontier.pop();
+             if (!p && !q) continue;
+             if (!p || !q) return false;
+             if (p->val != q->val) return false;
 
-            frontier.push(p->left); frontier.push(q->left);
-            frontier.push(p->right); frontier.push(q->right);
-        }
-
-        return true;
-    }
+             frontier.push(p->left); frontier.push(q->left);
+             frontier.push(p->right); frontier.push(q->right);
+         }
+         return true;
+     }
 };
 
 #endif /* SAMETREE_H_ */
