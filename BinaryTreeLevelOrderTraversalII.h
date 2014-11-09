@@ -22,10 +22,10 @@
  ]
 
  Solution:  http://en.wikipedia.org/wiki/Tree_traversal
-            1. Iterative LeverOrder Traversal (Queue).
+            1. Iterative LeverOrder Traversal (BFS & Queue).
                Time: O(n), Space: O(n)
 
-            2. Recursive LeverOrder Traversal.
+            2. Recursive LeverOrder Traversal (Pre-order & Recursion).
                Time: O(n), Space: O(n)
  */
 
@@ -43,13 +43,13 @@ using std::queue;
 class Solution {
 public:
     vector<vector<int> > levelOrderBottom(TreeNode *root) {
-        vector<vector<int>> vals;
-        levelOrderBottom(root, vals);
-
-        return vals;
+        vector<vector<int> > values;
+        levelOrder(root, values);
+        reverse(values.begin(), values.end());
+        return values;
     }
 
-    void levelOrderBottom(TreeNode *root, vector<vector<int>> &vals) {
+    void levelOrder(TreeNode *root, vector<vector<int> > &values) {
         queue<TreeNode *> frontier;
         if (root) frontier.push(root);
         while (!frontier.empty()) {
@@ -63,11 +63,18 @@ public:
 
                 frontier.pop();
             }
-            vals.push_back(level);
+            values.push_back(level);
         }
-        reverse(vals.begin(), vals.end());
     }
 
+    void levelOrder(TreeNode *root, int depth, vector<vector<int> > &values) {
+        if (!root) return;
+        if (values.size() <= depth) values.resize(depth + 1);
+
+        values[depth].push_back(root->val);
+        levelOrder(root->left, depth + 1, values);
+        levelOrder(root->right, depth + 1, values);
+    }
 };
 
 #endif /* BINARYTREELEVELORDERTRAVERSALII_H_ */
