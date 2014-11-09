@@ -89,15 +89,13 @@ public:
         dummy.left = root; dummy.right = nullptr;
 
         while (node) {
-            if (!node->left) {      // left subtree is empty
+            if (!node->left)        // left subtree is empty
                 node = node->right; // advance to right subtree
-            }
             else {
                 // find rightmost node of left subtree
                 TreeNode *rightMost = node->left;
-                while (rightMost->right && rightMost->right != node) {
+                while (rightMost->right && rightMost->right != node)
                     rightMost = rightMost->right;
-                }
 
                 if (!rightMost->right) {    // left subtree is to be processed
                     rightMost->right = node;// make node rightMost's right child
@@ -120,8 +118,7 @@ public:
         TreeNode *node = src;
         while (true) {
             vals.push_back(node->val);
-            if (node == dst)
-                break;
+            if (node == dst) break;
             node = node->right;
         }
 
@@ -129,18 +126,12 @@ public:
     }
 
     void morrisReversePath(TreeNode *src, TreeNode *dst) {
-        if (src == dst)
-            return;
-
         TreeNode *node = src->right;
-        while (true) {
+        while (src != dst) {
             TreeNode *next = node->right;
             node->right = src;
             src = node;
             node = next;
-
-            if (src == dst)
-                return;
         }
     }
 };
