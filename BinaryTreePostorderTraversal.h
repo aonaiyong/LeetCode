@@ -86,8 +86,7 @@ public:
     void morrisPostorder(TreeNode *root, vector<int> &vals) {
         // dummy is new root
         TreeNode dummy(0), *node = &dummy;
-        dummy.left = root; dummy.right = nullptr;
-
+        dummy.left = root;
         while (node) {
             if (!node->left)        // left subtree is empty
                 node = node->right; // advance to right subtree
