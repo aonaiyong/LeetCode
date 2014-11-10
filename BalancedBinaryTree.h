@@ -28,17 +28,28 @@ class Solution {
 public:
     bool isBalanced(TreeNode *root) {
         int ht = 0;
-        return isBalanced(root, ht);
+        // return isBalancedTwo(root, ht);
+        return isBalancedOne(root) != -1;
     }
 
-    bool isBalanced(TreeNode *root, int &ht) {
+    bool isBalancedTwo(TreeNode *root, int &ht) {
         if (!root) return true;
 
         int lht = 0, rht = 0;
-        if (!isBalanced(root->left, lht)) return false;
-        if (!isBalanced(root->right, rht)) return false;
+        if (!isBalancedTwo(root->left, lht)) return false;
+        if (!isBalancedTwo(root->right, rht)) return false;
         ht = 1 + max(lht, rht);
         return abs(lht - rht) <= 1;
+    }
+
+    int isBalancedOne(TreeNode *root) {
+        if (!root) return 0;
+
+        int lht = 0, rht = 0;
+        if ((lht = isBalancedOne(root->left)) == -1) return -1;
+        if ((rht = isBalancedOne(root->right)) == -1) return -1;
+        if (abs(lht - rht) > 1) return -1;
+        return 1 + max(lht, rht);
     }
 };
 
