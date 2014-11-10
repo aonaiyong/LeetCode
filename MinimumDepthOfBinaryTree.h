@@ -26,8 +26,7 @@
 #include <algorithm>
 using std::min;
 
-#include <limits>
-using std::numeric_limits;
+#include <climits>
 
 #include <stack>
 using std::stack;
@@ -45,40 +44,37 @@ public:
 
     int recursiveMinDepth(TreeNode *root) {
         if (!root) return 0;
-        if (root->left && !root->right) return 1 + recursiveMinDepth(root->left);
-        if (!root->left && root->right) return 1 + recursiveMinDepth(root->right);
-        int leftDepth = recursiveMinDepth(root->left);
-        int rightDepth = recursiveMinDepth(root->right);
-        return 1 + min(leftDepth, rightDepth);
+        if (!root->left) return 1 + recursiveMinDepth(root->right);
+        if (!root->right) return 1 + recursiveMinDepth(root->left);
+
+        int leftMin = recursiveMinDepth(root->left);
+        int rightMin = recursiveMinDepth(root->right);
+        return 1 + min(leftMin, rightMin);
     }
 
     int iterativeStackMinDepth(TreeNode *root) {
         if (!root) return 0;
 
-        int minDepth = numeric_limits<int>::max();
+        int minDepth = INT_MAX;
         stack<TreeNode *> stk;
-        TreeNode *lastNodeVisited = nullptr;
-        while (root || !stk.empty()) {
-            if (root) {
-                stk.push(root);
-                root = root->left;
+        TreeNode *node = root, *lastNodeVisited = nullptr;
+        while (node || !stk.empty()) {
+            if (node) {
+                stk.push(node);
+                node = node->left;
             }
             else {
                 TreeNode *peakNode = stk.top();
                 if (!peakNode->right || peakNode->right == lastNodeVisited) {
-                    if (!peakNode->right && !peakNode->left && minDepth > stk.size()) {
-                        minDepth = stk.size();
-                    }
-
+                    if (!peakNode->right && !peakNode->left)
+                        minDepth = min(minDepth, static_cast<int>(stk.size()));
                     lastNodeVisited = peakNode;
                     stk.pop();
                 }
-                else {
-                    root = peakNode->right;
-                }
+                else
+                    node = peakNode->right;
             }
         }
-
         return minDepth;
     }
 
@@ -99,7 +95,6 @@ public:
                 frontier.pop();
             }
         }
-
         return minDepth;
     }
 };

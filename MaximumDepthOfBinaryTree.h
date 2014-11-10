@@ -76,6 +76,8 @@ public:
         queue<TreeNode *> frontier;
         if (root) frontier.push(root);
         while (!frontier.empty()) {
+            ++maxDepth;
+
             int n = frontier.size();
             for (int i = 0; i < n; ++i) {
                 TreeNode *node = frontier.front();
@@ -83,7 +85,6 @@ public:
                 if (node->right) frontier.push(node->right);
                 frontier.pop();
             }
-            ++maxDepth;
         }
         return maxDepth;
     }
