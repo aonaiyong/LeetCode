@@ -42,33 +42,30 @@ class Solution {
 public:
     bool isSymmetric(TreeNode *root) {
         if (!root) return true;
-        return iterIsSymmetric(root->left, root->right);
+        return iterativeIsSymmetric(root->left, root->right);
     }
 
-    bool isSymmetric(TreeNode *p, TreeNode *q) {
+    bool recursiveIsSymmetric(TreeNode *p, TreeNode *q) {
         if (!p && !q) return true;
         if (!p || !q) return false;
         if (p->val != q->val) return false;
 
-        return isSymmetric(p->left, q->right) &&
-               isSymmetric(p->right, q->left);
+        return recursiveIsSymmetric(p->left, q->right) &&
+               recursiveIsSymmetric(p->right, q->left);
     }
 
-    bool iterIsSymmetric(TreeNode *p, TreeNode *q) {
+    bool iterativeIsSymmetric(TreeNode *p, TreeNode *q) {
         queue<TreeNode *> frontier;
-        frontier.push(p);
-        frontier.push(q);
+        frontier.push(p); frontier.push(q);
         while (!frontier.empty()) {
             p = frontier.front(); frontier.pop();
             q = frontier.front(); frontier.pop();
             if (!p && !q) continue;
             if (!p || !q) return false;
             if (p->val != q->val) return false;
-
             frontier.push(p->left); frontier.push(q->right);
             frontier.push(p->right); frontier.push(q->left);
         }
-
         return true;
     }
 };
