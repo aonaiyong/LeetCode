@@ -28,8 +28,8 @@ class Solution {
 public:
     bool isBalanced(TreeNode *root) {
         int ht = 0;
-        // return isBalancedTwo(root, ht);
-        return isBalancedOne(root) != -1;
+        return isBalancedTwo(root, ht);
+        // return isBalancedOne(root) != -1;
     }
 
     bool isBalancedTwo(TreeNode *root, int &ht) {
