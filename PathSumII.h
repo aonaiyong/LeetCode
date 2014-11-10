@@ -44,55 +44,46 @@ class Solution {
 public:
     vector<vector<int> > pathSum(TreeNode *root, int sum) {
         vector<int> path;
-        vector<vector<int>> all;
+        vector<vector<int> > all;
         iterativePathSum(root, sum, path, all);
         return all;
     }
 
-    void recursivePathSum(TreeNode *root, int sum, vector<int> &path, vector<vector<int>> &all) {
+    void recursivePathSum(TreeNode *root, int sum, vector<int> &path, vector<vector<int> > &all) {
         if (!root) return;
-        if (!root->left && !root->right) {
-            if (root->val == sum) {
-                path.push_back(root->val);
-                all.push_back(path);
-                path.pop_back();
-            }
-            return;
-        }
 
+        sum -= root->val;
         path.push_back(root->val);
-        recursivePathSum(root->left, sum - root->val, path, all);
-        recursivePathSum(root->right, sum - root->val, path, all);
+        if (!root->left && !root->right && !sum)
+            all.push_back(path);
+        recursivePathSum(root->left, sum, path, all);
+        recursivePathSum(root->right, sum, path, all);
         path.pop_back();
     }
 
-
-    void iterativePathSum(TreeNode *root, int sum, vector<int> &path, vector<vector<int>> &all) {
+    void iterativePathSum(TreeNode *root, int sum, vector<int> &path, vector<vector<int> > &all) {
         stack<TreeNode *> stk;
-        TreeNode *lastNodeVisited = nullptr;
-        while (root || !stk.empty()) {
-            if (root) {
-                sum -= root->val;
-                path.push_back(root->val);
-                stk.push(root);
-
-                root = root->left;
+        TreeNode *node = root, *lastNodeVisited = nullptr;
+        while (node || !stk.empty()) {
+            if (node) {
+                sum -= node->val;
+                path.push_back(node->val);
+                stk.push(node);
+                node = node->left;
             }
             else {
                 TreeNode *peakNode = stk.top();
                 if (!peakNode->right || peakNode->right == lastNodeVisited) {
-                    if (!peakNode->right && !peakNode->left && !sum) {
+                    if (!peakNode->right && !peakNode->left && !sum)
                         all.push_back(path);
-                    }
 
-                    lastNodeVisited = peakNode;
-                    sum += peakNode->val;
                     path.pop_back();
+                    sum += peakNode->val;
+                    lastNodeVisited = peakNode;
                     stk.pop();
                 }
-                else {
-                    root = peakNode->right;
-                }
+                else
+                    node = peakNode->right;
             }
         }
     }
