@@ -42,38 +42,38 @@ using std::pair; using std::make_pair;
 class Solution {
 public:
     int sumNumbers(TreeNode *root) {
-        int sum = 0;
-        SumNumbers(root, 0, sum);
-        return sum;
+        // int sum = 0;
+        // recursiveSumNumbers(root, 0, sum);
+        // return sum;
+        return iterativeSumNumbers(root);
     }
 
-    void SumNumbers(TreeNode *root, int num, int &sum) {
+    void recursiveSumNumbers(TreeNode *root, int num, int &sum) {
         if (!root) return;
         num = num * 10 + root->val;
-        if (!root->left && !root->right) {
+        if (!root->left && !root->right)
             sum += num;
-            return;
-        }
-        SumNumbers(root->left, num, sum);
-        SumNumbers(root->right, num, sum);
+        recursiveSumNumbers(root->left, num, sum);
+        recursiveSumNumbers(root->right, num, sum);
     }
 
-    void iterSumNumbers(TreeNode *root, int num, int &sum) {
+    int iterativeSumNumbers(TreeNode *root) {
+        int sum = 0;
         queue<pair<TreeNode *, int>> frontier;
         if (root) frontier.push(make_pair(root, 0));
         while (!frontier.empty()) {
             int n = frontier.size();
             for (int i = 0; i < n; ++i) {
-                pair<TreeNode *, int> p = frontier.front();
-                TreeNode *node = p.first;
-                int num = p.second * 10 + node->val;
-                if (!node->left && !node->right) sum += num;
+                TreeNode *node = frontier.front().first;
+                int num = frontier.front().second * 10 + node->val;
+                if (!node->left && !node->right)
+                    sum += num;
                 if (node->left) frontier.push(make_pair(node->left, num));
                 if (node->right) frontier.push(make_pair(node->right, num));
-
                 frontier.pop();
             }
         }
+        return sum;
     }
 };
 
