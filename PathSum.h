@@ -41,10 +41,10 @@ public:
 
     bool recursiveHasPathSum(TreeNode *root, int sum) {
         if (!root) return false;
-        if (!root->left && !root->right) return root->val == sum;
-
-        return recursiveHasPathSum(root->left, sum - root->val) ||
-               recursiveHasPathSum(root->right, sum - root->val);
+        sum -= root->val;
+        if (!root->left && !root->right) return sum == 0;
+        return recursiveHasPathSum(root->left, sum) ||
+               recursiveHasPathSum(root->right, sum);
     }
 
     bool iterativeHasPathSum(TreeNode *root, int sum) {
@@ -59,18 +59,17 @@ public:
             else {
                 TreeNode *peakNode = stk.top();
                 if (!peakNode->right || peakNode->right == lastNodeVisited) {
-                    if (!peakNode->right && !peakNode->left && !sum) return true;
+                    if (!peakNode->right && !peakNode->left && !sum)
+                        return true;
 
                     sum += peakNode->val;
                     lastNodeVisited = peakNode;
                     stk.pop();
                 }
-                else {
+                else
                     root = peakNode->right;
-                }
             }
         }
-
         return false;
     }
 };
