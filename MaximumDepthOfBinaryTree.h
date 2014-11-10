@@ -36,41 +36,38 @@ using std::queue;
 class Solution {
 public:
     int maxDepth(TreeNode *root) {
-        return iterativeStackMaxDepth(root);
+        return iterativeQueueMaxDepth(root);
     }
 
     int recursiveMaxDepth(TreeNode *root) {
         if (!root) return 0;
-        int leftDepth = recursiveMaxDepth(root->left);
-        int rightDepth = recursiveMaxDepth(root->right);
-        return 1 + max(leftDepth, rightDepth);
+        int leftMax = recursiveMaxDepth(root->left);
+        int rightMax = recursiveMaxDepth(root->right);
+        return 1 + max(leftMax, rightMax);
     }
 
     int iterativeStackMaxDepth(TreeNode *root) {
         int maxDepth = 0;
         stack<TreeNode *> stk;
-        TreeNode *lastNodeVisited = nullptr;
-        while (root || !stk.empty()) {
-            if (root) {
-                stk.push(root);
-                root = root->left;
+        TreeNode *node = root, *lastNodeVisited = nullptr;
+        while (node || !stk.empty()) {
+            if (node) {
+                stk.push(node);
+                node = node->left;
             }
             else {
                 TreeNode *peakNode = stk.top();
                 if (!peakNode->right || peakNode->right == lastNodeVisited) {
-                    if (!peakNode->right && !peakNode->left && maxDepth < stk.size()) {
-                        maxDepth = stk.size();
-                    }
+                    if (!peakNode->right && !peakNode->left)
+                        maxDepth = max(maxDepth, static_cast<int>(stk.size()));
 
                     lastNodeVisited = peakNode;
                     stk.pop();
                 }
-                else {
-                    root = peakNode->right;
-                }
+                else
+                    node = peakNode->right;
             }
         }
-
         return maxDepth;
     }
 
@@ -79,18 +76,15 @@ public:
         queue<TreeNode *> frontier;
         if (root) frontier.push(root);
         while (!frontier.empty()) {
-            ++maxDepth;
-
             int n = frontier.size();
             for (int i = 0; i < n; ++i) {
                 TreeNode *node = frontier.front();
                 if (node->left) frontier.push(node->left);
                 if (node->right) frontier.push(node->right);
-
                 frontier.pop();
             }
+            ++maxDepth;
         }
-
         return maxDepth;
     }
 };
