@@ -25,24 +25,24 @@ using std::vector;
 #include <iterator>
 using std::iterator;
 
+#include <algorithm>
+using std::find;
+
 #include "TreeNode.h"
 
 class Solution {
 public:
     TreeNode *buildTree(vector<int> &preorder, vector<int> &inorder) {
-        return buildTree(preorder.cbegin(), inorder.cbegin(), preorder.size());
+        return buildTree(preorder.begin(), inorder.begin(), preorder.size());
     }
 
     TreeNode *buildTree(vector<int>::const_iterator pbeg, vector<int>::const_iterator ibeg, int n) {
-        if (n <= 0) return nullptr;
+        if (n == 0) return nullptr;
 
-        int val = *pbeg;
-        int mid = 0;
-        while (ibeg[mid] != val) ++mid;
-
-        TreeNode *root = new TreeNode(val);
-        root->left = buildTree(pbeg + 1, ibeg, mid);
-        root->right = buildTree(pbeg + mid + 1, ibeg + mid + 1, n - mid - 1);
+        TreeNode *root = new TreeNode(*pbeg);
+        int m = find(ibeg, ibeg + n, *pbeg) - ibeg;
+        root->left = buildTree(pbeg + 1, ibeg, m);
+        root->right = buildTree(pbeg + m + 1, ibeg + m + 1, n - m - 1);
         return root;
     }
 };
