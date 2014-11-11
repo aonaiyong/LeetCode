@@ -32,7 +32,7 @@
                 Time: O(n), Space: O(1).
 
              2. Recursive Solution.
-                Time: O(n), Space: O(1).
+                Time: O(n), Space: O(1). (tail recursion)
 
  */
 
