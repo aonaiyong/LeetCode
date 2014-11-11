@@ -31,8 +31,7 @@
 #ifndef RECOVERBINARYSEARCHTREE_H_
 #define RECOVERBINARYSEARCHTREE_H_
 
-#include <limits>
-using std::numeric_limits;
+#include <climits>
 
 #include <utility>
 using std::swap;
@@ -46,81 +45,86 @@ class Solution {
 public:
     void recoverTree(TreeNode *root) {
         TreeNode *first = nullptr, *second = nullptr;
-        TreeNode dummy(numeric_limits<int>::min()), *prev = &dummy;
-
-        recoverTree(root, prev, first, second);
-        if (first && second) swap(first->val, second->val);
+        TreeNode dummy(INT_MIN), *pred = &dummy;
+        iterativeRecoverTree(root, pred, first, second);
+        if (first && second)
+            swap(first->val, second->val);
     }
 
     // Recursive In-order Traversal
-    void recoverTree(TreeNode *root, TreeNode *&prev, TreeNode *&first, TreeNode *&second) {
+    void recursiveRecoverTree(TreeNode *root, TreeNode *&pred, TreeNode *&first, TreeNode *&second) {
         if (!root) return;
 
-        recoverTree(root->left, prev, first, second);
-        if (prev->val > root->val) {
-            if (!second) first = prev;
+        recursiveRecoverTree(root->left, pred, first, second);
+        if (pred->val >= root->val) {
+            if (!first)
+                first = pred;
             second = root;
         }
-        prev = root;
-        recoverTree(root->right, prev, first, second);
+        pred = root;
+        recursiveRecoverTree(root->right, pred, first, second);
     }
 
     // Iterative In-order Traversal
-    void iterRecoverTree(TreeNode *root, TreeNode *&prev, TreeNode *&first, TreeNode *&second) {
+    void iterativeRecoverTree(TreeNode *root, TreeNode *&pred, TreeNode *&first, TreeNode *&second) {
         stack<TreeNode *> stk;
-        while (root || !stk.empty()) {
-            if (root) {
-                stk.push(root);
-                root = root->left;
+        TreeNode *node = root;
+        while (node || !stk.empty()) {
+            if (node) {
+                stk.push(node);
+                node = node->left;
             }
             else {
-                TreeNode *topNode = stk.top();
-                if (prev->val > topNode->val) {
-                    if (!second) first = prev;
-                    second = topNode;
+                node = stk.top();
+                if (pred->val >= node->val) {
+                    if (!first)
+                        first = pred;
+                    second = node;
                 }
-                prev = topNode;
+                pred = node;
 
-                root = topNode->right;
+                node = node->right;
                 stk.pop();
             }
         }
-    }
+     }
 
     // Morris In-order Traversal
-    void morrisRecoverTree(TreeNode *root, TreeNode *&prev, TreeNode *&first, TreeNode *&second) {
-        while (root) {
-            if (!root->left) {      // left subtree is empty
-                // process root
-                if (prev->val > root->val) {
-                    if (!second) first = prev;
-                    second = root;
+    void morrisRecoverTree(TreeNode *root, TreeNode *&pred, TreeNode *&first, TreeNode *&second) {
+        TreeNode *node = root;
+        while (node) {
+            if (!node->left) {      // left subtree is empty
+                // process node
+                if (pred->val > node->val) {
+                    if (!second)
+                        first = pred;
+                    second = node;
                 }
-                prev = root;
+                pred = node;
 
-                root = root->right; // advance to right subtree
+                node = node->right; // advance to right subtree
             }
             else {
                 // find the rightmost node of the left subtree
-                TreeNode *rightMost = root->left;
-                while (rightMost->right && rightMost->right != root) {
+                TreeNode *rightMost = node->left;
+                while (rightMost->right && rightMost->right != node)
                     rightMost = rightMost->right;
-                }
 
                 if (!rightMost->right) {      // left subtree is to be processed
-                    rightMost->right = root;  // make root rightMost's right child
-                    root = root->left;        // advance to left subtree
+                    rightMost->right = node;  // make root rightMost's right child
+                    node = node->left;        // advance to left subtree
                 }
                 else {                        // left subtree is finished
-                    // process root
-                    if (prev->val > root->val) {
-                        if (!second) first = prev;
-                        second = root;
+                    // process node
+                    if (pred->val > node->val) {
+                        if (!second)
+                            first = pred;
+                        second = node;
                     }
-                    prev = root;
+                    pred = node;
 
                     rightMost->right = nullptr; // restore rightMost's right child to nullptr
-                    root = root->right;         // advance to right subtree
+                    node = node->right;         // advance to right subtree
                 }
             }
         }
