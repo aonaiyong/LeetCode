@@ -32,7 +32,7 @@
                 Time: O(n), Space: O(1).
 
              2. Recursive Solution.
-                Time: O(n), Space: O(n).
+                Time: O(n), Space: O(1).
 
  */
 
@@ -73,7 +73,7 @@ public:
              root->right = root->left;
              root->left = nullptr;
          }
-         recursiveFlatten(root->right);
+         recursiveFlatten(root->right);  // tail recursion
      }
 };
 
