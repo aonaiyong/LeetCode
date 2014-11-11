@@ -48,38 +48,33 @@ public:
     }
 
     void iterativeFlatten(TreeNode *root) {
-        while (root) {
-            if (root->left) {
-                TreeNode *rightMost = root->left;
-                while (rightMost->right) {
+        TreeNode *node = root;
+        while (node) {
+            if (node->left) {
+                TreeNode *rightMost = node->left;
+                while (rightMost->right)
                     rightMost = rightMost->right;
-                }
-
-                rightMost->right = root->right;
-                root->right = root->left;
-                root->left = nullptr;
+                rightMost->right = node->right;
+                node->right = node->left;
+                node->left = nullptr;
             }
-
-            root = root->right;
+            node = node->right;
         }
     }
 
     void recursiveFlatten(TreeNode *root) {
-        if (!root) return;
+         if (!root) return;
 
-        if (root->left) {
-            TreeNode *rightMost = root->left;
-            while (rightMost->right) {
-                rightMost = rightMost->right;
-            }
-
-            rightMost->right = root->right;
-            root->right = root->left;
-            root->left = nullptr;
-        }
-
-        recursiveFlatten(root->right);
-    }
+         if (root->left) {
+             TreeNode *rightMost = root->left;
+             while (rightMost->right)
+                 rightMost = rightMost->right;
+             rightMost->right = root->right;
+             root->right = root->left;
+             root->left = nullptr;
+         }
+         recursiveFlatten(root->right);
+     }
 };
 
 #endif /* FLATTENBINARYTREETOLINKEDLIST_H_ */
