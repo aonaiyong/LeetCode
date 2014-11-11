@@ -31,8 +31,7 @@
 #ifndef VALIDATEBINARYSEARCHTREE_H_
 #define VALIDATEBINARYSEARCHTREE_H_
 
-#include <limits>
-using std::numeric_limits;
+#include <climits>
 
 #include <stack>
 using std::stack;
@@ -42,10 +41,11 @@ using std::stack;
 class Solution {
 public:
     bool isValidBST(TreeNode *root) {
-        int lower = numeric_limits<int>::min();
-        int upper = numeric_limits<int>::max();
-        return isValidBST(root, lower);
-        // return isValidBST(root, lower, upper);
+        // return isValidBST(root, INT_MIN, INT_MAX);
+        int pred = INT_MIN;
+        // return isValidBST(root, pred);
+        // return iterativeIsValidBST(root, pred);
+        return morrisIsValidBST(root, pred);
     }
 
     // Recursive Pre-order Traversal
@@ -60,63 +60,65 @@ public:
     // Recursive In-order Traversal
     bool isValidBST(TreeNode *root, int &pred) {
         if (!root) return true;
+
         if (!isValidBST(root->left, pred)) return false;
-        if (root->val <= pred) return false;
+        if (pred >= root->val) return false;
         pred = root->val;
         return isValidBST(root->right, pred);
     }
 
     // Iterative In-order Traversal
-    bool iterIsValidBST(TreeNode *root, int pred) {
+    bool iterativeIsValidBST(TreeNode *root, int pred) {
         stack<TreeNode *> stk;
-        while (root || !stk.empty()) {
-            if (root) {
-                stk.push(root);
-                root = root->left;
+        TreeNode *node = root;
+        while (node || !stk.empty()) {
+            if (node) {
+                stk.push(node);
+                node = node->left;
             }
             else {
-                TreeNode *peakNode = stk.top();
-                if (peakNode->val <= pred) return false;
-                pred = peakNode->val;
-                root = peakNode->right;
-
+                node = stk.top();
+                if (pred >= node->val)
+                    return false;
+                pred = node->val;
+                node = node->right;
                 stk.pop();
             }
         }
-
         return true;
     }
 
     // Morris In-order Traversal
     bool morrisIsValidBST(TreeNode *root, int pred) {
+        TreeNode *node = root;
         bool isValidBST = true;
-        while (root) {
-            if (!root->left) {
-                if (root->val <= pred) isValidBST = false;
-                pred = root->val;
+        while (node) {
+            if (!node->left) {
+                if (pred >= node->val)
+                    isValidBST = false;
+                pred = node->val;
 
-                root = root->right;
+                node = node->right;
             }
             else {
-                TreeNode *rightMost = root->left;
-                while (rightMost->right && rightMost->right != root) {
+                TreeNode *rightMost = node->left;
+                while (rightMost->right && rightMost->right != node)
                     rightMost = rightMost->right;
-                }
 
                 if (!rightMost->right) {
-                    rightMost->right = root;
-                    root = root->left;
+                    rightMost->right = node;
+                    node = node->left;
                 }
                 else {
-                    if (root->val <= pred) isValidBST = false;
-                    pred = root->val;
+                    if (pred >= node->val)
+                        isValidBST = false;
+                    pred = node->val;
 
                     rightMost->right = nullptr;
-                    root = root->right;
+                    node = node->right;
                 }
             }
         }
-
         return isValidBST;
     }
 };
