@@ -33,7 +33,6 @@
 
              2. Recursive Solution.
                 Time: O(n), Space: O(1). (tail recursion)
-
  */
 
 #ifndef FLATTENBINARYTREETOLINKEDLIST_H_
