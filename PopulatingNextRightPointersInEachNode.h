@@ -57,11 +57,10 @@ public:
     }
 
     void iterativeQueueConnect(TreeLinkNode *root) {
-        TreeLinkNode dummy(0);
         queue<TreeLinkNode *> frontier;
         if (root) frontier.push(root);
         while (!frontier.empty()) {
-            TreeLinkNode *node = &dummy;
+            TreeLinkNode dummy(0), *node = &dummy;
             int n = frontier.size();
             for (int i = 0; i < n; ++i) {
                 node = node->next = frontier.front();
@@ -74,16 +73,17 @@ public:
     }
 
     void iterativeConnect(TreeLinkNode *root) {
-        if (!root) return;
-        TreeLinkNode *first = root;
-        while (first->left) {
-            TreeLinkNode *node = first;
+        TreeLinkNode *node = root;
+        while (node) {
+            TreeLinkNode dummy(0), *prev = &dummy;
             while (node) {
-                node->left->next = node->right;
-                node->right->next = node->next ? node->next->left : nullptr;
+                if (node->left)
+                    prev = prev->next = node->left;
+                if (node->right)
+                    prev = prev->next = node->right;
                 node = node->next;
             }
-            first = first->left;
+            node = dummy.next;
         }
     }
 
