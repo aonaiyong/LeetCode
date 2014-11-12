@@ -28,7 +28,7 @@
 
  Solution: 1. Iterative with Queue.
               Time: O(n), Space: O(n)
-           2. Iterative with two while loops (level by level)
+           2. Iterative with two while loops (level by level).
               Time: O(n), Space: O(1)
            3. Recursive.
               Time: O(n), Space: O(n)
@@ -80,24 +80,18 @@ public:
     }
 
     void recursiveConnect(TreeLinkNode *root) {
-        if (!root) return;
+         if (!root) return;
 
-        TreeLinkNode *node = root, *prev = nullptr;
-        root = nullptr;
-        while (node) {
-            TreeLinkNode *left = node->left, *right = node->right;
-            if (left || right) {
-                if (prev) prev->next = left ? left : right;
-                if (!root) root = left ? left : right;
-                if (left) left->next = right;
-                prev = right ? right : left;
-            }
-
-            node = node->next;
-        }
-
-        recursiveConnect(root);
-    }
+         TreeLinkNode dummy(0), *prev = &dummy;
+         while (root) {
+             if (root->left)
+                 prev = prev->next = root->left;
+             if (root->right)
+                 prev = prev->next = root->right;
+             root = root->next;
+         }
+         recursiveConnect(dummy.next);
+     }
 };
 
 #endif /* POPULATINGNEXTRIGHTPOINTERSINEACHNODEII_H_ */

@@ -88,13 +88,18 @@ public:
     }
 
     void recursiveConnect(TreeLinkNode *root) {
-        if (!root || !root->left || !root->right) return;
+         if (!root) return;
 
-        root->left->next = root->right;
-        root->right->next = root->next ? root->next->left : nullptr;
-        recursiveConnect(root->left);
-        recursiveConnect(root->right);
-    }
+         TreeLinkNode dummy(0), *prev = &dummy;
+         while (root) {
+             if (root->left)
+                 prev = prev->next = root->left;
+             if (root->right)
+                 prev = prev->next = root->right;
+             root = root->next;
+         }
+         recursiveConnect(dummy.next);
+     }
 };
 
 #endif /* POPULATINGNEXTRIGHTPOINTERSINEACHNODE_H_ */
