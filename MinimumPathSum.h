@@ -42,7 +42,7 @@ public:
         return dp[n-1];
     }
 
-    // Time: O(m * n), Space: O(min(m, n))
+    // Time: O(m * n), Space: O(m * n)
     int minPathSumQuadratic(vector<vector<int> > &grid) {
        int m = grid.size(), n = grid[0].size();
        vector<vector<int> > dp(m, vector<int>(n));
