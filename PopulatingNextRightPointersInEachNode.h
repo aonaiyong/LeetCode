@@ -36,7 +36,7 @@
 
  Solution:   1. Iterative with Queue.
                 Time: O(n), Space: O(n)
-             2. Iterative with two while loops (level by level)
+             2. Iterative with two while loops (level by level).
                 Time: O(n), Space: O(1)
              3. Recursive.
                 Time: O(n), Space: O(log(n))
