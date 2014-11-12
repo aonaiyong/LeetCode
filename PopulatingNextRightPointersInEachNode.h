@@ -50,25 +50,32 @@ using std::queue;
 
 #include "TreeNode.h"
 
+/**
+ * Definition for binary tree with next pointer.
+ * struct TreeLinkNode {
+ *  int val;
+ *  TreeLinkNode *left, *right, *next;
+ *  TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) {}
+ * };
+ */
 class Solution {
 public:
     void connect(TreeLinkNode *root) {
-        iterativeConnect(root);
+        iterativeQueueConnect(root);
     }
 
     void iterativeQueueConnect(TreeLinkNode *root) {
+        TreeLinkNode dummy(0);
         queue<TreeLinkNode *> frontier;
         if (root) frontier.push(root);
         while (!frontier.empty()) {
-            TreeLinkNode *prev = nullptr, *curr = nullptr;
+            TreeLinkNode *node = &dummy;
             int n = frontier.size();
             for (int i = 0; i < n; ++i) {
-                curr = frontier.front();
-                if (prev)
-                    prev->next = curr;
-                prev = curr;
-                if (curr->left) frontier.push(curr->left);
-                if (curr->right) frontier.push(curr->right);
+                node = node->next = frontier.front();
+                if (node->left) frontier.push(node->left);
+                if (node->right) frontier.push(node->right);
+
                 frontier.pop();
             }
         }
@@ -89,13 +96,13 @@ public:
     }
 
     void recursiveConnect(TreeLinkNode *root) {
-         if (!root || !root->left || !root->right) return;
+        if (!root || !root->left || !root->right) return;
 
-         root->left->next = root->right;
-         root->right->next = root->next ? root->next->left : nullptr;
-         recursiveConnect(root->left);
-         recursiveConnect(root->right);
-     }
+        root->left->next = root->right;
+        root->right->next = root->next ? root->next->left : nullptr;
+        recursiveConnect(root->left);
+        recursiveConnect(root->right);
+    }
 };
 
 #endif /* POPULATINGNEXTRIGHTPOINTERSINEACHNODE_H_ */
