@@ -45,21 +45,20 @@ using std::queue;
 class Solution {
 public:
     void connect(TreeLinkNode *root) {
-       recursiveConnect(root);
+        iterativeQueueConnect(root);
     }
 
     void iterativeQueueConnect(TreeLinkNode *root) {
+        TreeLinkNode dummy(0);
         queue<TreeLinkNode *> frontier;
         if (root) frontier.push(root);
         while (!frontier.empty()) {
-            TreeLinkNode *prev = nullptr;
+            TreeLinkNode *node = &dummy;
             int n = frontier.size();
             for (int i = 0; i < n; ++i) {
-                TreeLinkNode *curr = frontier.front();
-                if (prev) prev->next = curr;
-                prev = curr;
-                if (curr->left) frontier.push(curr->left);
-                if (curr->right) frontier.push(curr->right);
+                node = node->next = frontier.front();
+                if (node->left) frontier.push(node->left);
+                if (node->right) frontier.push(node->right);
 
                 frontier.pop();
             }
