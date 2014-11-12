@@ -50,18 +50,10 @@ using std::queue;
 
 #include "TreeNode.h"
 
-/**
- * Definition for binary tree with next pointer.
- * struct TreeLinkNode {
- *  int val;
- *  TreeLinkNode *left, *right, *next;
- *  TreeLinkNode(int x) : val(x), left(NULL), right(NULL), next(NULL) {}
- * };
- */
 class Solution {
 public:
     void connect(TreeLinkNode *root) {
-        iterativeQueueConnect(root);
+        iterativeConnect(root);
     }
 
     void iterativeQueueConnect(TreeLinkNode *root) {
@@ -83,15 +75,15 @@ public:
 
     void iterativeConnect(TreeLinkNode *root) {
         if (!root) return;
-        TreeLinkNode *node = root;
-        while (node->left) {
-            TreeLinkNode *level = node;
-            while (level) {
-                level->left->next = level->right;
-                level->right->next = level->next ? level->next->left : nullptr;
-                level = level->next;
+        TreeLinkNode *first = root;
+        while (first->left) {
+            TreeLinkNode *node = first;
+            while (node) {
+                node->left->next = node->right;
+                node->right->next = node->next ? node->next->left : nullptr;
+                node = node->next;
             }
-            node = node->left;
+            first = first->left;
         }
     }
 
