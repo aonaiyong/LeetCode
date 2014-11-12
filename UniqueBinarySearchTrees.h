@@ -28,13 +28,13 @@ using std::vector;
 class Solution {
 public:
     int numTrees(int n) {
-        vector<int> DP(n + 1, 0);
-        DP[0] = 1;
+        vector<int> dp(n + 1, 0);
+        dp[0] = 1;
         for (int i = 1; i <= n; ++i) {
             for (int j = 1; j <= i; ++j)    // for root j
-                DP[i] += DP[j-1] * DP[i-j]; // left subtree: j-1 nodes, right subtree: i-j nodes
+                dp[i] += dp[j-1] * dp[i-j]; // left subtree: j-1 nodes, right subtree: i-j nodes
         }
-        return DP[n];
+        return dp[n];
     }
 };
 
