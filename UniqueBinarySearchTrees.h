@@ -16,7 +16,11 @@
    2     1         2                 3
 
 
- Solution:    Dynamic Programming.
+ Solution:    1. Dynamic Programming.
+                 Time: O(n^2), Space: O(n).
+
+              2. Catalan number. http://en.wikipedia.org/wiki/Catalan_number
+                 Time: O(n), Space: O(1).
  */
 
 #ifndef UNIQUEBINARYSEARCHTREES_H_
@@ -28,13 +32,27 @@ using std::vector;
 class Solution {
 public:
     int numTrees(int n) {
+        // return numTreesDP(n);
+        return catalanNumber(n);
+    }
+
+    // Time: O(n^2), Space: O(n)
+    int numTreesDP(int n) {
         vector<int> dp(n + 1, 0);
         dp[0] = 1;
         for (int i = 1; i <= n; ++i) {
-            for (int j = 1; j <= i; ++j)    // for root j
-                dp[i] += dp[j-1] * dp[i-j]; // left subtree: j-1 nodes, right subtree: i-j nodes
+            for (int j = 0; j < i; ++j)         // left subtree: j nodes
+                dp[i] += dp[j] * dp[i - j - 1]; // right subtree: i - j - 1 nodes
         }
         return dp[n];
+    }
+
+    // Time: O(n), Space: O(1)
+    int catalanNumber(int n) {
+        int cn = 1;
+        for (int i = 1; i <= n; ++i)
+            cn = cn * (4 * i - 2) / (i + 1);
+        return cn;
     }
 };
 
