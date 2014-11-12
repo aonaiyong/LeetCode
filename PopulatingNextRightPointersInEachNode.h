@@ -60,15 +60,15 @@ public:
         queue<TreeLinkNode *> frontier;
         if (root) frontier.push(root);
         while (!frontier.empty()) {
-            TreeLinkNode *prev = nullptr;
+            TreeLinkNode *prev = nullptr, *curr = nullptr;
             int n = frontier.size();
             for (int i = 0; i < n; ++i) {
-                TreeLinkNode *curr = frontier.front();
-                if (prev) prev->next = curr;
+                curr = frontier.front();
+                if (prev)
+                    prev->next = curr;
                 prev = curr;
                 if (curr->left) frontier.push(curr->left);
                 if (curr->right) frontier.push(curr->right);
-
                 frontier.pop();
             }
         }
@@ -76,28 +76,26 @@ public:
 
     void iterativeConnect(TreeLinkNode *root) {
         if (!root) return;
-        while (root->left) {
-            TreeLinkNode *curr = root, *prev = nullptr;
-            while (curr) {
-                if (prev) prev->right->next = curr->left;
-                curr->left->next = curr->right;
-
-                prev = curr;
-                curr = curr->next;
+        TreeLinkNode *node = root;
+        while (node->left) {
+            TreeLinkNode *level = node;
+            while (level) {
+                level->left->next = level->right;
+                level->right->next = level->next ? level->next->left : nullptr;
+                level = level->next;
             }
-
-            root = root->left;
+            node = node->left;
         }
     }
 
     void recursiveConnect(TreeLinkNode *root) {
-        if (!root || !root->left) return;
+         if (!root || !root->left || !root->right) return;
 
-        root->left->next = root->right;
-        root->right->next = root->next ? root->next->left : nullptr;
-        recursiveConnect(root->left);
-        recursiveConnect(root->right);
-    }
+         root->left->next = root->right;
+         root->right->next = root->next ? root->next->left : nullptr;
+         recursiveConnect(root->left);
+         recursiveConnect(root->right);
+     }
 };
 
 #endif /* POPULATINGNEXTRIGHTPOINTERSINEACHNODE_H_ */
