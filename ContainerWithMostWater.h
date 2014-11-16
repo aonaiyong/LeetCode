@@ -36,14 +36,13 @@ class Solution {
 public:
     int maxArea(vector<int> &height) {
         int result = 0;
-        int n = height.size();
-        for (int i = 0, j = n - 1; i < j; ) {
+        for (int i = 0, j = height.size() - 1; i < j; ) {
             if (height[i] < height[j]) {
-                result = max(result, height[i] * (j - i));
+                result = max(result, height[i] * (j-i));
                 ++i;
             }
             else {
-                result = max(result, height[j] * (j - i));
+                result = max(result, height[j] * (j-i));
                 --j;
             }
         }
