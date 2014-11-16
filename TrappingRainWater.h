@@ -16,7 +16,7 @@
                  Time: O(n), Space: O(1).
 
               2. Two-pass solution.
-                 First, for each bar, calculate the left and right bound.
+                 First, calculate the left and right bound for each bar.
                  Second, calculate the amount of water that is wrapped above each bar.
 
                  Time: O(n), Space: O(1).
