@@ -11,7 +11,15 @@
  Given [0,1,0,2,1,0,1,3,2,1,2,1], return 6.
 
  Solution:    1. One-pass solution.
+                 Calculate the total area and bar area in one pass.
 
+                 Time: O(n), Space: O(1).
+
+              2. Two-pass solution.
+                 First, for each bar, calculate the left and right bound.
+                 Second, calculate the amount of water that is wrapped above each bar.
+
+                 Time: O(n), Space: O(1).
  */
 
 #ifndef TRAPPINGRAINWATER_H_
