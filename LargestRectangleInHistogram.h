@@ -15,10 +15,11 @@
  Given height = [2,1,5,6,2,3],
  return 10.
 
- Solution:    1.
+ Solution:    1. Only calculate area when reaching peak bar.
+                 Time: O(n^2), Space: O(1).
 
               2 & 3. http://www.geeksforgeeks.org/largest-rectangle-under-histogram/
-                     Time: O(n), Space: O(n)
+                     Time: O(n), Space: O(n).
  */
 
 #ifndef LARGESTRECTANGLEINHISTOGRAM_H_
