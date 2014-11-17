@@ -15,7 +15,13 @@
  Given height = [2,1,5,6,2,3],
  return 10.
 
- Solution:
+ Solution:    1.
+
+              2. For every bar 'x', calculate the area with 'x' as the smallest bar (height)
+                 in the rectangle, and find the maximum of all areas.
+
+
+
  */
 
 #ifndef LARGESTRECTANGLEINHISTOGRAM_H_
@@ -56,7 +62,7 @@ public:
     int largestRectangleAreaLinear(vector<int> &height) {
         int maxArea = 0;
         stack<int> stk;
-        height.push_back(0);
+        height.push_back(0); //
         int i = 0, n = height.size();
         while (i < n) {
             if (stk.empty() || height[i] >= height[stk.top()])
