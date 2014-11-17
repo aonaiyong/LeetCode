@@ -17,7 +17,8 @@
    [1,3,3,1],
   [1,4,6,4,1]
  ]
- Solution:
+ Solution:    Pascal's triangle.
+              http://en.wikipedia.org/wiki/Pascal's_triangle
  */
 
 #ifndef PASCAL_STRIANGLE_H_
