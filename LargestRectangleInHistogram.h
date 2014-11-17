@@ -71,7 +71,7 @@ public:
         return maxArea;
     }
 
-    // if the input vector can be modified
+    // if the input vector can not be modified
     // Time: O(n), Space: O(n)
     int largestRectangleAreaLinear2(const vector<int> &height) {
         int maxArea = 0;
