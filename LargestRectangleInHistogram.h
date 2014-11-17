@@ -27,10 +27,13 @@ using std::vector;
 #include <algorithm>
 using std::min; using std::max;
 
+#include <stack>
+using std::stack;
+
 class Solution {
 public:
     int largestRectangleArea(vector<int> &height) {
-        return largestRectangleAreaQuadratic(height);
+        return largestRectangleAreaLinear(height);
     }
 
     // Time: O(n^2), Space: O(1)
@@ -46,6 +49,52 @@ public:
                 maxArea = max(maxArea, minHeight * (i - j + 1));
             }
         }
+        return maxArea;
+    }
+
+    // Time: O(n), Space: O(n)
+    int largestRectangleAreaLinear(vector<int> &height) {
+        int maxArea = 0;
+        stack<int> stk;
+        height.push_back(0);
+        int i = 0, n = height.size();
+        while (i < n) {
+            if (stk.empty() || height[i] >= height[stk.top()])
+                stk.push(i++);
+            else {
+                int idx = stk.top();
+                stk.pop();
+                int width = stk.empty() ? i : i - stk.top() - 1;
+                maxArea = max(maxArea, height[idx] * width);
+            }
+        }
+        return maxArea;
+    }
+
+    // if the input vector can be modified
+    // Time: O(n), Space: O(n)
+    int largestRectangleAreaLinear2(const vector<int> &height) {
+        int maxArea = 0;
+        stack<int> stk;
+        int i = 0, n = height.size();
+        while (i < n) {
+            if (stk.empty() || height[i] >= height[stk.top()])
+                stk.push(i++);
+            else {
+                int idx = stk.top();
+                stk.pop();
+                int width = stk.empty() ? i : i - stk.top() - 1;
+                maxArea = max(maxArea, height[idx] * width);
+            }
+        }
+
+        while (!stk.empty()) {
+            int idx = stk.top();
+            stk.pop();
+            int width = stk.empty() ? i : i - stk.top() - 1;
+            maxArea = max(maxArea, height[idx] * width);
+        }
+
         return maxArea;
     }
 };
