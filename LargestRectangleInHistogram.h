@@ -17,11 +17,8 @@
 
  Solution:    1.
 
-              2. For every bar 'x', calculate the area with 'x' as the smallest bar (height)
-                 in the rectangle, and find the maximum of all areas.
-
-
-
+              2 & 3. http://www.geeksforgeeks.org/largest-rectangle-under-histogram/
+                     Time: O(n), Space: O(n)
  */
 
 #ifndef LARGESTRECTANGLEINHISTOGRAM_H_
@@ -62,7 +59,7 @@ public:
     int largestRectangleAreaLinear(vector<int> &height) {
         int maxArea = 0;
         stack<int> stk;
-        height.push_back(0); //
+        height.push_back(0); // append a bar of length zero
         int i = 0, n = height.size();
         while (i < n) {
             if (stk.empty() || height[i] >= height[stk.top()])
