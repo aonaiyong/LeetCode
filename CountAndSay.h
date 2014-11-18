@@ -15,7 +15,8 @@
 
  Note: The sequence of integers will be represented as a string.
 
- Solution:    1.
+ Solution:    1. find_first_not_of.
+              2. iteration.
  */
 
 #ifndef COUNTANDSAY_H_
