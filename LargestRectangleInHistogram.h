@@ -16,9 +16,12 @@
  return 10.
 
  Solution:    1. Only calculate area when reaching peak bar.
+
                  Time: O(n^2), Space: O(1).
 
               2 & 3. http://www.geeksforgeeks.org/largest-rectangle-under-histogram/
+                     http://www.cnblogs.com/lichen782/p/leetcode_Largest_Rectangle_in_Histogram.html
+
                      Time: O(n), Space: O(n).
  */
 
