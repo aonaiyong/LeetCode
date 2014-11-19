@@ -7,7 +7,7 @@
  Notes:
  Write a function to find the longest common prefix string amongst an array of strings.
 
- Solution:    Simply check corresponding positions of each string, and terminate if mismatch is encountered.
+ Solution:    Simply compare corresponding positions of each string, and terminate if a mismatch is encountered.
  */
 
 #ifndef LONGESTCOMMONPREFIX_H_
@@ -20,7 +20,7 @@ using std::vector;
 using std::string;
 
 #include <algorithm>
-using std::sort;
+using std::min;
 
 class Solution {
 public:
@@ -30,35 +30,28 @@ public:
 
     string longestCommonPrefix_1(const vector<string> &strs) {
         if (strs.empty()) return {};
-        string prefix;
         int m = strs.size(), n = strs[0].size();
         for (int j = 0; j < n; ++j) {
-            for (int i = 1; i < m ; ++i) {
+            for (int i = 1; i < m; ++i)
                 if (j >= strs[i].size() || strs[i][j] != strs[0][j])
-                    return prefix;
-            }
-
-            prefix += strs[0][j];
+                    return strs[0].substr(0, j);
         }
-        return prefix;
+        return strs[0];
     }
 
-    // sort strs in increasing order of string size
-    string longestCommonPrefix_2(vector<string> &strs) {
+    string longestCommonPrefix_2(const vector<string> &strs) {
         if (strs.empty()) return {};
-        string prefix;
-        sort(strs.begin(), strs.end(),
-             [](const string &s1, const string &s2) { return s1.size() < s2.size(); } );
-        int m = strs.size(), n = strs[0].size();
-        for (int j = 0; j < n; ++j) {
-            for (int i = 1; i < m ; ++i) {
-                if (strs[i][j] != strs[0][j])
-                    return prefix;
-            }
+        size_t m = strs.size(), n = strs[0].size();
+        // Compute the minimum string size first
+        for (int i = 1; i < m; ++i)
+            n = min(n, strs[i].size());
 
-            prefix += strs[0][j];
+        for (int j = 0; j < n; ++j) {
+            for (int i = 1; i < m; ++i)
+                if (strs[i][j] != strs[0][j])
+                    return strs[0].substr(0, j);
         }
-        return prefix;
+        return strs[0].substr(0, n);
     }
 };
 
