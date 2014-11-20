@@ -45,7 +45,7 @@ public:
                 int b = stk.top(); stk.pop();
                 if (s == "+")
                     stk.push(b + a);
-                else if (s == "-" )
+                else if (s == "-")
                     stk.push(b - a);
                 else if (s == "*")
                     stk.push(b * a);

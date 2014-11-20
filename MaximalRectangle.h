@@ -38,7 +38,7 @@ public:
     int maximalRectangle(vector<vector<char> > &matrix) {
         if (matrix.empty() || matrix[0].empty()) return 0;
 
-        return maximalRectangleLRIH(matrix);
+        return maximalRectangleDP_2(matrix);
     }
 
     // Dynamic Programming
@@ -80,7 +80,7 @@ public:
 
                 dp[j] = i ? dp[j] + 1 : 1;
                 int height = dp[j];
-                for (int k = j; k >= 0 && matrix[i][k] == '1'; --k) {
+                for (int k = j; k >= 0 && dp[k]; --k) {
                     height = min(height, dp[k]);
                     maxArea = max(maxArea, (j - k + 1) * height);
                 }
