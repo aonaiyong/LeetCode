@@ -12,6 +12,7 @@
  You may assume that there will be only one unique solution.
 
  Solution:   Backtracking.
+             http://www.geeksforgeeks.org/backtracking-set-7-suduku/
  */
 
 #ifndef SUDOKUSOLVER_H_
@@ -31,27 +32,32 @@ public:
     }
 
     bool solveSudoku(vector<vector<char> > &board, int row, int col) {
-        nextEmpty(board, row, col);
-        if (row == N) return true;
+        if (!nextUnassigned(board, row, col))
+            return true;  // all unassigned cells have been filled, return true
 
-        vector<bool> candidates(N, true);    // valid candidates for current cell
+        // get valid candidates for current cell
+        vector<bool> candidates(N, true);
         getCandidates(board, row, col, candidates);
+
         for (int i = 0; i < N; ++i) {
             if (!candidates[i]) continue;
 
             board[row][col] = '1' + i;
             if (solveSudoku(board, row, col)) return true;
         }
+        // all digits have been tried and nothing worked
+        // restore the cell and return false
         board[row][col] = '.';
         return false;
     }
 
-    // find next empty cell
-    void nextEmpty(const vector<vector<char> > &board, int &row, int &col) {
+    // find row, col of next unassigned cell, return true if such cell is found
+    bool nextUnassigned(const vector<vector<char> > &board, int &row, int &col) {
         while (row != N && board[row][col] != '.') {
             col = (col + 1) % N;
             row = col ? row : row + 1;
         }
+        return row != N;
     }
 
     // compute all valid candidates for cell (row, col)
