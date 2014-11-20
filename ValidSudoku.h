@@ -11,7 +11,8 @@
  Note:
  A valid Sudoku board (partially filled) is not necessarily solvable. Only the filled cells need to be validated.
 
- Solution:
+ Solution:    Sudoku Puzzles - The Rules. http://sudoku.com.au/TheRules.aspx
+              Time: O(N^2), Space: (1 + 2 * N) * sizeof(int)
  */
 
 #ifndef VALIDSUDOKU_H_
