@@ -62,12 +62,12 @@ public:
 
     // compute all valid candidates for cell (row, col)
     void getCandidates(const vector<vector<char> > &board, int row, int col, vector<bool> &candidates) {
-        int startRow = row/n * n, startCol = col/n * n;
+        int boxStartRow = row/n * n, boxStartCol = col/n * n;
         // iterate over N cells in current row, column, and box respectively
         for (int k = 0; k < N; ++k) {
             if (board[row][k] != '.') candidates[board[row][k] - '1'] = false;
             if (board[k][col] != '.') candidates[board[k][col] - '1'] = false;
-            int i = startRow + k/n, j = startCol + k%n;
+            int i = boxStartRow + k/n, j = boxStartCol + k%n;
             if (board[i][j] != '.') candidates[board[i][j] - '1'] = false;
         }
     }
