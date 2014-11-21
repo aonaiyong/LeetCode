@@ -30,8 +30,8 @@ public:
     void solveSudoku(vector<vector<char> > &board) {
         if (board.empty() || board[0].empty()) return;
 
-        // solveSudoku_1(board);
-        solveSudoku_2(board);
+        solveSudoku_1(board);
+        // solveSudoku_2(board);
     }
 
     // Solution 1: Backtracking + Bit manipulation (8ms)
@@ -80,7 +80,7 @@ public:
         return false;
     }
 
-    // Solution 2: Backtracking (240ms)
+    // Solution 2: Backtracking + Iteration (240ms)
     void solveSudoku_2(vector<vector<char> > &board) {
         solveSudokuRe_2(board, 0, 0);
     }
@@ -126,6 +126,5 @@ public:
         }
     }
 };
-
 
 #endif /* SUDOKUSOLVER_H_ */
