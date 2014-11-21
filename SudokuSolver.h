@@ -12,7 +12,9 @@
  You may assume that there will be only one unique solution.
 
  Solution:   Backtracking.
-             http://www.geeksforgeeks.org/backtracking-set-7-suduku/
+             1. Bit manipulation. http://www.matrix67.com/blog/archives/263
+
+             2. http://www.geeksforgeeks.org/backtracking-set-7-suduku/
  */
 
 #ifndef SUDOKUSOLVER_H_
@@ -78,7 +80,7 @@ public:
         return false;
     }
 
-    // Solution 2: Backtracking + Iteration (240ms)
+    // Solution 2: Backtracking (240ms)
     void solveSudoku_2(vector<vector<char> > &board) {
         solveSudokuRe_2(board, 0, 0);
     }
