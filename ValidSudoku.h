@@ -23,7 +23,7 @@ using std::vector;
 
 class Solution {
 private:
-    enum { N = 9 };
+    enum { N = 9, n = 3 };
 public:
     bool isValidSudoku(vector<vector<char> > &board) {
         int row = 0, col[N] = {0}, box[N] = {0};
@@ -33,7 +33,7 @@ public:
                 if (board[i][j] == '.') continue;
 
                 int mask = 1 << board[i][j] - '1';
-                int k = i / 3 * 3 + j / 3;
+                int k = i/n * n + j/n;
                 if ((row & mask) || (col[j] & mask) || (box[k] & mask)) return false;
                 row |= mask;
                 col[j] |= mask;

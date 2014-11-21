@@ -28,49 +28,102 @@ public:
     void solveSudoku(vector<vector<char> > &board) {
         if (board.empty() || board[0].empty()) return;
 
-        solveSudoku(board, 0, 0);
+        // solveSudoku_1(board);
+        solveSudoku_2(board);
     }
 
-    bool solveSudoku(vector<vector<char> > &board, int row, int col) {
-        if (!nextUnassigned(board, row, col))
+    // Solution 1: Backtracking + Bit manipulation (8ms)
+    void solveSudoku_1(vector<vector<char> > &board) {
+        int row[N] = {0}, col[N] = {0}, box[N] = {0};
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (board[i][j] == '.') continue;
+
+                int mask = 1 << board[i][j] - '1';
+                int k = i/n * n + j/n;
+                // set bit
+                row[i] |= mask;
+                col[j] |= mask;
+                box[k] |= mask;
+            }
+        }
+        solveSudokuRe_1(board, row, col, box, 0, 0);
+    }
+
+    bool solveSudokuRe_1(vector<vector<char> > &board, int row[], int col[], int box[], int i, int j) {
+        if (!nextUnassigned(board, i, j))
+            return true;  // all unassigned cells have been filled, return true
+
+        int k = i/n * n + j/n;
+        int candidates = ~(row[i] | col[j] | box[k]);
+
+        for (int d = 0; d < N; ++d) {
+            int mask = 1 << d;
+            if (candidates & mask) {
+                board[i][j] = '1' + d;
+                // set bit
+                row[i] |= mask;
+                col[j] |= mask;
+                box[k] |= mask;
+                if (solveSudokuRe_1(board, row, col, box, i, j)) return true;
+                // clear bit
+                row[i] &= ~mask;
+                col[j] &= ~mask;
+                box[k] &= ~mask;
+            }
+        }
+        // all digits have been tried and nothing worked
+        // restore the cell and return false
+        board[i][j] = '.';
+        return false;
+    }
+
+    // Solution 2: Backtracking + Iteration (240ms)
+    void solveSudoku_2(vector<vector<char> > &board) {
+        solveSudokuRe_2(board, 0, 0);
+    }
+
+    bool solveSudokuRe_2(vector<vector<char> > &board, int i, int j) {
+        if (!nextUnassigned(board, i, j))
             return true;  // all unassigned cells have been filled, return true
 
         // get valid candidates for current cell
         vector<bool> candidates(N, true);
-        getCandidates(board, row, col, candidates);
+        getCandidates(board, i, j, candidates);
 
-        for (int i = 0; i < N; ++i) {
-            if (!candidates[i]) continue;
+        for (int d = 0; d < N; ++d) {
+            if (!candidates[d]) continue;
 
-            board[row][col] = '1' + i;
-            if (solveSudoku(board, row, col)) return true;
-        }
+            board[i][j] = '1' + d;
+            if (solveSudokuRe_2(board, i, j)) return true;
+       }
         // all digits have been tried and nothing worked
         // restore the cell and return false
-        board[row][col] = '.';
+        board[i][j] = '.';
         return false;
     }
 
-    // find row, col of next unassigned cell, return true if such cell is found
-    bool nextUnassigned(const vector<vector<char> > &board, int &row, int &col) {
-        while (row != N && board[row][col] != '.') {
-            col = (col + 1) % N;
-            row = col ? row : row + 1;
+    // find next unassigned cell, return true if such cell is found
+    bool nextUnassigned(const vector<vector<char> > &board, int &i, int &j) {
+        while (i != N && board[i][j] != '.') {
+            j = (j + 1) % N;
+            i = j ? i : i + 1;
         }
-        return row != N;
+        return i != N;
     }
 
-    // compute all valid candidates for cell (row, col)
-    void getCandidates(const vector<vector<char> > &board, int row, int col, vector<bool> &candidates) {
-        int boxStartRow = row/n * n, boxStartCol = col/n * n;
+    // compute all valid candidates for cell (i, i)
+    void getCandidates(const vector<vector<char> > &board, int i, int j, vector<bool> &candidates) {
+        int boxStartRow = i/n * n, boxStartCol = j/n * n;
         // iterate over N cells in current row, column, and box respectively
         for (int k = 0; k < N; ++k) {
-            if (board[row][k] != '.') candidates[board[row][k] - '1'] = false;
-            if (board[k][col] != '.') candidates[board[k][col] - '1'] = false;
-            int i = boxStartRow + k/n, j = boxStartCol + k%n;
-            if (board[i][j] != '.') candidates[board[i][j] - '1'] = false;
+            if (board[i][k] != '.') candidates[board[i][k] - '1'] = false;
+            if (board[k][j] != '.') candidates[board[k][j] - '1'] = false;
+            int bi = boxStartRow + k/n, bj = boxStartCol + k%n;
+            if (board[bi][bj] != '.') candidates[board[bi][bj] - '1'] = false;
         }
     }
 };
+
 
 #endif /* SUDOKUSOLVER_H_ */
