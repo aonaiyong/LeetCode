@@ -81,12 +81,11 @@ public:
     vector<vector<string> > solveNQueens_2(int n) {
         vector<vector<string> > solutions;
         vector<int> col(n, -1);
-        solveNQueensRe_2(0, col, solutions);
+        solveNQueensRe_2(n, 0, col, solutions);
         return solutions;
     }
 
-    void solveNQueensRe_2(int i, vector<int> &col, vector<vector<string> > &solutions) {
-        int n = col.size();
+    void solveNQueensRe_2(int n, int i, vector<int> &col, vector<vector<string> > &solutions) {
         if (i == n) {
             addBoard(col, solutions);
             return;
@@ -95,7 +94,7 @@ public:
         for (int j = 0; j < n; ++j) {
             if (isSafe(col, i, j)) {
                 col[i] = j;
-                solveNQueensRe_2(i + 1, col, solutions);
+                solveNQueensRe_2(n, i + 1, col, solutions);
             }
         }
     }
@@ -108,7 +107,7 @@ public:
         return true;
     }
 
-    void addBoard(vector<int> &col, vector<vector<string> > &solutions) {
+    void addBoard(const vector<int> &col, vector<vector<string> > &solutions) {
         int n = col.size();
         vector<string> board(n, string(n, '.'));
         for (int i = 0; i < n; ++i)
