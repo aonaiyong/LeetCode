@@ -27,6 +27,9 @@
  ]
 
  Solution:    Backtracking.
+              1. Bit Manipulation. http://www.matrix67.com/blog/archives/266
+
+              2. http://www.geeksforgeeks.org/backtracking-set-3-n-queen-problem/
  */
 
 #ifndef N_QUEENS_H_
@@ -44,41 +47,71 @@ using std::abs;
 class Solution {
 public:
     vector<vector<string> > solveNQueens(int n) {
+        // return solveNQueens_1(n);
+        return solveNQueens_2(n);
+    }
+
+    // Solution 1: Backtracking + Bit Manipulation (8ms)
+    vector<vector<string> > solveNQueens_1(int n) {
         vector<vector<string> > solutions;
-        vector<int> column(n, -1);
-        solveNQueens(column, 0, solutions);
+        vector<string> sol(n, string(n, '.'));
+        solveNQueenRe_2(0, 0, 0, 0, sol, solutions);
         return solutions;
     }
 
-    void solveNQueens(vector<int> &column, int row, vector<vector<string> > &solutions) {
-        int n = column.size();
-        if (row == n) {
-            addBoard(column, solutions);
+    void solveNQueenRe_2(int i, int row, int ld, int rd, vector<string> &sol, vector<vector<string> > &solutions) {
+        int n = sol.size();
+        if (row == (1 << n) - 1) {
+            solutions.push_back(sol);
             return;
         }
 
+        int candidates = ~(row | ld | rd);
         for (int j = 0; j < n; ++j) {
-            if (isSafe(column, row, j)) {
-                column[row] = j;
-                solveNQueens(column, row + 1, solutions);
-                column[row] = -1;
+            int mask = 1 << j;
+            if (candidates & mask) {
+                sol[i][j] = 'Q';
+                solveNQueenRe_2(i + 1, row | mask, (ld | mask) << 1, (rd | mask) >> 1, sol, solutions);
+                sol[i][j] = '.';
             }
         }
     }
 
-    bool isSafe(const vector<int> &column, int row, int col) {
-        for (int i = 0; i < row; ++i) {
-            if (col == column[i] || abs(col - column[i]) == row - i)
+    // Solution 2: Backtracking (40ms)
+    vector<vector<string> > solveNQueens_2(int n) {
+        vector<vector<string> > solutions;
+        vector<int> col(n, -1);
+        solveNQueensRe_2(n, 0, col, solutions);
+        return solutions;
+    }
+
+    void solveNQueensRe_2(int n, int i, vector<int> &col, vector<vector<string> > &solutions) {
+        if (i == n) {
+            addBoard(col, solutions);
+            return;
+        }
+
+        for (int j = 0; j < n; ++j) {
+            if (isSafe(col, i, j)) {
+                col[i] = j;
+                solveNQueensRe_2(n, i + 1, col, solutions);
+            }
+        }
+    }
+
+    bool isSafe(const vector<int> &col, int i, int j) {
+        for (int k = 0; k < i; ++k) {
+            if (j == col[k] || abs(j - col[k]) == i - k)
                 return false;
         }
         return true;
     }
 
-    void addBoard(vector<int> &column, vector<vector<string> > &solutions) {
-        int n = column.size();
+    void addBoard(vector<int> &col, vector<vector<string> > &solutions) {
+        int n = col.size();
         vector<string> board(n, string(n, '.'));
         for (int i = 0; i < n; ++i)
-            board[i][column[i]] = 'Q';
+            board[i][col[i]] = 'Q';
         solutions.push_back(board);
     }
 };
