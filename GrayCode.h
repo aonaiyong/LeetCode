@@ -36,9 +36,8 @@ class Solution {
 public:
     vector<int> grayCode(int n) {
         vector<int> sequence(1 << n, 0);
-        for (int i = 0; i < sequence.size(); ++i) {
+        for (int i = 0; i < sequence.size(); ++i)
             sequence[i] = i ^ (i >> 1);
-        }
         return sequence;
     }
 };
