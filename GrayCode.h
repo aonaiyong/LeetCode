@@ -35,10 +35,11 @@ using std::vector;
 class Solution {
 public:
     vector<int> grayCode(int n) {
-        vector<int> sequence(1 << n, 0);
-        for (int i = 0; i < sequence.size(); ++i)
-            sequence[i] = i ^ (i >> 1);
-        return sequence;
+       int N = 1 << n;
+       vector<int> sequence(N);
+       for (int i = 0; i < N; ++i)
+           sequence[i] = i ^ (i >> 1);
+       return sequence;
     }
 };
 
