@@ -11,8 +11,8 @@
 
  "((()))", "(()())", "(())()", "()(())", "()()()"
 
- Solution:   Binary Tree Depth-first traversal.
-             Rule: We can place '(' when '(' is available.
+ Solution:   DFS.
+             Rule: We can place '(' when it's available.
                    We can place ')' only when there're more ')' available than '('.
  */
 
@@ -30,19 +30,38 @@ public:
     vector<string> generateParenthesis(int n) {
         vector<string> combinations;
         string parens;
-        generateParenthesis(combinations, parens, n, n);
-
+        // generateParenthesis_1(n, n, parens, combinations);
+        generateParenthesis_2(n, n, "", combinations);
         return combinations;
     }
 
-    void generateParenthesis(vector<string> &combinations, string parens, int left, int right) {
-        if (!left && !right) {
+    void generateParenthesis_1(int left, int right, string &parens, vector<string> &combinations) {
+        if (!right) {
             combinations.push_back(parens);
             return;
         }
 
-        if (left > 0) generateParenthesis(combinations, parens + '(', left-1, right);
-        if (right > left) generateParenthesis(combinations, parens + ')', left, right-1);
+        if (left) {
+            parens.push_back('(');
+            generateParenthesis_1(left - 1, right, parens, combinations);
+            parens.pop_back();
+        }
+
+        if (right > left) {
+            parens.push_back(')');
+            generateParenthesis_1(left, right - 1, parens, combinations);
+            parens.pop_back();
+        }
+    }
+
+    void generateParenthesis_2(int left, int right, string parens, vector<string> & combinations) {
+        if (!right) {
+            combinations.push_back(parens);
+            return;
+        }
+
+        if (left) generateParenthesis_2(left - 1, right, parens + '(', combinations);
+        if (right > left) generateParenthesis_2(left, right - 1, parens + ')', combinations);
     }
 };
 
