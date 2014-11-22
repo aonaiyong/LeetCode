@@ -19,7 +19,7 @@
    [1,4],
  ]
 
- Solution:   Depth-first search.
+ Solution:   DFS.
  */
 
 #ifndef COMBINATIONS_H_
@@ -31,22 +31,21 @@ using std::vector;
 class Solution {
 public:
     vector<vector<int> > combine(int n, int k) {
-        vector<vector<int>> result;
+        vector<vector<int> > all;
         vector<int> combination;
-        combine(n, k, 1, combination, result);
-
-        return result;
+        combine(n, k, 1, combination, all);
+        return all;
     }
 
-    void combine(int n, int k, int start, vector<int> &combination, vector<vector<int>> &result) {
-        if (k == 0) {
-            result.push_back(combination);
+    void combine(int n, int k, int start, vector<int> &combination, vector<vector<int> > &all) {
+        if (!k) {
+            all.push_back(combination);
             return;
         }
 
-        for (int i = start; i <= n-k+1; ++i) {
+        for (int i = start; i <= n - k + 1; ++i) {
             combination.push_back(i);
-            combine(n, k-1, i+1, combination, result);
+            combine(n, k - 1, i + 1, combination, all);
             combination.pop_back();
         }
     }
