@@ -30,8 +30,8 @@ public:
     vector<string> generateParenthesis(int n) {
         vector<string> combinations;
         string parens;
-        // generateParenthesis_1(n, n, parens, combinations);
-        generateParenthesis_2(n, n, "", combinations);
+         generateParenthesis_1(n, n, parens, combinations);
+//        generateParenthesis_2(n, n, "", combinations);
         return combinations;
     }
 
