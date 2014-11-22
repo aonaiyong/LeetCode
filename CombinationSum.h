@@ -18,7 +18,7 @@
  [7]
  [2, 2, 3]
 
- Solution:  Depth-first Search.
+ Solution:  DFS.
  */
 
 #ifndef COMBINATIONSUM_H_
