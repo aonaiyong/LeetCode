@@ -11,7 +11,7 @@
 
  Note:
  All numbers (including target) will be positive integers.
- Elements in a combination (a_1, a_2, … , a_k) must be in non-descending order. (i.e., a_1 ≤ a_2 ≤ … ≤ a_k).
+ Elements in a combination (a_1, a_2, 鈥�, a_k) must be in non-descending order. (i.e., a_1 鈮�a_2 鈮�鈥�鈮�a_k).
  The solution set must not contain duplicate combinations.
  For example, given candidate set 2,3,6,7 and target 7,
  A solution set is:
@@ -32,26 +32,22 @@ public:
     vector<vector<int> > combinationSum(vector<int> &candidates, int target) {
         sort(candidates.begin(), candidates.end());
 
-        vector<vector<int>> result;
+        vector<vector<int> > all;
         vector<int> combination;
-        combinationSum(candidates, target, 0, combination, result);
-
-        return result;
+        combinationSum(candidates, target, 0, combination, all);
+        return all;
     }
 
     void combinationSum(const vector<int> &candidates, int target, int pos,
-                        vector<int> &combination, vector<vector<int>> &result) {
-        if (target == 0) {
-            result.push_back(combination);
+                        vector<int> &combination, vector<vector<int> > &all) {
+        if (!target) {
+            all.push_back(combination);
             return;
         }
 
-        for (int i = pos; i < candidates.size(); ++i) {
-            int num = candidates[i];
-            if (target < num) break;
-
-            combination.push_back(num);
-            combinationSum(candidates, target-num, i, combination, result);
+        for (int i = pos; i < candidates.size() && candidates[i] <= target; ++i) {
+            combination.push_back(candidates[i]);
+            combinationSum(candidates, target - candidates[i], i, combination, all);
             combination.pop_back();
         }
     }

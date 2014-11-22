@@ -37,13 +37,13 @@ public:
         return all;
     }
 
-    void combine(int n, int k, int start, vector<int> &combination, vector<vector<int> > &all) {
+    void combine(int n, int k, int pos, vector<int> &combination, vector<vector<int> > &all) {
         if (!k) {
             all.push_back(combination);
             return;
         }
 
-        for (int i = start; i <= n - k + 1; ++i) {
+        for (int i = pos; i <= n - k + 1; ++i) {
             combination.push_back(i);
             combine(n, k - 1, i + 1, combination, all);
             combination.pop_back();
