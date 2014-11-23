@@ -24,7 +24,6 @@
               5. Swap num[i-1] and num[j].
 
               Time: O(n), Space: O(1).
-
  */
 
 #ifndef NEXTPERMUTATION_H_
