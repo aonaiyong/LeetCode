@@ -87,7 +87,7 @@ public:
         }
     }
 
-    // Iterative Solution
+    // Iterative Solution: for each S[i], i = 0...|S|-1, expand power, which was initially empty
     vector<vector<int> > subsets_3(vector<int> &S) {
         sort(S.begin(), S.end());
 
