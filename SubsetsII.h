@@ -22,7 +22,7 @@
    []
  ]
 
- Solution:   Depth-first Search.
+ Solution:   DFS.
  */
 
 #ifndef SUBSETSII_H_
