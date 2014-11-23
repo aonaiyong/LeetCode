@@ -23,6 +23,8 @@
               4. Otherwise, find the smallest index j no less than k such that num[j] > num[i-1];
               5. Swap num[i-1] and num[j].
 
+              Time: O(n), Space: O(1).
+
  */
 
 #ifndef NEXTPERMUTATION_H_
@@ -45,30 +47,32 @@ public:
         nextPermutation_2(num);
     }
 
-    void nextPermutation_1(vector<int> &num) {
+    bool nextPermutation_1(vector<int> &num) {
         int i = num.size() - 1;
         while (i > 0 && num[i-1] >= num[i])
             --i;
         reverse(num.begin() + i, num.end());
-        if (i > 0) {
-            // linear search
-            int j = i;
-            while (num[j] <= num[i-1])
-                ++j;
-            swap(num[i-1], num[j]);
-        }
+        if (i == 0) return false;
+
+        // linear search
+        int j = i;
+        while (num[j] <= num[i-1])
+            ++j;
+        swap(num[i-1], num[j]);
+        return true;
     }
 
-    void nextPermutation_2(vector<int> &num) {
+    bool nextPermutation_2(vector<int> &num) {
         int i = num.size() - 1;
         while (i > 0 && num[i-1] >= num[i])
             --i;
         reverse(num.begin() + i, num.end());
-        if (i > 0) {
-            // binary search
-            int j = upper_bound(num.begin() + i, num.end(), num[i-1]) - num.begin();
-            swap(num[i-1], num[j]);
-        }
+        if (i == 0) return false;
+
+        // binary search
+        int j = upper_bound(num.begin() + i, num.end(), num[i-1]) - num.begin();
+        swap(num[i-1], num[j]);
+        return true;
     }
 };
 
