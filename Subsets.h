@@ -24,7 +24,7 @@
    []
  ]
 
- Solution:   Depth-first Search.
+ Solution:   DFS.
  */
 
 #ifndef SUBSETS_H_
@@ -36,56 +36,69 @@ using std::vector;
 class Solution {
 public:
     vector<vector<int> > subsets(vector<int> &S) {
+        // return subsets_1(S);
+        // return subsets_2(S);
+        return subsets_3(S);
+    }
+
+    // Recursive solution 1: for k = 0...|S|, compute all subsets of size k, respectively
+    vector<vector<int> > subsets_1(vector<int> &S) {
         sort(S.begin(), S.end());
-        vector<vector<int>> power;
+
+        vector<vector<int> > power;
         vector<int> sub;
-
-
-        // for (int k = 0; k <= S.size(); ++k) { // recursive solution 1
-        //     subsets(S, k, 0, sub, power);
-        // }
-
-        // subsets(S, 0, sub, power); // recursive solution 2
-
-        subsets(S, power);  // iterative solution
-
-
+        int n = S.size();
+        for (int k = 0; k <= n; ++k)
+            subsetsRe_1(S, k, 0, sub, power);
         return power;
     }
 
-    // recursive solution 1: compute subsets of size k
-    void subsets(const vector<int> &S, int k, int pos, vector<int> &sub, vector<vector<int>> &power) {
-        if (k == 0) {
+    // compute subsets of size k
+    void subsetsRe_1(const vector<int> &S, int k, int pos, vector<int> &sub, vector<vector<int> > &power) {
+        if (!k) {
             power.push_back(sub);
             return;
         }
 
         for (int i = pos; i <= S.size() - k; ++i) {
             sub.push_back(S[i]);
-            subsets(S, k-1, i+1, sub, power);
+            subsetsRe_1(S, k - 1, i + 1, sub, power);
             sub.pop_back();
         }
     }
 
-    // recursive solution 2: compute all subsets
-    void subsets(const vector<int> &S, int pos, vector<int> &sub, vector<vector<int>> &power) {
+    // Recursive Solution: for each S[i], i = 0...|S|-1, compute all subsets with S[i] being the first element
+    vector<vector<int> > subsets_2(vector<int> &S) {
+        sort(S.begin(), S.end());
+
+        vector<vector<int> > power;
+        vector<int> sub;
+        subsetsRe_2(S, 0, sub, power);
+        return power;
+    }
+
+    void subsetsRe_2(const vector<int> &S, int pos, vector<int> &sub, vector<vector<int> > &power) {
         power.push_back(sub);
+
         for (int i = pos; i < S.size(); ++i) {
             sub.push_back(S[i]);
-            subsets(S, i+1, sub, power);
+            subsetsRe_2(S, i + 1, sub, power);
             sub.pop_back();
         }
     }
 
-    // iterative solution: expand current powerset with each of S's elements
-    void subsets(const vector<int> &S, vector<vector<int>> &power) {
-        power.resize(1); // initially empty
+    // Iterative Solution
+    vector<vector<int> > subsets_3(vector<int> &S) {
+        sort(S.begin(), S.end());
+
+        vector<vector<int> > power(1);
         for (int i = 0; i < S.size(); ++i) {
-            for (int j = power.size()-1; j >= 0; --j) {
+            for (int j = power.size() - 1; j >= 0; --j) {
                 power.push_back(power[j]);
-                power.back().push_back(S[i]); // expand power[j] with S[i]
+                power.back().push_back(S[i]);
             }
         }
+        return power;
     }
 };
 
