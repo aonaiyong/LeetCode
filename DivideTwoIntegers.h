@@ -27,6 +27,11 @@ using std::abs;
 class Solution {
 public:
     int divide(int dividend, int divisor) {
+        return divideTopDown(dividend, divisor);
+//        return divideBottomUp(dividend, divisor);
+    }
+
+    int divideTopDown(int dividend, int divisor) {
         assert(divisor != 0);
 
         bool sign = (dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0);
@@ -49,16 +54,27 @@ public:
              q >>= 1;
          }
 
-//        // bottom -> up
-//        while (dividendll >= divisorll) {
-//            long long d = divisorll, q = 1;
-//            while ((d << 1) <= dividendll) {
-//                d <<= 1;
-//                q <<= 1;
-//            }
-//            dividendll -= d;
-//            quotient += q;
-//        }
+         return sign ? -static_cast<int>(quotient) : static_cast<int>(quotient);
+    }
+
+    int divideBottomUp(int dividend, int divisor) {
+        assert(divisor != 0);
+
+        bool sign = (dividend > 0 && divisor < 0) || (dividend < 0 && divisor > 0);
+        long long dividendll = abs(static_cast<long long>(dividend));
+        long long divisorll = abs(static_cast<long long>(divisor));
+        long long quotient = 0;
+
+        // bottom -> up
+        while (dividendll >= divisorll) {
+            long long d = divisorll, q = 1;
+            while ((d << 1) <= dividendll) {
+                d <<= 1;
+                q <<= 1;
+            }
+            dividendll -= d;
+            quotient += q;
+        }
 
         return sign ? -static_cast<int>(quotient) : static_cast<int>(quotient);
     }
