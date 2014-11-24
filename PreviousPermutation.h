@@ -12,11 +12,17 @@
  The replacement must be in-place, do not allocate extra memory.
 
  Here are some examples. Inputs are in the left-hand column and its corresponding outputs are in the right-hand column.
- 1,2,3 ¡ú 3,2,1
- 3,2,1 ¡ú 3,1,2
- 4,1,5 ¡ú 1,4,5
+ 1,2,3 -> 3,2,1
+ 3,2,1 -> 3,1,2
+ 4,1,5 -> 1,4,5
 
- Solution:
+ Solution:    1. Starting from the last element, traverse backward to find the largest index i such that num[i] < num[i-1];
+              2. Reverse num[i...n-1];
+              3. If i equals 0, then we're done;
+              4. Otherwise, find the smallest index j no less than k such that num[j] < num[i-1];
+              5. Swap num[i-1] and num[j].
+
+              Time: O(n), Space: O(1).
  */
 
 #ifndef PREVIOUSPERMUTATION_H_
@@ -31,9 +37,6 @@ using std::upper_bound;
 
 #include <utility>
 using std::swap;
-
-#include <functional>
-using std::less_equal;
 
 class Solution {
 public:
