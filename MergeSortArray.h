@@ -96,7 +96,7 @@ public:
             A[k--] = B[j--];
 
 //        // alternative
-//        while (i >= p && j >= 0) {
+//        while (i >= p || j >= 0) {
 //            int Ai = i >= p ? A[i] : INT_MIN;
 //            int Bj = j >= 0 ? B[j] : INT_MIN;
 //            A[k--] = Ai <= Bj ? B[j--] : A[i--];
